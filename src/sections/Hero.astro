@@ -1,0 +1,58 @@
+---
+import SocialPill from '@/components/SocialPill.astro'
+---
+
+<section class="flex flex-col items-center justify-center mx-auto min-h-[100dvh]">
+  <div class="flex gap-4 mb-4">
+    <div class="flex items-center p-1 border-[0.5px] border-gray-700/30 rounded-full shadow-sm">
+      <img
+        src="https://avatars.githubusercontent.com/u/71604462?s=96&v=4"
+        alt="jeral photo"
+        class="rounded-full shadow-lg size-18"
+      />
+      <!-- <p>Jeral Pineda</p> -->
+    </div>
+    <!-- <a
+      href="https://www.linkedin.com/in/jeralpineda"
+      target="_blank"
+      rel="noopener"
+      class="flex items-center transition md:justify-center md:hover:scale-105"
+    >
+      <Badge>Disponible para trabajar</Badge>
+    </a> -->
+  </div>
+
+  <p class="text-lg text-gray-800/70 mb-4 [&>strong]:text-black [&>strong]:font-normal">
+    Hey, soy <strong>Jeral Pineda</strong>
+  </p>
+
+  <div class="flex flex-col justify-center items-center">
+    <h1
+      class="text-4xl font-bold tracking-tight text-gray-800 sm:text-5xl md:text-6xl text-center [&>strong]:linear-gradient(to-right, #bffe4f, #07ffc4) [&>strong]:font-semibold max-w-2xl mb-4"
+    >
+      +3 años de experiencia. Desarrollador <strong
+        class="bg-gradient-to-r from-[#fc3812] to-[#f7be33] bg-clip-text text-transparent"
+        >Front-End</strong
+      >
+    </h1>
+
+    <p class="text-lg text-center text-gray-800/70 max-w-md tracking-tight">
+      Especializado en diseñar y construir experiencias digitales modernas y funcionales.
+    </p>
+  </div>
+
+  <nav class="flex flex-wrap gap-4 mt-8">
+    <SocialPill href="mailto:jeralpineda.dev@gmail.com">
+      <!-- <MailIcon class="size-4" /> -->
+      Contáctame
+    </SocialPill>
+    <SocialPill href="https://www.linkedin.com/in/jeralpineda">
+      <!-- <LinkedInIcon class="size-4" /> -->
+      LinkedIn
+    </SocialPill>
+    <SocialPill href="https://github.com/jeralpineda">
+      <!-- <GitHubIcon class="size-4" /> -->
+      GitHub
+    </SocialPill>
+  </nav>
+</section>
