@@ -1,22 +1,101 @@
+---
+import '@/styles/global.css'
+import background from '../assets/background3.svg'
+
+interface Props {
+  title: string
+  description: string
+}
+
+const { description, title } = Astro.props
+---
+
 <!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro Basics</title>
+  </head>
+  <body>
+    <!-- <div
+      class="absolute inset-0 -z-10 h-full w-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#63e_100%)]"
+    >
+    </div> -->
+    <!-- <div
+      class="absolute inset-0 -z-10 h-full w-full bg-white [background:radial-gradient(125%_125%_at_50%_10%,#fff_40%,#63e_100%)]"
+    >
+    </div> -->
+
+    <!-- <div
+      class="absolute inset-0 -z-10 h-full w-full bg-white [background:radial-gradient(125%_125%_at_50%_10%,#fbfbfb_40%,#d9d9d9_100%)]"
+    >
+    </div> -->
+    <!-- <img id="background" src={background.src} alt="" fetchpriority="high" /> -->
+    <!-- <div class="absolute top-0 -z-10 h-full w-full bg-white">
+      <div
+        class="absolute bottom-auto left-auto right-0 top-0 h-[500px] w-[500px] -translate-x-[5%] translate-y-[80%] rounded-full bg-[rgba(173,109,244,0.5)] opacity-50 blur-[80px]"
+      >
+      </div>
+    </div> -->
+    <!-- <div
+      class="absolute bottom-0 z-[-2] h-screen w-screen bg-white bg-[radial-gradient(ellipse_80%_80%_at_50%_90%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"
+    >
+    </div> -->
+
+    <!-- opcion a elegir -->
+
+    <!-- opcion b -->
+    <!-- <div class="relative h-full w-full bg-slate-950">
+      <div
+        class="absolute bottom-0 left-[-20%] right-0 top-[-10%] h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle_farthest-side,rgba(255,0,182,.15),rgba(255,255,255,0))]"
+      >
+      </div><div
+        class="absolute bottom-0 right-[-20%] top-[-10%] h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle_farthest-side,rgba(255,0,182,.15),rgba(255,255,255,0))]"
+      >
+      </div>
+    </div> -->
+
+    <!-- <div class="relative h-full w-full bg-white">
+      <div
+        class="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_0.3px,transparent_0.3px),linear-gradient(to_bottom,#4f4f4f2e_0.3px,transparent_0.3px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_30%,transparent_110%)]"
+      >
+      </div>
+    </div> -->
+    <slot />
+  </body>
 </html>
 
 <style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    /* background: #020618; */
+    background: white;
+  }
+
+  html,
+  body {
+    scroll-behavior: smooth;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    font-family: 'Inter', sans-serif;
+  }
+
+  #background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    filter: blur(100px);
+  }
 </style>
