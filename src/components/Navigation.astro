@@ -1,0 +1,36 @@
+---
+const navItems = [
+  {
+    title: "Experiencia",
+    label: "experiencia",
+    url: "/#experiencia",
+  },
+  {
+    title: "Proyectos",
+    label: "proyectos",
+    url: "/#proyectos",
+  },
+  // {
+  //   title: "Sobre mí",
+  //   label: "sobre-mi",
+  //   url: "/#sobre-mi",
+  // },
+  // {
+  //   title: "Contacto",
+  //   label: "contacto",
+  //   url: "mailto:jeralpineda.dev@gmail.com",
+  // },
+];
+---
+
+<nav class="">
+  <ul class="flex items-center gap-5">
+    {
+      navItems.map((item, index) => (
+        <li>
+          <a href={item.url}>{item.title}</a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
