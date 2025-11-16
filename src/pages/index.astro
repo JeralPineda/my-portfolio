@@ -1,11 +1,36 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
+import Welcome from "../components/Welcome.astro";
+import Layout from "../layouts/Layout.astro";
+import LogoText from "../components/icons/LogoText.astro";
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
+<!-- animate-[float_3s_ease-in-out_infinite] inline-block -->
 <Layout>
-	<Welcome />
+  <header class="fixed px-4 z-10 flex items-center justify-between w-full">
+    
+   <div class="flex items-center justify-between w-full py-4 md:max-w-[1200px] mx-auto flex-row">
+     <LogoText class="text-text-light dark:text-text-dark"/>
+    <nav>
+      <ul>
+        <li>
+          <a href="mailto:jeralpineda.dev@gmail.com" class="text-text-light dark:text-text-dark">Contacto</a>
+        </li>
+      </ul>
+    </nav>
+   </div>
+  </header>
+
+  <main class="h-screen flex items-center justify-center flex-col">
+    <div class="flex flex-col items-center gap-4 animate-[float_3s_ease-in-out_infinite]">
+      <h1 class="text-4xl text-text-light dark:text-text-dark font-bold tracking-tight sm:text-6xl md:text-6xl text-center max-w-2xl">En construcción</h1>
+    <p class="text-text-light/70 dark:text-text-dark/70">Gracias por tu paciencia</p>
+    </div>
+  </main>
 </Layout>
+
+<style>
+  div{
+  }
+</style>
