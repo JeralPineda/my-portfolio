@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+@plugin "@tailwindcss/typography";
+@plugin "@midudev/tailwind-animations";
+
+/* @custom-variant dark (&:where(.dark, .dark *)); */
+
+
+@theme {
+  --color-light: rgb(250, 250, 249);
+  /* --color-light: rgb(221, 221, 221); */
+
+  /* --color-dark: rgb(28, 26, 29); */
+  --color-dark: rgb(10, 10, 10);
+  --color-text-light: rgb(38, 38, 38);
+  --color-text-dark: rgb(222, 221, 222);
+}
+
+
+
+h1,
+h2,
+.md-container h1,
+.md-container h2 {
+  font-family: Inter, Arial, sans-serif;
+  font-weight: 700;
+}
+
+h3,
+h4,
+h5,
+h6,
+.md-container h3,
+.md-container h4,
+.md-container h5,
+.md-container h6 {
+  font-family: Inter, Arial, sans-serif;
+}
+
+
+
+
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
