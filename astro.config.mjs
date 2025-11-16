@@ -1,6 +1,7 @@
 // @ts-check
 import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'astro/config';
+import vercel from '@astrojs/vercel';
 import path from 'node:path';
 
 // https://astro.build/config
@@ -12,5 +13,10 @@ export default defineConfig({
         '@': path.resolve('./src'),
       },
     },
-  }
+  },
+  adapter: vercel({
+    webAnalytics: {
+      enabled: true,
+    },
+  }),
 });
