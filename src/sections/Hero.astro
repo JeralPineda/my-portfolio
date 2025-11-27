@@ -1,58 +1,60 @@
 ---
-import SocialPill from '@/components/SocialPill.astro'
+import ButtonLink from '@/components/ButtonLink.astro'
+import Particles from '@/components/Particles.astro'
 ---
 
-<section class="flex flex-col items-center justify-center mx-auto min-h-[100dvh]">
+<section class="flex flex-col items-center justify-center mx-auto min-h-[100dvh] relative">
+  <!-- <div
+    class="absolute inset-0 z-[-1]
+      bg-[linear-gradient(to_right,#e7e5e4_1px,transparent_1px),linear-gradient(to_bottom,#e7e5e4_1px,transparent_1px)]
+      bg-[size:20px_20px]
+      [mask-image:repeating-linear-gradient(to_right,black_0px,black_3px,transparent_3px,transparent_8px),repeating-linear-gradient(to_bottom,black_0px,black_3px,transparent_3px,transparent_8px),radial-gradient(ellipse_60%_60%_at_50%_50%,black_30%,transparent_70%)]
+      [mask-composite:intersect]
+      [--tw-webkit-mask-composite:source-in]
+      [-webkit-mask-image:repeating-linear-gradient(to_right,black_0px,black_3px,transparent_3px,transparent_8px),repeating-linear-gradient(to_bottom,black_0px,black_3px,transparent_3px,transparent_8px),radial-gradient(ellipse_60%_60%_at_50%_50%,black_30%,transparent_70%)]"
+  >
+  </div> -->
+
+  <Particles quantity={200} size={1} ease={30} staticity={40} vx={0.05} vy={0.05} />
+
   <div class="flex gap-4 mb-4">
-    <div class="flex items-center p-1 border-[0.5px] border-gray-700/30 rounded-full shadow-sm">
+    <div
+      class="flex items-center p-[2.5px] border-[0.5px] border-text-secondary rounded-xl shadow-xl -rotate-3"
+    >
       <img
         src="https://avatars.githubusercontent.com/u/71604462?s=96&v=4"
         alt="jeral photo"
-        class="rounded-full shadow-lg size-18"
+        class="rounded-xl size-18"
       />
-      <!-- <p>Jeral Pineda</p> -->
     </div>
-    <!-- <a
-      href="https://www.linkedin.com/in/jeralpineda"
-      target="_blank"
-      rel="noopener"
-      class="flex items-center transition md:justify-center md:hover:scale-105"
-    >
-      <Badge>Disponible para trabajar</Badge>
-    </a> -->
   </div>
 
-  <p class="text-lg text-gray-800/70 mb-4 [&>strong]:text-black [&>strong]:font-normal">
+  <p class="text-lg text-text-secondary mb-4 [&>strong]:text-text [&>strong]:font-normal">
     Hey, soy <strong>Jeral Pineda</strong>
   </p>
 
   <div class="flex flex-col justify-center items-center">
     <h1
-      class="text-4xl font-bold tracking-tight text-gray-800 sm:text-5xl md:text-6xl text-center [&>strong]:linear-gradient(to-right, #bffe4f, #07ffc4) [&>strong]:font-semibold max-w-2xl mb-4"
+      class="text-4xl font-bold tracking-tight text-text sm:text-5xl md:text-6xl text-center [&>strong]:linear-gradient(to-right, #bffe4f, #07ffc4) [&>strong]:font-semibold max-w-2xl mb-4"
     >
-      +3 años de experiencia. Desarrollador <strong
-        class="bg-gradient-to-r from-[#fc3812] to-[#f7be33] bg-clip-text text-transparent"
-        >Front-End</strong
+      +3 años de experiencia. Desarrollador
+      <span
+        class="bg-gradient-to-r from-orange-500 via-purple-600 to-blue-500 bg-clip-text text-transparent animate-gradient-flow"
       >
+        Front-End
+      </span>
     </h1>
 
-    <p class="text-lg text-center text-gray-800/70 max-w-md tracking-tight">
-      Especializado en diseñar y construir experiencias digitales modernas y funcionales.
+    <p class="text-lg text-center text-text-secondary max-w-md tracking-tight">
+      Diseño y construyo experiencias digitales modernas, funcionales y optimizadas para web y
+      móvil.
     </p>
   </div>
 
   <nav class="flex flex-wrap gap-4 mt-8">
-    <SocialPill href="mailto:jeralpineda.dev@gmail.com">
-      <!-- <MailIcon class="size-4" /> -->
-      Contáctame
-    </SocialPill>
-    <SocialPill href="https://www.linkedin.com/in/jeralpineda">
-      <!-- <LinkedInIcon class="size-4" /> -->
-      LinkedIn
-    </SocialPill>
-    <SocialPill href="https://github.com/jeralpineda">
-      <!-- <GitHubIcon class="size-4" /> -->
-      GitHub
-    </SocialPill>
+    <ButtonLink href="/cv-jeral-pineda.pdf" target="_blank" rel="noopener noreferrer">
+      Descargar CV
+    </ButtonLink>
+    <ButtonLink href="mailto:jeralpineda.dev@gmail.com" intent="badge"> Contáctame </ButtonLink>
   </nav>
 </section>
