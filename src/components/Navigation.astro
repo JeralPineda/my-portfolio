@@ -1,26 +1,16 @@
 ---
 const navItems = [
   {
-    title: "Experiencia",
-    label: "experiencia",
-    url: "/#experiencia",
+    title: 'Experiencia',
+    label: 'experiencia',
+    url: '/#experiencia',
   },
   {
-    title: "Proyectos",
-    label: "proyectos",
-    url: "/#proyectos",
+    title: 'Proyectos',
+    label: 'proyectos',
+    url: '/#proyectos',
   },
-  // {
-  //   title: "Sobre mí",
-  //   label: "sobre-mi",
-  //   url: "/#sobre-mi",
-  // },
-  // {
-  //   title: "Contacto",
-  //   label: "contacto",
-  //   url: "mailto:jeralpineda.dev@gmail.com",
-  // },
-];
+]
 ---
 
 <nav class="">
@@ -28,7 +18,9 @@ const navItems = [
     {
       navItems.map((item, index) => (
         <li>
-          <a href={item.url}>{item.title}</a>
+          <a href={item.url} class="text-text hover:text-text/80">
+            {item.title}
+          </a>
         </li>
       ))
     }
