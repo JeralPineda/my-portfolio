@@ -1,0 +1,76 @@
+---
+const timelineData = [
+  {
+    date: "2022 - Actual",
+    company: "BANHCAFE",
+    role: "Desarrollador Front-End",
+    details:
+      "Desarrollé y mantuve las principales plataformas internas y externas del banco, incluyendo Aurora (Back Office administrativo), MIA, banca móvil y BANHCAFE Token App migrada a Expo con soporte multiusuario. Optimicé el sitio institucional con Next.js/Strapi y apoyé QA.",
+    side: "left",
+  },
+];
+---
+
+<div class="relative px-4">
+  <!-- Mobile vertical line -->
+  <div class="absolute left-8 top-0 bottom-0 md:hidden">
+    <div class="absolute inset-0 w-[2px] bg-text/10 left-1/2 -translate-x-1/2"></div>
+  </div>
+
+  <!-- Desktop vertical line -->
+  <div class="absolute left-1/2 top-0 bottom-0 -translate-x-1/2 hidden md:block">
+    <div class="absolute inset-0 w-[2px] bg-text/10"></div>
+  </div>
+
+  <div class="space-y-14 md:space-y-24">
+    {timelineData.map((item) => (
+      <div class="relative">
+        <!-- Desktop checkpoint -->
+        <div class="hidden md:block absolute left-1/2 -translate-x-1/2 z-10">
+          <div class="w-6 h-6 rounded-full bg-text border-4 border-background"></div>
+        </div>
+
+        <!-- Mobile -->
+        <div class="md:hidden flex items-start pl-20 pr-4 relative">
+          <div class="absolute left-4 -translate-x-1/2 z-10">
+            <div class="w-5 h-5 rounded-full bg-text border-4 border-background"></div>
+          </div>
+
+          <div class="flex-1 space-y-2">
+            <span class="text-2xl font-bold">{item.company}</span>
+            <p class="text-text/85 font-semibold text-lg">{item.role}</p>
+            <p class="text-text-secondary leading-relaxed">{item.details}</p>
+            <span class="text-text-secondary/50">{item.date}</span>
+          </div>
+        </div>
+
+        <!-- Desktop alternating -->
+        <div class="hidden md:grid md:grid-cols-2 items-start">
+          {item.side === "left" ? (
+            <>
+              <div class="text-right pr-12 space-y-1">
+                <h3 class="text-2xl font-bold">{item.company}</h3>
+                <p class="text-text/85 font-semibold text-lg">{item.role}</p>
+                <p class="text-text-secondary leading-relaxed">{item.details}</p>
+              </div>
+              <div class="pl-12">
+                <span class="text-lg text-text-secondary/50">{item.date}</span>
+              </div>
+            </>
+          ) : (
+            <>
+              <div class="pr-12 text-right">
+                <span class="text-lg text-text-secondary/50">{item.date}</span>
+              </div>
+              <div class="pl-12 space-y-1">
+                <h3 class="text-2xl font-bold">{item.company}</h3>
+                <p class="text-text/85 font-semibold text-lg">{item.role}</p>
+                <p class="text-text-secondary leading-relaxed">{item.details}</p>
+              </div>
+            </>
+          )}
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
