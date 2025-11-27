@@ -1,0 +1,45 @@
+---
+import { cn } from '@/lib/utils'
+import type { JSX } from 'astro/jsx-runtime'
+import { cva, type VariantProps } from 'class-variance-authority'
+
+const buttonVariants = cva(
+  'inline-flex items-center justify-center gap-2 px-4 py-3 rounded-lg text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:outline-none focus:ring-0 focus:ring-offset-0 border backdrop-blur-3xl whitespace-nowrap relative',
+  {
+    variants: {
+      intent: {
+        primary: 'bg-text text-background border-transparent hover:bg-black/30',
+        badge: 'border-transparent bg-white',
+      },
+    },
+    defaultVariants: {
+      intent: 'primary',
+    },
+  }
+)
+
+interface Props extends JSX.AnchorHTMLAttributes, VariantProps<typeof buttonVariants> {
+  className?: string
+}
+
+const { intent = 'primary', className, ...props } = Astro.props as Props
+---
+
+<a
+  {...props}
+  target="_blank"
+  rel="noopener noreferrer"
+  role="link"
+  class="relative inline-flex overflow-hidden rounded-lg p-[1.5px]"
+>
+  <span
+    class={cn('', {
+      'absolute inset-0 bg-gradient-to-r from-orange-500 via-purple-600 to-blue-500 text-transparent animate-gradient-flow':
+        intent === 'badge',
+      'absolute inset-0 bg-text': intent === 'primary',
+    })}></span>
+
+  <span class:list={cn([buttonVariants({ intent }), className])}>
+    <slot />
+  </span>
+</a>
