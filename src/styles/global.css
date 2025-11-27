@@ -2,6 +2,29 @@
 @plugin "@tailwindcss/typography";
 @plugin "@midudev/tailwind-animations";
 
+:root {
+  --color-background: oklch(1 0 0);
+  --color-background-secondary: oklch(0.982 0.001 0);
+  --color-hover: oklch(0.922 0.003 0);
+  --color-text: oklch(0.257 0.003 0);
+  --color-text-secondary: oklch(0.616 0.003 0);
+  --color-inverted: oklch(0.258 0.013 308.6);
+
+  /* Dark colors */
+  /* --color-background-dark: #1e1b1f;
+  --color-background-secondary-dark: #242225;
+  --color-hover-dark: #2e2c2f;
+  --color-text-dark: #deddde;
+  --color-text-secondary-dark: #9c9b9d; */
+
+  --color-background-dark: oklch(0.258 0.013 308.6);
+  --color-background-secondary-dark: oklch(0.29 0.008 311.2);
+  --color-hover-dark: oklch(0.336 0.006 308.3);
+  --color-text-dark: oklch(0.924 0.004 325.3);
+  --color-text-secondary-dark: oklch(0.702 0.004 311.9);
+  --color-inverted-dark: oklch(1 0 0);
+}
+
 h1,
 h2,
 .md-container h1,
@@ -19,4 +42,39 @@ h6,
 .md-container h5,
 .md-container h6 {
   font-family: Inter, Arial, sans-serif;
+}
+
+@theme {
+  --color-text: var(--color-text);
+  --color-text-secondary: var(--color-text-secondary);
+  --color-hover: var(--color-hover);
+  --color-background: var(--color-background);
+  --color-background-secondary: var(--color-background-secondary);
+  --color-inverted: var(--color-inverted);
+
+  /* Dark colors */
+  --color-background-dark: var(--color-background-dark);
+  --color-background-secondary-dark: var(--color-background-secondary-dark);
+  --color-hover-dark: var(--color-hover-dark);
+  --color-text-dark: var(--color-text-dark);
+  --color-text-secondary-dark: var(--color-text-secondary-dark);
+  --color-inverted-dark: var(--color-inverted-dark);
+}
+
+/* Added keyframes and utility class for the moving gradient animation */
+@keyframes gradient-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient-flow {
+  background-size: 200% auto;
+  animation: gradient-flow 3s linear infinite;
 }
