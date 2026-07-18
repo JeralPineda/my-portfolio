@@ -1,0 +1,216 @@
+---
+
+---
+
+<section aria-labelledby="hero-title" class="relative overflow-hidden">
+  <!-- Background atmosphere -->
+  <div aria-hidden="true" class="absolute inset-0">
+    <div class="glow-main"></div>
+    <div class="glow-secondary"></div>
+    <div class="noise"></div>
+  </div>
+
+  <div
+    class="relative mx-auto flex max-w-5xl flex-col items-center px-6 pt-44 pb-28 text-center md:pt-52"
+  >
+    <h1
+      id="hero-title"
+      class="rise text-4xl leading-[1.12] font-medium tracking-tight text-balance text-white sm:text-5xl md:text-6xl"
+    >
+      Your Vision, Our
+      <span class="highlight text-accent relative inline-block">
+        Expertise
+        <svg
+          class="absolute -bottom-2 left-0 w-full"
+          viewBox="0 0 220 14"
+          fill="none"
+          aria-hidden="true"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="M4 9C60 4 150 3.5 216 6"
+            stroke="currentColor"
+            stroke-width="3.5"
+            stroke-linecap="round"></path>
+          <path
+            d="M24 12.5C80 9.5 160 9 200 10.5"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"></path>
+        </svg>
+      </span>
+      <br />
+      — Let's Build Together
+    </h1>
+
+    <p
+      class="rise text-mist mt-7 max-w-xl text-[13px] leading-relaxed [animation-delay:150ms]"
+    >
+      Turn your idea into a thriving digital product. With our hands-on support
+      in strategy, design, and development, we'll craft a platform that ensures
+      your launch is nothing short of remarkable. Ready to make it happen?
+    </p>
+
+    <a
+      href="#"
+      class="rise bg-surface/80 hover:border-accent/60 mt-9 inline-flex items-center gap-2 rounded-full border border-white/15 px-6 py-3 text-[13px] font-medium text-zinc-200 backdrop-blur transition-colors [animation-delay:300ms] hover:text-white"
+    >
+      Start today
+      <svg
+        width="12"
+        height="12"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M7 17 17 7"></path>
+        <path d="M8 7h9v9"></path>
+      </svg>
+    </a>
+
+    <p class="rise text-mist mt-28 text-xs [animation-delay:450ms]">
+      Trusted by 100+ companies
+    </p>
+
+    <ul
+      class="logo-strip rise mt-7 flex items-stretch justify-center gap-4 [animation-delay:600ms]"
+    >
+      <li class="logo-card text-zinc-500">
+        <svg
+          width="14"
+          height="14"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          aria-hidden="true"
+        >
+          <circle cx="12" cy="12" r="8"></circle>
+          <circle cx="12" cy="12" r="2.5" fill="currentColor" stroke="none"
+          ></circle>
+        </svg>
+        <span class="text-sm">optic</span>
+      </li>
+      <li class="logo-card">
+        <span class="text-sm font-semibold tracking-[0.3em] text-white"
+          >TOMO</span
+        >
+      </li>
+      <li class="logo-card">
+        <span class="text-base font-bold tracking-tight text-white">DQ</span>
+      </li>
+      <li class="logo-card">
+        <svg
+          width="15"
+          height="15"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          aria-hidden="true"
+          class="text-white"
+        >
+          <circle cx="11" cy="11" r="7"></circle>
+          <path d="m15.5 15.5 4 4"></path>
+        </svg>
+        <span class="text-sm font-medium text-white">Quantec</span>
+      </li>
+      <li class="logo-card text-zinc-500">
+        <svg
+          width="15"
+          height="15"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          aria-hidden="true"
+        >
+          <path
+            d="M15 4.5c-3.5-1.5-8 .5-8 4 0 4.5 9.5 2.5 9.5 7 0 3.5-4.5 5.5-8.5 4"
+          ></path>
+        </svg>
+        <span class="text-sm">stellar</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<style>
+  .glow-main {
+    position: absolute;
+    left: 50%;
+    top: -22%;
+    width: 1250px;
+    max-width: 160vw;
+    height: 720px;
+    transform: translateX(-50%);
+    background: radial-gradient(
+      ellipse at center,
+      color-mix(in srgb, var(--color-glow) 55%, transparent),
+      transparent 65%
+    );
+    filter: blur(60px);
+  }
+
+  .glow-secondary {
+    position: absolute;
+    left: 50%;
+    top: 52%;
+    width: 720px;
+    max-width: 120vw;
+    height: 340px;
+    transform: translateX(-50%);
+    background: radial-gradient(
+      ellipse at center,
+      color-mix(in srgb, var(--color-glow) 22%, transparent),
+      transparent 70%
+    );
+    filter: blur(80px);
+  }
+
+  .noise {
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    opacity: 0.035;
+    mix-blend-mode: overlay;
+  }
+
+  .highlight svg {
+    height: 0.22em;
+    overflow: visible;
+  }
+
+  .logo-strip {
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 18%,
+      black 82%,
+      transparent
+    );
+  }
+
+  .logo-card {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    border-radius: 0.9rem;
+    border: 1px solid rgb(255 255 255 / 0.07);
+    background: var(--color-surface);
+    padding: 1.05rem 2.2rem;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 768px) {
+    .logo-card {
+      padding: 0.9rem 1.3rem;
+    }
+  }
+</style>
