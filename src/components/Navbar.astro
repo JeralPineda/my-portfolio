@@ -1,10 +1,8 @@
 ---
 const links = [
-  { label: "Upward Studio", href: "#" },
-  { label: "Our Services", href: "#", chevron: true },
-  { label: "Team", href: "#" },
-  { label: "Blog", href: "#" },
-  { label: "AI", href: "#" },
+  { label: "Proyectos", href: "#proyectos" },
+  { label: "Experiencia", href: "#experiencia" },
+  { label: "Habilidades", href: "#habilidades" },
 ];
 ---
 
@@ -28,7 +26,7 @@ const links = [
           d="M12 2c.6 4.9 4.5 8.8 9.4 9.4-4.9.6-8.8 4.5-9.4 9.4-.6-4.9-4.5-8.8-9.4-9.4C7.5 10.8 11.4 6.9 12 2Z"
           fill="currentColor"></path>
       </svg>
-      upward studio<sup class="text-mist text-[9px]">®</sup>
+      Jeral Pineda
     </a>
 
     <ul
@@ -42,21 +40,6 @@ const links = [
               class="flex items-center gap-1.5 transition-colors hover:text-white"
             >
               {link.label}
-              {link.chevron && (
-                <svg
-                  width="10"
-                  height="10"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  aria-hidden="true"
-                >
-                  <path d="m6 9 6 6 6-6" />
-                </svg>
-              )}
             </a>
           </li>
         ))
@@ -64,10 +47,10 @@ const links = [
     </ul>
 
     <a
-      href="#"
+      href="mailto:jeralpineda.dev@gmail.com"
       class="hover:bg-accent rounded-full bg-white px-5 py-2.5 text-[13px] font-medium text-black transition-colors"
     >
-      Contact Us
+      Contacto
     </a>
   </nav>
 </header>

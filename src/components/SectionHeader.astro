@@ -1,0 +1,35 @@
+---
+interface Props {
+  id: string;
+  title: string;
+  subtitle: string;
+}
+
+const { id, title, subtitle } = Astro.props;
+---
+
+<section id={id} aria-labelledby={`${id}-title`} class="relative scroll-mt-10">
+  <div class="mx-auto max-w-3xl px-6 pt-36 text-center">
+    <h2
+      id={`${id}-title`}
+      class="text-3xl leading-tight font-medium tracking-tight text-balance text-white sm:text-4xl md:text-5xl"
+    >
+      {title}
+    </h2>
+    <p class="text-mist mx-auto mt-6 max-w-2xl text-[13px] leading-relaxed">
+      {subtitle}
+    </p>
+    <div aria-hidden="true" class="glow-line mx-auto mt-16 max-w-5xl"></div>
+  </div>
+
+  <!-- Espacio temporal para previsualizar el scroll -->
+  <div aria-hidden="true" class="min-h-[45vh]"></div>
+</section>
+
+<style>
+  .glow-line {
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgb(255 255 255 / 0.4), transparent);
+    box-shadow: 0 0 30px 2px rgb(160 190 255 / 0.02);
+  }
+</style>

@@ -2,10 +2,10 @@
 import "@/styles/global.css";
 import Navbar from "@/components/Navbar.astro";
 import Hero from "@/components/Hero.astro";
-import NextSection from "@/components/NextSection.astro";
+import SectionHeader from "@/components/SectionHeader.astro";
 ---
 
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -14,16 +14,30 @@ import NextSection from "@/components/NextSection.astro";
     <meta name="generator" content={Astro.generator} />
     <meta
       name="description"
-      content="Upward Studio — Your Vision, Our Expertise. We turn your idea into a thriving digital product with hands-on support in strategy, design, and development."
+      content="Jeral Pineda — Desarrollador Front-End con experiencia en diseño, desarrollo y mantenimiento de sistemas internos, aplicaciones móviles y plataformas web."
     />
-    <title>Upward Studio — Your Vision, Our Expertise</title>
+    <title>Jeral Pineda — Front-End Developer</title>
   </head>
   <body>
-    <a href="#main" class="skip-link">Skip to content</a>
+    <a href="#main" class="skip-link">Saltar al contenido</a>
     <Navbar />
     <main id="main">
       <Hero />
-      <NextSection />
+      <SectionHeader
+        id="proyectos"
+        title="Proyectos"
+        subtitle="Una selección de proyectos clave en los que he trabajado: back office bancario, banca móvil y plataformas web."
+      />
+      <SectionHeader
+        id="experiencia"
+        title="Experiencia"
+        subtitle="Mi trayectoria como desarrollador Front-End construyendo productos digitales en el sector bancario."
+      />
+      <SectionHeader
+        id="habilidades"
+        title="Habilidades"
+        subtitle="Tecnologías y herramientas que uso a diario para diseñar, construir y optimizar productos digitales."
+      />
     </main>
   </body>
 </html>
