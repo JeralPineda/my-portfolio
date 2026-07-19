@@ -9,16 +9,10 @@ const links = [
 ---
 
 <header class="rise absolute inset-x-0 top-0 z-50">
-  <nav
-    aria-label="Main"
-    class="mx-auto flex max-w-7xl items-center justify-between px-6 py-6"
-  >
-    <a
-      href="/"
-      class="flex items-center gap-2 text-sm font-medium tracking-tight text-white"
-    >
+  <nav aria-label="Main" class="mx-auto flex max-w-7xl items-center justify-between px-6 py-6">
+    <a href="/" class="flex items-center gap-2 text-sm font-medium tracking-tight text-white">
       <!-- <img src="/favicon.svg" alt="Logo" class="h-8 w-8" /> -->
-      <Logo class="h-6 w-6" />
+      <Logo class="h-5 w-5" />
       Jeral Pineda
     </a>
 
@@ -26,10 +20,7 @@ const links = [
       {
         links.map((link) => (
           <li>
-            <a
-              href={link.href}
-              class="flex items-center gap-1.5 transition-colors hover:text-white"
-            >
+            <a href={link.href} class="flex items-center gap-1.5 transition-colors hover:text-white">
               {link.label}
             </a>
           </li>
