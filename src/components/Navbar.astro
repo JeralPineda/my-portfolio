@@ -1,4 +1,6 @@
 ---
+import Logo from "@/icons/Logo.astro";
+
 const links = [
   { label: "Proyectos", href: "#proyectos" },
   { label: "Experiencia", href: "#experiencia" },
@@ -15,23 +17,12 @@ const links = [
       href="/"
       class="flex items-center gap-2 text-sm font-medium tracking-tight text-white"
     >
-      <svg
-        width="16"
-        height="16"
-        viewBox="0 0 24 24"
-        fill="none"
-        aria-hidden="true"
-      >
-        <path
-          d="M12 2c.6 4.9 4.5 8.8 9.4 9.4-4.9.6-8.8 4.5-9.4 9.4-.6-4.9-4.5-8.8-9.4-9.4C7.5 10.8 11.4 6.9 12 2Z"
-          fill="currentColor"></path>
-      </svg>
+      <!-- <img src="/favicon.svg" alt="Logo" class="h-8 w-8" /> -->
+      <Logo class="h-6 w-6" />
       Jeral Pineda
     </a>
 
-    <ul
-      class="bg-surface/80 hidden items-center gap-7 rounded-full border border-white/10 px-8 py-3 text-[13px] text-zinc-300 backdrop-blur md:flex"
-    >
+    <ul class="hidden items-center gap-7 text-[13px] text-zinc-300 md:flex">
       {
         links.map((link) => (
           <li>
@@ -45,12 +36,5 @@ const links = [
         ))
       }
     </ul>
-
-    <a
-      href="mailto:jeralpineda.dev@gmail.com"
-      class="hover:bg-accent rounded-full bg-white px-5 py-2.5 text-[13px] font-medium text-black transition-colors"
-    >
-      Contacto
-    </a>
   </nav>
 </header>

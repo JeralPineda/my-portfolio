@@ -8,9 +8,12 @@
     <div class="glow-main"></div>
     <div class="glow-secondary"></div>
     <div class="noise"></div>
+    <div class="fade-bottom"></div>
   </div>
 
-  <div class="relative mx-auto flex max-w-5xl flex-col items-center px-6 pt-44 pb-36 text-center md:pt-52">
+  <div
+    class="relative mx-auto flex min-h-svh max-w-5xl flex-col items-center justify-center px-6 pt-28 pb-24 text-center"
+  >
     <h1
       id="hero-title"
       class="rise text-4xl leading-[1.12] font-medium tracking-tight text-balance text-white sm:text-5xl md:text-6xl"
@@ -25,39 +28,62 @@
           aria-hidden="true"
           preserveAspectRatio="none"
         >
-          <path d="M4 9C60 4 150 3.5 216 6" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"></path>
-          <path d="M24 12.5C80 9.5 160 9 200 10.5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-          ></path>
+          <path
+            d="M4 9C60 4 150 3.5 216 6"
+            stroke="currentColor"
+            stroke-width="3.5"
+            stroke-linecap="round"></path>
+          <path
+            d="M24 12.5C80 9.5 160 9 200 10.5"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"></path>
         </svg>
       </span>
       con +3 años de experiencia.
     </h1>
 
-    <p class="rise text-mist mt-7 max-w-xl text-[13px] leading-relaxed [animation-delay:150ms]">
-      Con experiencia en diseño, desarrollo y mantenimiento de sistemas internos, aplicaciones móviles y plataformas
-      web. Responsable de proyectos clave en BANHCAFE, optimizando rendimiento, seguridad y experiencia de usuario.
+    <p
+      class="rise text-mist mt-7 max-w-xl text-[13px] leading-relaxed [animation-delay:150ms]"
+    >
+      Con experiencia en diseño, desarrollo y mantenimiento de sistemas
+      internos, aplicaciones móviles y plataformas web. Responsable de proyectos
+      clave en BANHCAFE, optimizando rendimiento, seguridad y experiencia de
+      usuario.
     </p>
 
-    <a
-      href="#proyectos"
-      class="rise bg-surface/80 hover:border-accent/60 mt-9 inline-flex items-center gap-2 rounded-full border border-white/15 px-6 py-3 text-[13px] font-medium text-zinc-200 backdrop-blur transition-colors [animation-delay:300ms] hover:text-white"
+    <div
+      class="rise mt-9 flex flex-wrap items-center justify-center gap-3 [animation-delay:300ms]"
     >
-      Ver proyectos
-      <svg
-        width="12"
-        height="12"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        aria-hidden="true"
+      <a
+        href="/cv-jeral-pineda.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="bg-surface/80 hover:border-accent/60 inline-flex items-center gap-2 rounded-full border border-white/15 px-6 py-3 text-[13px] font-medium text-zinc-200 backdrop-blur transition-colors hover:text-white"
       >
-        <path d="M7 17 17 7"></path>
-        <path d="M8 7h9v9"></path>
-      </svg>
-    </a>
+        Descargar CV
+        <svg
+          width="12"
+          height="12"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M7 17 17 7"></path>
+          <path d="M8 7h9v9"></path>
+        </svg>
+      </a>
+      <a
+        href="mailto:jeralpineda.dev@gmail.com"
+        class="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-[13px] font-medium text-black transition-colors hover:bg-zinc-200"
+      >
+        Contacto
+      </a>
+    </div>
   </div>
 </section>
 
@@ -81,7 +107,7 @@
   .glow-secondary {
     position: absolute;
     left: 50%;
-    top: 52%;
+    top: 62%;
     width: 720px;
     max-width: 120vw;
     height: 340px;
@@ -100,6 +126,14 @@
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
     opacity: 0.035;
     mix-blend-mode: overlay;
+  }
+
+  .fade-bottom {
+    position: absolute;
+    inset-inline: 0;
+    bottom: 0;
+    height: 16rem;
+    background: linear-gradient(to bottom, transparent, var(--color-void));
   }
 
   .highlight svg {

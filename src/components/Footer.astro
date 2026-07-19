@@ -1,0 +1,35 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="relative overflow-hidden">
+  <!-- Luz azul en el bottom, espejo del glow del hero -->
+  <div aria-hidden="true" class="absolute inset-0">
+    <div class="glow-footer"></div>
+  </div>
+
+  <div
+    class="text-mist relative mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-6 py-15 text-[13px] sm:flex-row"
+  >
+    <span class="font-medium text-white">Jeral Pineda</span>
+    <span>© {year}.</span>
+  </div>
+</footer>
+
+<style>
+  .glow-footer {
+    position: absolute;
+    left: 50%;
+    bottom: -100px;
+    width: 620px;
+    max-width: 120vw;
+    height: 200px;
+    transform: translateX(-50%);
+    background: radial-gradient(
+      ellipse at center,
+      color-mix(in srgb, var(--color-glow) 35%, transparent),
+      transparent 70%
+    );
+    filter: blur(70px);
+  }
+</style>

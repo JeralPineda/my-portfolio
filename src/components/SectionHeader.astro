@@ -16,20 +16,11 @@ const { id, title, subtitle } = Astro.props;
     >
       {title}
     </h2>
-    <p class="text-mist mx-auto mt-6 max-w-2xl text-[13px] leading-relaxed">
+    <p class="text-mist mx-auto mt-6 max-w-md text-[13px] leading-relaxed">
       {subtitle}
     </p>
-    <div aria-hidden="true" class="glow-line mx-auto mt-16 max-w-5xl"></div>
   </div>
 
   <!-- Espacio temporal para previsualizar el scroll -->
   <div aria-hidden="true" class="min-h-[45vh]"></div>
 </section>
-
-<style>
-  .glow-line {
-    height: 1px;
-    background: linear-gradient(to right, transparent, rgb(255 255 255 / 0.4), transparent);
-    box-shadow: 0 0 30px 2px rgb(160 190 255 / 0.02);
-  }
-</style>

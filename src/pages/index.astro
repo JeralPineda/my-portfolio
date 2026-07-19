@@ -1,43 +1,24 @@
 ---
-import "@/styles/global.css";
-import Navbar from "@/components/Navbar.astro";
+import Layout from "@/layouts/Layout.astro";
 import Hero from "@/components/Hero.astro";
 import SectionHeader from "@/components/SectionHeader.astro";
 ---
 
-<html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <meta
-      name="description"
-      content="Jeral Pineda — Desarrollador Front-End con experiencia en diseño, desarrollo y mantenimiento de sistemas internos, aplicaciones móviles y plataformas web."
-    />
-    <title>Jeral Pineda — Front-End Developer</title>
-  </head>
-  <body>
-    <a href="#main" class="skip-link">Saltar al contenido</a>
-    <Navbar />
-    <main id="main">
-      <Hero />
-      <SectionHeader
-        id="proyectos"
-        title="Proyectos"
-        subtitle="Una selección de proyectos clave en los que he trabajado: back office bancario, banca móvil y plataformas web."
-      />
-      <SectionHeader
-        id="experiencia"
-        title="Experiencia"
-        subtitle="Mi trayectoria como desarrollador Front-End construyendo productos digitales en el sector bancario."
-      />
-      <SectionHeader
-        id="habilidades"
-        title="Habilidades"
-        subtitle="Tecnologías y herramientas que uso a diario para diseñar, construir y optimizar productos digitales."
-      />
-    </main>
-  </body>
-</html>
+<Layout>
+  <Hero />
+  <SectionHeader
+    id="habilidades"
+    title="Habilidades"
+    subtitle="Tecnologías y herramientas que uso a diario para diseñar, construir y optimizar productos digitales."
+  />
+  <SectionHeader
+    id="proyectos"
+    title="Proyectos"
+    subtitle="Una selección de proyectos clave en los que he trabajado: back office bancario, banca móvil y plataformas web."
+  />
+  <SectionHeader
+    id="experiencia"
+    title="Experiencia"
+    subtitle="Mi trayectoria como desarrollador Front-End construyendo productos digitales en el sector bancario."
+  />
+</Layout>
