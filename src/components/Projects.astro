@@ -28,7 +28,7 @@ import { projects } from "@/data/projects";
 
           <ul class="mt-6 flex flex-wrap gap-2" aria-label="Tecnologías">
             {project.technologies.map((technology) => (
-              <li class="rounded-full border border-white/10 bg-black/15 px-3 py-1.5 text-[11px] text-zinc-300">
+              <li class="border-line rounded-full border bg-black/15 px-3 py-1.5 text-[11px] text-zinc-300">
                 {technology}
               </li>
             ))}
@@ -40,7 +40,7 @@ import { projects } from "@/data/projects";
                 href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="project-link inline-flex items-center gap-2 rounded-full border border-white/12 bg-black/20 px-4 py-2 text-xs font-medium text-white"
+                class="project-link border-line inline-flex items-center gap-2 rounded-full border bg-black/20 px-4 py-2 text-xs font-medium text-white"
                 aria-label={`${link.label} de ${project.title} (abre en una pestaña nueva)`}
               >
                 {link.label}
@@ -84,8 +84,8 @@ import { projects } from "@/data/projects";
     overflow: hidden;
     grid-template-columns: minmax(0, 0.9fr) minmax(20rem, 1.1fr);
     align-items: center;
-    border: 1px solid rgb(255 255 255 / 0.08);
-    border-radius: 2rem;
+    border: 1px solid var(--color-line);
+    border-radius: 8px;
     transition:
       border-color 300ms ease,
       box-shadow 300ms ease;
@@ -152,7 +152,7 @@ import { projects } from "@/data/projects";
   }
 
   .project-card:hover {
-    border-color: rgb(255 255 255 / 0.16);
+    border-color: var(--color-line-strong);
     box-shadow: 0 28px 80px -52px rgb(30 107 255 / 0.7);
   }
 
@@ -165,7 +165,7 @@ import { projects } from "@/data/projects";
     .project-card {
       min-height: auto;
       grid-template-columns: 1fr;
-      border-radius: 1.5rem;
+      border-radius: 8px;
     }
 
     .project-copy {

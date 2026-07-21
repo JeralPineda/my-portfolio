@@ -3,14 +3,14 @@ import { ChevronDown } from "@lucide/astro";
 import { experiences } from "@/data/experience";
 ---
 
-<div class="mx-auto mt-16 max-w-6xl px-6 pb-24">
+<div class="mx-auto mt-16 max-w-6xl rounded-2xl px-6 pb-24">
   {
     experiences.map((experience) => (
       <details
         name="professional-experience"
-        class="experience border-t border-white/10 last:border-b"
+        class="experience bg-surface/55 mb-2 overflow-hidden rounded-lg"
       >
-        <summary class="experience-summary grid cursor-pointer gap-6 py-8 md:grid-cols-[minmax(0,1fr)_auto] md:items-start md:gap-12">
+        <summary class="experience-summary grid cursor-pointer gap-6 px-6 py-7 sm:px-8 md:grid-cols-[minmax(0,1fr)_auto] md:items-start md:gap-12">
           <div>
             <h3 class="text-xl leading-tight font-medium tracking-tight text-white sm:text-2xl">
               {experience.role}
@@ -37,9 +37,9 @@ import { experiences } from "@/data/experience";
           </div>
         </summary>
 
-        <ol class="border-t border-white/10">
+        <ol class="grid gap-3 px-4 pb-4 md:grid-cols-2">
           {experience.highlights.slice(0, 4).map((highlight, index) => (
-            <li class="achievement grid grid-cols-[2.5rem_minmax(0,1fr)] gap-3 border-b border-white/10 py-5 last:border-b-0 sm:grid-cols-[3.5rem_minmax(0,1fr)] sm:gap-5 sm:py-6">
+            <li class="achievement grid grid-cols-[2.5rem_minmax(0,1fr)] gap-3 rounded-2xl bg-black/15 p-5 sm:grid-cols-[3rem_minmax(0,1fr)] sm:gap-4">
               <span
                 aria-hidden="true"
                 class="achievement-number text-accent/55 pt-0.5 text-xs font-medium transition-colors duration-200"
@@ -94,11 +94,24 @@ import { experiences } from "@/data/experience";
     color: #ffffff;
   }
 
+  .achievement {
+    transition: background-color 200ms ease;
+  }
+
+  .achievement:hover {
+    background: color-mix(
+      in srgb,
+      var(--color-surface) 92%,
+      var(--color-accent) 8%
+    );
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .chevron,
     .toggle,
     .achievement-number,
-    .achievement-text {
+    .achievement-text,
+    .achievement {
       transition: none;
     }
   }

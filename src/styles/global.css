@@ -7,9 +7,12 @@
 
   --color-void: #0a0a0a;
   --color-surface: #141414;
-  --color-accent: #82f651;
+  /* --color-accent: #67e8f9; */
+  --color-accent: #38bdf8;
   --color-glow: #1e6bff;
   --color-mist: #a1a1aa;
+  --color-line: rgb(255 255 255 / 0.07);
+  --color-line-strong: rgb(255 255 255 / 0.16);
 }
 
 html {
@@ -18,11 +21,10 @@ html {
 }
 
 body {
-  background-color: #82f651;
-  background-color: #466ee6;
   background-color: var(--color-void);
   color: #ffffff;
   font-family: var(--font-sans);
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

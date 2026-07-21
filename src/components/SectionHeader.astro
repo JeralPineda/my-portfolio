@@ -10,14 +10,19 @@ const hasContent = Astro.slots.has("default");
 ---
 
 <section id={id} aria-labelledby={`${id}-title`} class="relative scroll-mt-10">
-  <div class="mx-auto max-w-3xl px-6 pt-36 text-center">
+  <div
+    aria-hidden="true"
+    class="border-line mx-auto hidden max-w-6xl border-t min-[1200px]:block"
+  >
+  </div>
+  <div class="mx-auto max-w-3xl px-6 pt-32 text-center">
     <h2
       id={`${id}-title`}
       class="text-3xl leading-tight font-medium tracking-tight text-balance text-white sm:text-4xl md:text-5xl"
     >
       {title}
     </h2>
-    <p class="text-mist mx-auto mt-6 max-w-2xl text-[13px] leading-relaxed">
+    <p class="text-mist mx-auto mt-6 max-w-lg text-[13px] leading-relaxed">
       {subtitle}
     </p>
   </div>

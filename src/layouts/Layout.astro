@@ -25,6 +25,7 @@ const {
   </head>
   <body>
     <!-- <a href="#main" class="skip-link">Saltar al contenido</a> -->
+    <div class="site-rail" aria-hidden="true"></div>
     <Navbar />
 
     <main id="main">
@@ -34,3 +35,29 @@ const {
     <Footer />
   </body>
 </html>
+
+<style>
+  .site-rail {
+    position: fixed;
+    z-index: 40;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: min(calc(100% - 2rem), 72rem);
+    border-inline: 1px solid var(--color-line);
+    pointer-events: none;
+    transform: translateX(-50%);
+  }
+
+  @media (min-width: 640px) {
+    .site-rail {
+      width: min(calc(100% - 3rem), 72rem);
+    }
+  }
+
+  @media (max-width: 1199px) {
+    .site-rail {
+      display: none;
+    }
+  }
+</style>

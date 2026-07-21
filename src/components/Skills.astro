@@ -12,11 +12,11 @@ import { skills } from "@/data/skills";
       return (
         <li
           data-skill-card
-          class="skill-card group bg-surface/70 relative isolate flex min-h-24 items-center justify-center overflow-hidden rounded-xl border border-white/10 px-4 py-5"
+          class="skill-card group bg-surface/70 relative isolate flex min-h-24 items-center justify-center overflow-hidden rounded-lg border border-white/10 px-4 py-5"
         >
-          <span class="relative z-10 flex items-center justify-center gap-2.5 text-zinc-400 opacity-70 transition-all duration-300 group-hover:text-white group-hover:opacity-100">
+          <span class="relative z-10 flex items-center justify-center gap-3 text-zinc-400 opacity-70 transition-all duration-300 group-hover:text-white group-hover:opacity-100">
             <SkillLogo skill={skill} />
-            <span class="text-sm leading-tight font-medium">{skill.name}</span>
+            <span class="text-sm leading-tight font-bold">{skill.name}</span>
           </span>
         </li>
       );

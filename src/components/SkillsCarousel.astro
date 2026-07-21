@@ -9,7 +9,7 @@ const directions = ["left", "right", "left"];
 const durations = [78, 88, 82];
 ---
 
-<div class="skills-carousel mx-auto mt-16 max-w-6xl space-y-5 pb-20">
+<div class="skills-carousel mx-auto mt-16 max-w-6xl space-y-5 pb-24">
   {
     rows.map((row, rowIndex) => (
       <div class:list={["marquee", rowIndex === 1 && "marquee--middle"]}>
@@ -96,7 +96,7 @@ const durations = [78, 88, 82];
     flex-direction: column;
     justify-content: center;
     gap: 0.5rem;
-    border: 1px solid rgb(255 255 255 / 0.08);
+    border: 1px solid var(--color-line);
     border-radius: 1.25rem;
     background: color-mix(in srgb, var(--color-surface) 82%, transparent);
     color: #a1a1aa;
@@ -113,7 +113,7 @@ const durations = [78, 88, 82];
   }
 
   .carousel-card:hover {
-    border-color: rgb(255 255 255 / 0.18);
+    border-color: var(--color-line-strong);
     color: #ffffff;
     opacity: 1;
   }

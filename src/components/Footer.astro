@@ -1,21 +1,44 @@
 ---
+import { socialLinks } from "@/data/socials";
+
 const year = new Date().getFullYear();
 ---
 
-<footer class="relative overflow-hidden">
+<footer class="site-footer border-line relative overflow-hidden border-t">
   <!-- Luz azul en el bottom, espejo del glow del hero -->
   <div aria-hidden="true" class="absolute inset-0">
     <div class="glow-footer"></div>
   </div>
 
   <div
-    class="text-mist relative mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-6 py-15 text-[13px] sm:flex-row"
+    class="text-mist relative mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-6 py-15 text-[13px] sm:flex-row"
   >
     <span>© {year} - Jeral Pineda</span>
 
-    <span class="font-medium"
-      >Desarrollado por <span class="text-white">Jeral Pineda</span></span
-    >
+    <nav aria-label="Enlaces sociales">
+      <ul class="flex items-center gap-2">
+        {
+          socialLinks.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                target={link.external ? "_blank" : undefined}
+                rel={link.external ? "noopener noreferrer" : undefined}
+                aria-label={link.label}
+                title={link.label}
+                class="social-link border-line flex size-10 items-center justify-center rounded-full border text-zinc-400"
+              >
+                <span
+                  class="social-icon"
+                  aria-hidden="true"
+                  style={`--social-icon: url(/icons/social/${link.icon}.svg)`}
+                />
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
   </div>
 </footer>
 
@@ -34,5 +57,35 @@ const year = new Date().getFullYear();
       transparent 70%
     );
     filter: blur(70px);
+  }
+
+  .social-link {
+    transition:
+      border-color 200ms ease,
+      color 200ms ease;
+  }
+
+  .social-link:hover {
+    border-color: color-mix(in srgb, var(--color-accent) 45%, transparent);
+    color: var(--color-accent);
+  }
+
+  .social-icon {
+    width: 17px;
+    height: 17px;
+    background-color: currentColor;
+    mask: var(--social-icon) center / contain no-repeat;
+  }
+
+  @media (max-width: 1199px) {
+    .site-footer {
+      border-color: transparent;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .social-link {
+      transition: none;
+    }
   }
 </style>

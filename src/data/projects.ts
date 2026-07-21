@@ -19,18 +19,32 @@ export interface ProjectLink {
 
 export const projects: Project[] = [
   {
-    id: "aurora-mia",
-    title: "Aurora + MIA",
-    category: "Sistemas internos · Back Office e IAM",
+    id: "aurora",
+    title: "Aurora",
+    category: "Sistema interno · Back Office",
     role: "Diseño y desarrollo Front-End",
     description:
-      "Plataformas para administrar clientes, usuarios internos, roles, permisos y operaciones departamentales, con una gestión de accesos centralizada para múltiples aplicaciones.",
-    technologies: ["React", "TypeScript", "REST APIs", "Autenticación"],
-    image: "/images/projects/aurora-mia.svg",
+      "Back Office administrativo del banco con módulos para la gestión de clientes, usuarios internos, roles, permisos y operaciones departamentales.",
+    technologies: ["React", "TypeScript", "REST APIs", "RBAC"],
+    image: "/images/projects/aurora.svg",
     imageAlt:
-      "Ilustración conceptual de un dashboard administrativo y un sistema de gestión de permisos",
+      "Ilustración conceptual de un dashboard de back office administrativo",
     status: "internal",
     theme: "blue",
+  },
+  {
+    id: "mia",
+    title: "MIA",
+    category: "Sistema interno · IAM",
+    role: "Desarrollo Front-End",
+    description:
+      "Sistema independiente que centraliza la gestión de permisos y accesos para Aurora y otras aplicaciones internas de la institución.",
+    technologies: ["React", "TypeScript", "IAM", "Autenticación"],
+    image: "/images/projects/mia.svg",
+    imageAlt:
+      "Ilustración conceptual de un sistema centralizado de permisos y accesos",
+    status: "internal",
+    theme: "accent",
   },
   {
     id: "token-app",

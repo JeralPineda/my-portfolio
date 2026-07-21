@@ -1,31 +1,145 @@
 ---
 import Logo from "@/icons/Logo.astro";
+import { Menu, X } from "@lucide/astro";
 
 const links = [
+  { label: "Habilidades", href: "#habilidades" },
   { label: "Proyectos", href: "#proyectos" },
   { label: "Experiencia", href: "#experiencia" },
-  { label: "Habilidades", href: "#habilidades" },
 ];
 ---
 
-<header class="rise absolute inset-x-0 top-0 z-50">
-  <nav aria-label="Main" class="mx-auto flex max-w-7xl items-center justify-between px-6 py-6">
-    <a href="/" class="flex items-center gap-2 text-sm font-medium tracking-tight text-white">
-      <!-- <img src="/favicon.svg" alt="Logo" class="h-8 w-8" /> -->
-      <Logo class="h-5 w-5" />
-      Jeral Pineda
+<header
+  class="site-header rise border-line absolute inset-x-0 top-0 z-50 border-b"
+>
+  <nav
+    aria-label="Main"
+    class="mx-auto flex max-w-6xl items-center justify-between px-6 py-6"
+  >
+    <a
+      href="/"
+      class="flex items-center gap-2 text-sm font-medium tracking-tight text-white"
+    >
+      <Logo class="h-6 w-6" />
+      <!-- Jeral Pineda -->
     </a>
 
     <ul class="hidden items-center gap-7 text-[13px] text-zinc-300 md:flex">
       {
         links.map((link) => (
           <li>
-            <a href={link.href} class="flex items-center gap-1.5 transition-colors hover:text-white">
+            <a
+              href={link.href}
+              class="flex items-center gap-1.5 transition-colors hover:text-white"
+            >
               {link.label}
             </a>
           </li>
         ))
       }
     </ul>
+
+    <button
+      type="button"
+      class="menu-toggle flex size-10 items-center justify-center rounded-full text-zinc-300 transition-colors hover:text-white md:hidden"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+      aria-label="Abrir menú"
+    >
+      <Menu
+        class="icon-menu"
+        size={20}
+        stroke-width={1.75}
+        aria-hidden="true"
+      />
+      <X
+        class="icon-close hidden"
+        size={20}
+        stroke-width={1.75}
+        aria-hidden="true"
+      />
+    </button>
   </nav>
+
+  <div id="mobile-menu" class="mobile-menu hidden md:hidden">
+    <ul class="flex flex-col gap-1 px-6 py-4">
+      {
+        links.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              class="mobile-link block rounded-lg px-3 py-3 text-sm text-zinc-300 transition-colors"
+            >
+              {link.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
 </header>
+
+<style>
+  @media (max-width: 1199px) {
+    .site-header {
+      border-color: transparent;
+    }
+  }
+
+  .mobile-menu {
+    background: color-mix(in srgb, var(--color-void) 90%, transparent);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    animation: menu-in 0.2s ease-out;
+  }
+
+  .mobile-link:hover {
+    background: color-mix(in srgb, var(--color-surface) 85%, transparent);
+    color: #ffffff;
+  }
+
+  @keyframes menu-in {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mobile-menu {
+      animation: none;
+    }
+  }
+</style>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>(".menu-toggle");
+  const menu = document.getElementById("mobile-menu");
+  const iconMenu = toggle?.querySelector(".icon-menu");
+  const iconClose = toggle?.querySelector(".icon-close");
+
+  function setMenu(open: boolean) {
+    menu?.classList.toggle("hidden", !open);
+    iconMenu?.classList.toggle("hidden", open);
+    iconClose?.classList.toggle("hidden", !open);
+    toggle?.setAttribute("aria-expanded", String(open));
+    toggle?.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
+  }
+
+  toggle?.addEventListener("click", () => {
+    const isOpen = toggle.getAttribute("aria-expanded") === "true";
+    setMenu(!isOpen);
+  });
+
+  menu?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => setMenu(false));
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") setMenu(false);
+  });
+</script>
