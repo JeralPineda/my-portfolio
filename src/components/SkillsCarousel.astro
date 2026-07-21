@@ -1,0 +1,158 @@
+---
+import SkillLogo from "@/components/SkillLogo.astro";
+import { skills } from "@/data/skills";
+
+const rows = [0, 1, 2].map((row) =>
+  skills.filter((_, index) => index % 3 === row),
+);
+const directions = ["left", "right", "left"];
+const durations = [78, 88, 82];
+---
+
+<div class="skills-carousel mx-auto mt-16 max-w-6xl space-y-5 pb-20">
+  {
+    rows.map((row, rowIndex) => (
+      <div class:list={["marquee", rowIndex === 1 && "marquee--middle"]}>
+        <div
+          class:list={[
+            "marquee-track",
+            directions[rowIndex] === "right" && "marquee-track--right",
+          ]}
+          style={`--marquee-duration: ${durations[rowIndex]}s`}
+        >
+          {[false, true].map((isDuplicate) => (
+            <ul
+              class="marquee-group"
+              aria-hidden={isDuplicate ? "true" : undefined}
+            >
+              {row.map((skill) => (
+                <li class="carousel-card">
+                  <SkillLogo skill={skill} size={20} />
+                  <span>{skill.name}</span>
+                </li>
+              ))}
+            </ul>
+          ))}
+        </div>
+      </div>
+    ))
+  }
+</div>
+
+<style>
+  .marquee {
+    width: 94%;
+    overflow: hidden;
+    margin-inline: auto;
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 10%,
+      black 90%,
+      transparent
+    );
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 10%,
+      black 90%,
+      transparent
+    );
+  }
+
+  .marquee--middle {
+    width: 100%;
+  }
+
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee-left var(--marquee-duration) linear infinite;
+    backface-visibility: hidden;
+    will-change: transform;
+  }
+
+  .marquee-track--right {
+    animation-name: marquee-right;
+  }
+
+  .marquee:hover .marquee-track {
+    animation-play-state: paused;
+  }
+
+  .marquee-group {
+    display: flex;
+    flex-shrink: 0;
+    gap: 2rem;
+    padding-right: 2rem;
+  }
+
+  .carousel-card {
+    display: flex;
+    width: 10rem;
+    min-height: 5rem;
+    flex-shrink: 0;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5rem;
+    border: 1px solid rgb(255 255 255 / 0.08);
+    border-radius: 1.25rem;
+    background: color-mix(in srgb, var(--color-surface) 82%, transparent);
+    color: #a1a1aa;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    line-height: 1.2;
+    opacity: 0.72;
+    padding: 0.75rem;
+    text-align: center;
+    transition:
+      border-color 200ms ease,
+      color 200ms ease,
+      opacity 200ms ease;
+  }
+
+  .carousel-card:hover {
+    border-color: rgb(255 255 255 / 0.18);
+    color: #ffffff;
+    opacity: 1;
+  }
+
+  @keyframes marquee-left {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+
+    to {
+      transform: translate3d(-50%, 0, 0);
+    }
+  }
+
+  @keyframes marquee-right {
+    from {
+      transform: translate3d(-50%, 0, 0);
+    }
+
+    to {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee {
+      overflow-x: auto;
+      mask-image: none;
+      -webkit-mask-image: none;
+      scrollbar-width: none;
+    }
+
+    .marquee-track {
+      animation: none;
+      transform: none;
+    }
+
+    .marquee-group[aria-hidden="true"] {
+      display: none;
+    }
+  }
+</style>
