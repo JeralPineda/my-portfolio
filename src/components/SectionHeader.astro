@@ -6,6 +6,7 @@ interface Props {
 }
 
 const { id, title, subtitle } = Astro.props;
+const hasContent = Astro.slots.has("default");
 ---
 
 <section id={id} aria-labelledby={`${id}-title`} class="relative scroll-mt-10">
@@ -16,11 +17,13 @@ const { id, title, subtitle } = Astro.props;
     >
       {title}
     </h2>
-    <p class="text-mist mx-auto mt-6 max-w-md text-[13px] leading-relaxed">
+    <p class="text-mist mx-auto mt-6 max-w-2xl text-[13px] leading-relaxed">
       {subtitle}
     </p>
   </div>
 
-  <!-- Espacio temporal para previsualizar el scroll -->
-  <div aria-hidden="true" class="min-h-[45vh]"></div>
+  <slot />
+
+  <!-- Espacio temporal para previsualizar el scroll (solo sin contenido en slot) -->
+  {!hasContent && <div aria-hidden="true" class="min-h-[45vh]" />}
 </section>
