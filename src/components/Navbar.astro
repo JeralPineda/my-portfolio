@@ -13,24 +13,25 @@ const links = [
   class="site-header rise border-line absolute inset-x-0 top-0 z-50 border-b"
 >
   <nav
-    aria-label="Main"
+    aria-label="Navegación principal"
     class="mx-auto flex max-w-6xl items-center justify-between px-6 py-6"
   >
     <a
       href="/"
-      class="flex items-center gap-2 text-sm font-medium tracking-tight text-white"
+      aria-label="Jeral Pineda — Inicio"
+      class="flex size-11 items-center justify-center text-sm font-medium tracking-tight text-white"
     >
-      <Logo class="h-6 w-6" />
+      <Logo class="h-6 w-6" aria-hidden="true" />
       <!-- Jeral Pineda -->
     </a>
 
-    <ul class="hidden items-center gap-7 text-[13px] text-zinc-300 md:flex">
+    <ul class="hidden items-center gap-7 text-sm text-zinc-300 md:flex">
       {
         links.map((link) => (
           <li>
             <a
               href={link.href}
-              class="flex items-center gap-1.5 transition-colors hover:text-white"
+              class="flex min-h-11 items-center px-2 transition-colors hover:text-white"
             >
               {link.label}
             </a>
@@ -41,7 +42,7 @@ const links = [
 
     <button
       type="button"
-      class="menu-toggle flex size-10 items-center justify-center rounded-full text-zinc-300 transition-colors hover:text-white md:hidden"
+      class="menu-toggle flex size-11 items-center justify-center rounded-full text-zinc-300 transition-colors hover:text-white md:hidden"
       aria-expanded="false"
       aria-controls="mobile-menu"
       aria-label="Abrir menú"
@@ -61,7 +62,11 @@ const links = [
     </button>
   </nav>
 
-  <div id="mobile-menu" class="mobile-menu hidden md:hidden">
+  <nav
+    id="mobile-menu"
+    aria-label="Navegación móvil"
+    class="mobile-menu hidden md:hidden"
+  >
     <ul class="flex flex-col gap-1 px-6 py-4">
       {
         links.map((link) => (
@@ -76,7 +81,7 @@ const links = [
         ))
       }
     </ul>
-  </div>
+  </nav>
 </header>
 
 <style>
@@ -119,6 +124,7 @@ const links = [
 <script>
   const toggle = document.querySelector<HTMLButtonElement>(".menu-toggle");
   const menu = document.getElementById("mobile-menu");
+  const header = document.querySelector<HTMLElement>(".site-header");
   const iconMenu = toggle?.querySelector(".icon-menu");
   const iconClose = toggle?.querySelector(".icon-close");
 
@@ -136,10 +142,40 @@ const links = [
   });
 
   menu?.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => setMenu(false));
+    link.addEventListener("click", () => {
+      setMenu(false);
+      const target = document.querySelector<HTMLElement>(link.hash);
+      requestAnimationFrame(() => {
+        target
+          ?.querySelector<HTMLElement>("h2")
+          ?.focus({ preventScroll: true });
+      });
+    });
   });
 
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") setMenu(false);
+    if (
+      event.key === "Escape" &&
+      toggle?.getAttribute("aria-expanded") === "true"
+    ) {
+      setMenu(false);
+      toggle.focus();
+    }
   });
+
+  document.addEventListener("pointerdown", (event) => {
+    if (
+      toggle?.getAttribute("aria-expanded") === "true" &&
+      event.target instanceof Node &&
+      !header?.contains(event.target)
+    ) {
+      setMenu(false);
+    }
+  });
+
+  window
+    .matchMedia("(min-width: 768px)")
+    .addEventListener("change", (event) => {
+      if (event.matches) setMenu(false);
+    });
 </script>

@@ -3,19 +3,19 @@ import { ChevronDown } from "@lucide/astro";
 import { experiences } from "@/data/experience";
 ---
 
-<div class="mx-auto mt-16 max-w-6xl rounded-2xl px-6 pb-24">
+<div class="mx-auto mt-16 max-w-6xl rounded-2xl px-6 pb-16 md:pb-24">
   {
     experiences.map((experience) => (
       <details
         name="professional-experience"
-        class="experience bg-surface/55 mb-2 overflow-hidden rounded-lg"
+        class="experience bg-surface/55 mb-2 overflow-hidden rounded-[10px]"
       >
         <summary class="experience-summary grid cursor-pointer gap-6 px-6 py-7 sm:px-8 md:grid-cols-[minmax(0,1fr)_auto] md:items-start md:gap-12">
           <div>
             <h3 class="text-xl leading-tight font-medium tracking-tight text-white sm:text-2xl">
               {experience.role}
             </h3>
-            <span class="toggle mt-3 inline-flex items-center gap-1.5 text-xs text-zinc-500 transition-colors duration-200">
+            <span class="toggle mt-3 inline-flex items-center gap-1.5 text-xs text-zinc-400 transition-colors duration-200">
               <span class="toggle-label" />
               <ChevronDown
                 class="chevron"
@@ -33,7 +33,7 @@ import { experiences } from "@/data/experience";
             <p class="text-mist mt-2 text-sm">
               {experience.startDate} — {experience.endDate}
             </p>
-            <p class="mt-1 text-xs text-zinc-500">{experience.location}</p>
+            <p class="mt-1 text-xs text-zinc-400">{experience.location}</p>
           </div>
         </summary>
 
@@ -42,7 +42,7 @@ import { experiences } from "@/data/experience";
             <li class="achievement grid grid-cols-[2.5rem_minmax(0,1fr)] gap-3 rounded-2xl bg-black/15 p-5 sm:grid-cols-[3rem_minmax(0,1fr)] sm:gap-4">
               <span
                 aria-hidden="true"
-                class="achievement-number text-accent/55 pt-0.5 text-xs font-medium transition-colors duration-200"
+                class="achievement-number text-accent pt-0.5 text-xs font-medium transition-colors duration-200"
               >
                 {String(index + 1).padStart(2, "0")}
               </span>
@@ -64,6 +64,11 @@ import { experiences } from "@/data/experience";
 
   .experience-summary::-webkit-details-marker {
     display: none;
+  }
+
+  .experience-summary:focus-visible {
+    outline: none;
+    box-shadow: inset 0 0 0 2px var(--color-accent);
   }
 
   .toggle-label::before {

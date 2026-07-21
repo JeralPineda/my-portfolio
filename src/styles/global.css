@@ -24,7 +24,6 @@ body {
   background-color: var(--color-void);
   color: #ffffff;
   font-family: var(--font-sans);
-  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -44,6 +43,12 @@ body {
 @media (prefers-reduced-motion: no-preference) {
   .rise {
     animation: rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 }
 
