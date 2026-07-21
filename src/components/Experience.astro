@@ -1,0 +1,105 @@
+---
+import { ChevronDown } from "@lucide/astro";
+import { experiences } from "@/data/experience";
+---
+
+<div class="mx-auto mt-16 max-w-6xl px-6 pb-24">
+  {
+    experiences.map((experience) => (
+      <details
+        name="professional-experience"
+        class="experience border-t border-white/10 last:border-b"
+      >
+        <summary class="experience-summary grid cursor-pointer gap-6 py-8 md:grid-cols-[minmax(0,1fr)_auto] md:items-start md:gap-12">
+          <div>
+            <h3 class="text-xl leading-tight font-medium tracking-tight text-white sm:text-2xl">
+              {experience.role}
+            </h3>
+            <span class="toggle mt-3 inline-flex items-center gap-1.5 text-xs text-zinc-500 transition-colors duration-200">
+              <span class="toggle-label" />
+              <ChevronDown
+                class="chevron"
+                size={14}
+                stroke-width={1.75}
+                aria-hidden="true"
+              />
+            </span>
+          </div>
+
+          <div class="md:min-w-64 md:text-right">
+            <p class="text-xl font-medium tracking-tight text-white sm:text-2xl">
+              {experience.company}
+            </p>
+            <p class="text-mist mt-2 text-sm">
+              {experience.startDate} — {experience.endDate}
+            </p>
+            <p class="mt-1 text-xs text-zinc-500">{experience.location}</p>
+          </div>
+        </summary>
+
+        <ol class="border-t border-white/10">
+          {experience.highlights.slice(0, 4).map((highlight, index) => (
+            <li class="achievement grid grid-cols-[2.5rem_minmax(0,1fr)] gap-3 border-b border-white/10 py-5 last:border-b-0 sm:grid-cols-[3.5rem_minmax(0,1fr)] sm:gap-5 sm:py-6">
+              <span
+                aria-hidden="true"
+                class="achievement-number text-accent/55 pt-0.5 text-xs font-medium transition-colors duration-200"
+              >
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <p class="achievement-text text-mist max-w-4xl text-sm leading-relaxed transition-colors duration-200 sm:text-[15px]">
+                {highlight}
+              </p>
+            </li>
+          ))}
+        </ol>
+      </details>
+    ))
+  }
+</div>
+
+<style>
+  .experience-summary {
+    list-style: none;
+  }
+
+  .experience-summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .toggle-label::before {
+    content: "Ver detalles";
+  }
+
+  .chevron {
+    transition: transform 200ms ease;
+  }
+
+  .experience-summary:hover .toggle {
+    color: var(--color-accent);
+  }
+
+  .experience[open] .toggle-label::before {
+    content: "Ocultar detalles";
+  }
+
+  .experience[open] .chevron {
+    transform: rotate(180deg);
+  }
+
+  .achievement:hover .achievement-number {
+    color: var(--color-accent);
+  }
+
+  .achievement:hover .achievement-text {
+    color: #ffffff;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .chevron,
+    .toggle,
+    .achievement-number,
+    .achievement-text {
+      transition: none;
+    }
+  }
+</style>

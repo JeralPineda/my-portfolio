@@ -1,8 +1,8 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import Hero from "@/components/Hero.astro";
+import Experience from "@/components/Experience.astro";
 import SectionHeader from "@/components/SectionHeader.astro";
-import Skills from "@/components/Skills.astro";
 import SkillsCarousel from "@/components/SkillsCarousel.astro";
 ---
 
@@ -13,7 +13,6 @@ import SkillsCarousel from "@/components/SkillsCarousel.astro";
     title="Habilidades"
     subtitle="Tecnologías y herramientas que uso a diario para diseñar, construir y optimizar productos digitales."
   >
-    <!-- <Skills /> -->
     <SkillsCarousel />
   </SectionHeader>
   <SectionHeader
@@ -25,5 +24,7 @@ import SkillsCarousel from "@/components/SkillsCarousel.astro";
     id="experiencia"
     title="Experiencia"
     subtitle="Mi trayectoria como desarrollador Front-End construyendo productos digitales en el sector bancario."
-  />
+  >
+    <Experience />
+  </SectionHeader>
 </Layout>
