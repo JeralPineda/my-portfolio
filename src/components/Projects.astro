@@ -3,7 +3,7 @@ import { ArrowUpRight, LockKeyhole } from "@lucide/astro";
 import { projects } from "@/data/projects";
 ---
 
-<div class="mx-auto mt-16 max-w-6xl space-y-8 px-6 pb-16 md:pb-24">
+<div class="mx-auto mt-16 max-w-6xl space-y-8 px-6 pb-16 md:px-12 md:pb-24">
   {
     projects.map((project) => (
       <article
@@ -153,7 +153,7 @@ import { projects } from "@/data/projects";
 
   .project-card:hover {
     border-color: var(--color-line-strong);
-    box-shadow: 0 28px 80px -52px rgb(30 107 255 / 0.7);
+    box-shadow: 0 25px 50px -52px rgb(30 107 255 / 0.7);
   }
 
   .project-card:hover .project-visual img {
