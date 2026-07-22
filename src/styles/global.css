@@ -1,9 +1,8 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@400;500;600;700&display=swap");
 @import "tailwindcss";
 
 @theme {
   --font-sans:
-    "Inter", "Sora", ui-sans-serif, system-ui, -apple-system, sans-serif;
+    var(--font-inter), ui-sans-serif, system-ui, -apple-system, sans-serif;
 
   --color-void: #0a0a0a;
   --color-surface: #141414;
