@@ -31,7 +31,7 @@ const links = [
           <li>
             <a
               href={link.href}
-              class="flex min-h-11 items-center px-2 transition-colors hover:text-white"
+              class="after:bg-accent relative flex min-h-11 items-center px-2 transition-colors after:absolute after:right-2 after:bottom-1.5 after:left-2 after:h-px after:origin-left after:scale-x-0 after:transition-transform after:duration-200 hover:text-white hover:after:scale-x-100 motion-reduce:after:transition-none"
             >
               {link.label}
             </a>
@@ -73,7 +73,7 @@ const links = [
           <li>
             <a
               href={link.href}
-              class="mobile-link block rounded-lg px-3 py-3 text-sm text-zinc-300 transition-colors"
+              class="mobile-link block rounded-lg px-3 py-3 text-sm text-zinc-300 transition-[color,background-color,transform] duration-200 hover:translate-x-1 motion-reduce:transition-none motion-reduce:hover:transform-none"
             >
               {link.label}
             </a>
