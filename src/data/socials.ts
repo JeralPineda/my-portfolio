@@ -20,10 +20,4 @@ export const socialLinks: SocialLink[] = [
     icon: "linkedin",
     external: true,
   },
-  {
-    label: "X",
-    href: "https://x.com/jeral22800823",
-    icon: "x",
-    external: true,
-  },
 ];
