@@ -2,12 +2,14 @@
 
 ---
 
-<section aria-labelledby="hero-title" class="relative overflow-hidden">
+<section
+  aria-labelledby="hero-title"
+  class="bg-void relative isolate overflow-hidden"
+>
   <!-- Background atmosphere -->
-  <div aria-hidden="true" class="absolute inset-0">
+  <div aria-hidden="true" class="pointer-events-none absolute inset-0">
     <div class="glow-main"></div>
     <div class="glow-secondary"></div>
-    <div class="noise"></div>
     <div class="fade-bottom"></div>
   </div>
 
@@ -111,13 +113,15 @@
     width: 1250px;
     max-width: 160vw;
     height: 720px;
-    transform: translateX(-50%);
+    transform: translate3d(-50%, 0, 0);
     background: radial-gradient(
       ellipse at center,
-      color-mix(in srgb, var(--color-glow) 55%, transparent),
-      transparent 65%
+      color-mix(in srgb, var(--color-glow) 52%, transparent) 0%,
+      color-mix(in srgb, var(--color-glow) 24%, transparent) 38%,
+      transparent 72%
     );
-    filter: blur(60px);
+    filter: blur(40px);
+    backface-visibility: hidden;
   }
 
   .glow-secondary {
@@ -127,21 +131,15 @@
     width: 720px;
     max-width: 120vw;
     height: 340px;
-    transform: translateX(-50%);
+    transform: translate3d(-50%, 0, 0);
     background: radial-gradient(
       ellipse at center,
-      color-mix(in srgb, var(--color-glow) 22%, transparent),
-      transparent 70%
+      color-mix(in srgb, var(--color-glow) 18%, transparent) 0%,
+      color-mix(in srgb, var(--color-glow) 8%, transparent) 42%,
+      transparent 78%
     );
-    filter: blur(80px);
-  }
-
-  .noise {
-    position: absolute;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
-    opacity: 0.035;
-    mix-blend-mode: overlay;
+    filter: blur(52px);
+    backface-visibility: hidden;
   }
 
   .fade-bottom {
