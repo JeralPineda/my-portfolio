@@ -3,6 +3,7 @@ import "@/styles/global.css";
 import Navbar from "@/components/Navbar.astro";
 import Footer from "@/components/Footer.astro";
 import { socialLinks } from "@/data/socials";
+import { Font } from "astro:assets";
 
 interface Props {
   title?: string;
@@ -54,9 +55,11 @@ const personSchema = {
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" sizes="any" href="/favicon.svg?v=2" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <Font cssVariable="--font-inter" preload />
     <link rel="manifest" href="/site.webmanifest" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content={description} />
     <meta name="robots" content="index, follow" />
@@ -76,20 +79,11 @@ const personSchema = {
     <meta property="og:image:height" content="630" />
     <meta
       property="og:image:alt"
-      content="Jeral Pineda, desarrollador Front-End en Honduras"
-    />
-
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:creator" content="@jeral22800823" />
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={socialImageURL.href} />
-    <meta
-      name="twitter:image:alt"
-      content="Jeral Pineda, desarrollador Front-End en Honduras"
+      content="Jeral Pineda, desarrollador Front-End"
     />
 
     <title>{title}</title>
+
     <script
       is:inline
       type="application/ld+json"
