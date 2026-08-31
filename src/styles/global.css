@@ -9,8 +9,8 @@
   --color-surface: #ffffff;
   --color-line: #e6e9ee;
   --color-line-strong: #d2d7de;
-  --color-ink: #33383f;
-  --color-ink-muted: #646c76;
+  --color-ink: #15181f; /* títulos y texto fuerte */
+  --color-ink-muted: #5a626c; /* párrafos */
   --color-ink-subtle: #868d98;
   --color-pill: #f2f4f7;
   --color-panel: #eef0f4;
@@ -41,8 +41,8 @@
   --font-sans: "Inter Variable", ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-hand: "Caveat Variable", ui-rounded, cursive;
 
-  --shadow-card: 0 1px 2px rgb(51 56 63 / 0.04), 0 8px 24px rgb(51 56 63 / 0.05);
-  --shadow-lift: 0 2px 4px rgb(51 56 63 / 0.05), 0 18px 40px rgb(51 56 63 / 0.10);
+  --shadow-card: 0 1px 2px rgb(21 24 31 / 0.04), 0 8px 24px rgb(21 24 31 / 0.05);
+  --shadow-lift: 0 2px 4px rgb(21 24 31 / 0.05), 0 18px 40px rgb(21 24 31 / 0.10);
 }
 
 @layer base {
