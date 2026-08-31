@@ -3,7 +3,6 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import Header from "@/components/Header.astro";
 import Hero from "@/components/Hero.astro";
 import TechMarquee from "@/components/TechMarquee.astro";
-import GridDivider from "@/components/GridDivider.astro";
 import SectionLabel from "@/components/SectionLabel.astro";
 import ProjectCard from "@/components/ProjectCard.astro";
 import Experience from "@/components/Experience.astro";
@@ -18,7 +17,7 @@ import { projects } from "@/data/projects";
     <main id="contenido">
       <Hero />
       <TechMarquee />
-      <GridDivider />
+      <!-- <GridDivider /> -->
 
       <section id="proyectos" class="scroll-mt-8">
         <SectionLabel label="Proyectos" />
@@ -37,8 +36,10 @@ import { projects } from "@/data/projects";
   import { initImageDecks } from "@/scripts/image-deck";
   import { initLazyVideos } from "@/scripts/lazy-video";
   import { initHeroSlider } from "@/scripts/hero-slider";
+  import { initTheme } from "@/scripts/theme";
 
   initImageDecks();
   initLazyVideos();
   initHeroSlider();
+  initTheme();
 </script>
