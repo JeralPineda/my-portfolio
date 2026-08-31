@@ -79,7 +79,7 @@ const mediaFirst = index % 2 === 1;
         project.media.kind === "video" ? (
           <PhoneFrame
             src={project.media.src}
-            poster={project.media.src.replace(/\.mp4$/, "-poster.jpg")}
+            poster={project.media.src.replace(/\.mp4$/, "-poster.webp")}
             aspect={project.media.aspect}
             alt={project.media.alt}
           />

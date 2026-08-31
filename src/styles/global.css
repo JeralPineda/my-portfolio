@@ -11,7 +11,7 @@
   --color-line-strong: #d2d7de;
   --color-ink: #15181f; /* títulos y texto fuerte */
   --color-ink-muted: #5a626c; /* párrafos */
-  --color-ink-subtle: #868d98;
+  --color-ink-subtle: #666e79; /* mínimo que cumple AA sobre canvas y banda */
   --color-pill: #f2f4f7;
   --color-panel: #eef0f4;
 

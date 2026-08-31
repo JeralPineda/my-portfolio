@@ -6,6 +6,9 @@ import tailwindcss from "@tailwindcss/vite";
 // https://astro.build/config
 export default defineConfig({
   site: "https://jeralpineda.dev",
+  // La hoja completa pesa ~9 KB; inlinearla evita una petición
+  // que bloquea el render en móvil.
+  build: { inlineStylesheets: "always" },
   integrations: [sitemap()],
   vite: {
     plugins: [tailwindcss()],

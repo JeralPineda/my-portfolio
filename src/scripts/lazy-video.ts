@@ -1,6 +1,6 @@
 /**
- * The project recordings are several megabytes each, so nothing is fetched
- * until the phone frame is actually near the viewport. Playback is paused
+ * The project recordings are several megabytes each, so neither the source
+ * nor the poster is fetched until the phone frame is near the viewport. Playback is paused
  * again on the way out so offscreen videos never decode frames.
  */
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -10,6 +10,11 @@ export function initLazyVideos(root: ParentNode = document): void {
   if (videos.length === 0) return;
 
   const load = (video: HTMLVideoElement): void => {
+    // The poster is deferred alongside the source: as a plain attribute it
+    // would be fetched on render regardless of preload="none".
+    const poster = video.dataset.poster;
+    if (poster && !video.poster) video.poster = poster;
+
     const src = video.dataset.src;
     if (src && !video.src) {
       video.src = src;
