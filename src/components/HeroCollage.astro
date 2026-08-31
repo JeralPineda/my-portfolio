@@ -60,7 +60,7 @@ const cards = [
             densities={[1, 2]}
             loading={i === 0 ? "eager" : "lazy"}
             fetchpriority={i === 0 ? "high" : undefined}
-            class="h-52 w-full max-w-[280px] rounded-xl border-4 border-white object-cover shadow-lift"
+            class="h-52 w-full max-w-[280px] rounded-xl border-4 border-frame object-cover shadow-lift"
             style={`rotate: ${card.tilt}deg;`}
           />
           <figcaption class="mt-5 font-hand text-xl text-ink-muted">{card.caption}</figcaption>
@@ -99,7 +99,7 @@ const cards = [
           alt={card.alt}
           widths={[400, 600, 800]}
           sizes="(min-width: 1280px) 340px, 280px"
-          class="w-full rounded-xl border-[6px] border-white object-cover shadow-lift"
+          class="w-full rounded-xl border-[6px] border-frame object-cover shadow-lift"
         />
         <figcaption
           class={`absolute ${card.captionPos} font-hand text-xl whitespace-nowrap text-ink-muted transition-opacity group-hover:opacity-100`}

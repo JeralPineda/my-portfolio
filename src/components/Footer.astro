@@ -1,5 +1,6 @@
 ---
 import Logo from "@/components/Logo.astro";
+import ThemeSwitch from "@/components/ThemeSwitch.astro";
 import { site } from "@/data/site";
 import { projects } from "@/data/projects";
 
@@ -84,6 +85,7 @@ const contact = [
       </nav>
 
       <div class="col-span-2 sm:col-span-1">
+        <ThemeSwitch class="mb-6" />
         <p class="text-[13px] text-ink-subtle">
           © {year}
           {site.shortName}.
