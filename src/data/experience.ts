@@ -59,6 +59,16 @@ export const skillGroups: SkillGroup[] = [
   },
   {
     label: "Herramientas",
-    items: ["Git", "GitHub", "Azure DevOps", "Docker", "TeamCity (CI/CD)", "Figma", "Slack"],
+    items: [
+      "Git",
+      "GitHub",
+      "Azure DevOps",
+      "Docker",
+      "TeamCity (CI/CD)",
+      "Figma",
+      "Claude Code",
+      "OpenCode",
+      "Slack",
+    ],
   },
 ];
