@@ -1,0 +1,9 @@
+dist
+node_modules
+.astro
+.vercel
+.agents
+pnpm-lock.yaml
+skills-lock.json
+public
+resources
