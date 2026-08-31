@@ -172,7 +172,7 @@ export const projects: Project[] = [
     slug: "banhcafe-site",
     client: "BANHCAFE",
     name: "Sitio institucional",
-    title: "BANHCAFE Sito Institucional",
+    title: "Sito Institucional",
     description:
       "Lideré el mantenimiento y desarrollo del sitio institucional con Next.js y Strapi, optimizando el rendimiento, el SEO y la gestión de contenido para el equipo de mercadeo.",
     tags: ["Next.js", "Strapi", "TypeScript", "SEO", "CMS"],
