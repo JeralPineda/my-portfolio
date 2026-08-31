@@ -1,27 +1,48 @@
 @import "tailwindcss";
 
 @theme {
-  /* Palette — mirrors junhyungpark.com. Defined as variables so a dark
-     theme is a matter of redefining them, not rewriting components. */
-  --color-canvas: #fafafa;
+  /* Neutros — grises suaves de matiz frío, emparentados con el azul de
+     acento. Derivados de resources/posible paleta de colores.PNG, aclarados.
+     Definidos como variables para que un tema oscuro sea cuestión de
+     redefinirlos, no de reescribir componentes. */
+  --color-canvas: #f3f4f6;
   --color-surface: #ffffff;
-  --color-line: #ececec;
-  --color-line-strong: #dcdcdc;
-  --color-ink: #101010;
-  --color-ink-muted: #737373;
-  --color-ink-subtle: #a3a3a3;
-  --color-pill: #f4f4f5;
-  --color-panel: #f2f3f5;
-  --color-marker: #ff9761; /* highlighter behind the hero keyword — drawn translucent */
-  --color-band: #faf7f2; /* warm strip behind the tech marquee */
-  --color-band-ink: #4a4238;
-  --color-band-accent: #c8763c;
+  --color-line: #e6e9ee;
+  --color-line-strong: #d2d7de;
+  --color-ink: #33383f;
+  --color-ink-muted: #646c76;
+  --color-ink-subtle: #868d98;
+  --color-pill: #f2f4f7;
+  --color-panel: #eef0f4;
+
+  /* Azul de acento — el único color del sitio. Se usa solo en el
+     resaltador del hero, las estrellas del marquee y el punto activo de
+     los indicadores de imágenes. */
+  --color-accent: #287dd4;
+  --color-accent-soft: #51b7ff;
+
+  /* Los dos tonos del resaltador tras "Front-End" — dibujados translúcidos. */
+  --color-marker: #51b7ff; /* cuerpo del trazo */
+  --color-marker-deep: #287dd4; /* charco de tinta del borde inferior */
+
+  /* Banda tras el marquee de tecnologías. */
+  --color-band: #f0f2f5;
+  --color-band-ink: #565e69;
+  --color-band-accent: #287dd4; /* las estrellas */
+
+  /* Fijados a los valores previos a la paleta gris: los CTAs no se mueven
+     cuando los neutros cambian. #343434 es bg-ink/85 resuelto sobre blanco. */
+  --color-btn: #101010;
+  --color-btn-hover: #343434;
+  --color-btn-line: #dcdcdc;
+  --color-btn-face: #ffffff;
+  --color-btn-face-hover: #f4f4f5;
 
   --font-sans: "Inter Variable", ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-hand: "Caveat Variable", ui-rounded, cursive;
 
-  --shadow-card: 0 1px 2px rgb(16 16 16 / 0.04), 0 8px 24px rgb(16 16 16 / 0.06);
-  --shadow-lift: 0 2px 4px rgb(16 16 16 / 0.06), 0 18px 40px rgb(16 16 16 / 0.12);
+  --shadow-card: 0 1px 2px rgb(51 56 63 / 0.04), 0 8px 24px rgb(51 56 63 / 0.05);
+  --shadow-lift: 0 2px 4px rgb(51 56 63 / 0.05), 0 18px 40px rgb(51 56 63 / 0.10);
 }
 
 @layer base {
