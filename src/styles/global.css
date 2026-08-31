@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+/* El tema se conmuta con `data-theme` en <html>, no con la media query del
+   sistema: la preferencia del visitante manda sobre la del SO. */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
 @theme {
   /* Neutros — grises suaves de matiz frío, emparentados con el azul de
      acento. Derivados de resources/posible paleta de colores.PNG, aclarados.
@@ -14,6 +18,7 @@
   --color-ink-subtle: #666e79; /* mínimo que cumple AA sobre canvas y banda */
   --color-pill: #f2f4f7;
   --color-panel: #eef0f4;
+  --color-frame: #ffffff; /* el marco de las fotos del collage y del deck */
 
   /* Azul de acento — el único color del sitio. Se usa solo en el
      resaltador del hero, las estrellas del marquee y el punto activo de
@@ -34,15 +39,69 @@
      cuando los neutros cambian. #343434 es bg-ink/85 resuelto sobre blanco. */
   --color-btn: #101010;
   --color-btn-hover: #343434;
+  --color-btn-ink: #ffffff; /* el texto sobre el botón sólido */
   --color-btn-line: #dcdcdc;
   --color-btn-face: #ffffff;
   --color-btn-face-hover: #f4f4f5;
+
+  /* Chip elevado del selector de tema. */
+  --color-chip: #ffffff;
 
   --font-sans: "Inter Variable", ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-hand: "Caveat Variable", ui-rounded, cursive;
 
   --shadow-card: 0 1px 2px rgb(21 24 31 / 0.04), 0 8px 24px rgb(21 24 31 / 0.05);
-  --shadow-lift: 0 2px 4px rgb(21 24 31 / 0.05), 0 18px 40px rgb(21 24 31 / 0.10);
+  --shadow-lift: 0 2px 4px rgb(21 24 31 / 0.05), 0 18px 40px rgb(21 24 31 / 0.1);
+  --shadow-chip: 0 1px 2px rgb(21 24 31 / 0.1), 0 2px 6px rgb(21 24 31 / 0.06);
+}
+
+/* Tema oscuro — grafito neutro. Solo se redefinen los tokens; ningún
+   componente sabe que existe un segundo tema. Las variables de `@theme` se
+   emiten en `:root`, así que este bloque gana por especificidad. */
+:root {
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --color-canvas: #0e0e0e;
+  --color-surface: #161616;
+  --color-line: #272727;
+  --color-line-strong: #3d3d3d;
+  --color-ink: #ededed;
+  --color-ink-muted: #a3a3a3;
+  --color-ink-subtle: #949494;
+  --color-pill: #1e1e1e;
+  --color-panel: #202020;
+  /* El marco de las fotos sube muy por encima de `surface` y `panel`: con un
+     gris apenas más claro que el fondo las capturas se fundían con la página. */
+  --color-frame: #4d4d4d;
+
+  /* El azul original queda por debajo de AA sobre grafito: se aclara. */
+  --color-accent: #4d9ae8;
+  --color-accent-soft: #7cbcf5;
+  --color-marker: #2a6fd4;
+  --color-marker-deep: #1d5ec0;
+
+  --color-band: #131313;
+  --color-band-ink: #a3a3a3;
+  --color-band-accent: #5aa5ec;
+
+  /* Los CTAs se invierten: el sólido pasa a ser claro sobre fondo oscuro. */
+  --color-btn: #ededed;
+  --color-btn-hover: #ffffff;
+  --color-btn-ink: #101010;
+  --color-btn-line: #333333;
+  --color-btn-face: #1e1e1e;
+  --color-btn-face-hover: #272727;
+
+  --color-chip: #323232;
+
+  /* Las sombras claras están teñidas de azul y desaparecen sobre grafito. */
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.5), 0 8px 24px rgb(0 0 0 / 0.45);
+  --shadow-lift: 0 2px 4px rgb(0 0 0 / 0.5), 0 18px 40px rgb(0 0 0 / 0.6);
+  --shadow-chip: 0 1px 2px rgb(0 0 0 / 0.5), 0 2px 6px rgb(0 0 0 / 0.35);
 }
 
 @layer base {
@@ -80,6 +139,96 @@
     margin-inline: auto;
     background-color: var(--color-surface);
     border-inline: 1px solid var(--color-line);
+  }
+
+  /* Selector de tema. La posición del chip y el icono activo se derivan de
+     `data-theme` en <html>, que el script del <head> escribe antes de que el
+     footer se parsee: el estado correcto se pinta en el primer frame, sin
+     esperar a JavaScript. */
+  /* Resaltador del hero. Sobre papel blanco el trazo multiplica, como un
+     rotulador de verdad; sobre grafito eso lo apagaría, así que pinta opaco
+     y se elige un azul lo bastante oscuro para que el título siga legible
+     encima (5.1:1 contra --color-ink). */
+  .highlight-mark {
+    mix-blend-mode: multiply;
+  }
+
+  .highlight-mark-body {
+    fill-opacity: 0.5;
+  }
+
+  .highlight-mark-edge {
+    fill-opacity: 0.45;
+  }
+
+  :root[data-theme="dark"] .highlight-mark {
+    mix-blend-mode: normal;
+  }
+
+  :root[data-theme="dark"] .highlight-mark-body {
+    fill-opacity: 0.85;
+  }
+
+  :root[data-theme="dark"] .highlight-mark-edge {
+    fill-opacity: 0.95;
+  }
+
+  .theme-switch {
+    --thumb-i: 0;
+    /* El chip mide lo mismo que un botón para deslizarse casilla a casilla. */
+    --thumb-size: 1.75rem;
+  }
+
+  :root[data-theme="dark"] .theme-switch {
+    --thumb-i: 1;
+  }
+
+  .theme-switch-thumb {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: var(--thumb-size);
+    height: var(--thumb-size);
+    border-radius: 9999px;
+    background-color: var(--color-chip);
+    box-shadow: var(--shadow-chip);
+    transform: translateX(calc(var(--thumb-i) * var(--thumb-size)));
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .theme-switch-thumb {
+      transition:
+        transform 280ms cubic-bezier(0.32, 0.72, 0, 1),
+        background-color 220ms ease;
+    }
+  }
+
+  .theme-switch-option {
+    color: var(--color-ink-subtle);
+  }
+
+  .theme-switch-option:hover {
+    color: var(--color-ink-muted);
+  }
+
+  :root[data-theme="light"] .theme-switch-option[data-theme-choice="light"],
+  :root[data-theme="dark"] .theme-switch-option[data-theme-choice="dark"] {
+    color: var(--color-ink);
+  }
+}
+
+/* El cruce entre temas se anima solo mientras dura el cambio: la clase la
+   pone y la quita `theme.ts`, así que no hay coste en scroll ni en hover. */
+@media (prefers-reduced-motion: no-preference) {
+  html.theme-switching,
+  html.theme-switching *,
+  html.theme-switching *::before,
+  html.theme-switching *::after {
+    transition:
+      background-color 220ms ease,
+      border-color 220ms ease,
+      color 220ms ease,
+      fill 220ms ease !important;
   }
 }
 

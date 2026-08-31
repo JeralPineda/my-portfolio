@@ -87,7 +87,7 @@ const breadcrumbSchema = {
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <meta name="theme-color" content="#ebebeb" />
+    <meta id="theme-color" name="theme-color" content="#ebebeb" />
 
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="es_HN" />
@@ -105,11 +105,32 @@ const breadcrumbSchema = {
     <script type="application/ld+json" set:html={JSON.stringify(personSchema)} is:inline />
     <script type="application/ld+json" set:html={JSON.stringify(webPageSchema)} is:inline />
     <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} is:inline />
+
+    {
+      /* Resuelve el tema antes del primer pintado. Tiene que ser `is:inline`:
+        los scripts empaquetados de Astro son `defer` y dejarían ver un
+        destello del tema equivocado antes de aplicarse. El sitio nace en
+        claro; solo recibe el oscuro quien lo haya pedido expresamente. */
+    }
+    <script is:inline>
+      (() => {
+        let pref = null;
+        try {
+          pref = localStorage.getItem("theme");
+        } catch {
+          /* Safari en modo privado puede lanzar al leer localStorage. */
+        }
+        const dark = pref === "dark";
+        document.documentElement.dataset.theme = dark ? "dark" : "light";
+        const meta = document.getElementById("theme-color");
+        if (meta) meta.setAttribute("content", dark ? "#0e0e0e" : "#ebebeb");
+      })();
+    </script>
   </head>
   <body>
     <a
       href="#contenido"
-      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-md focus:bg-ink focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-white"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-md focus:bg-ink focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-canvas"
     >
       Saltar al contenido
     </a>
