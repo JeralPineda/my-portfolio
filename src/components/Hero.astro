@@ -1,153 +1,35 @@
 ---
-
+import HeroCollage from "@/components/HeroCollage.astro";
+import ButtonLink from "@/components/ButtonLink.astro";
+import HighlightMark from "@/components/HighlightMark.astro";
+import { site } from "@/data/site";
 ---
 
 <section
-  aria-labelledby="hero-title"
-  class="bg-void relative isolate overflow-hidden"
+  id="top"
+  class="grid items-center gap-10 border-b border-line px-6 py-16 sm:px-10 lg:min-h-[calc(100dvh-4rem)] lg:grid-cols-[1.05fr_1fr] lg:gap-14 lg:py-20"
 >
-  <!-- Background atmosphere -->
-  <div aria-hidden="true" class="pointer-events-none absolute inset-0">
-    <div class="glow-main"></div>
-    <div class="glow-secondary"></div>
-    <div class="fade-bottom"></div>
-  </div>
-
-  <div
-    class="relative mx-auto flex min-h-svh max-w-5xl flex-col items-center justify-center px-6 pt-28 pb-24 text-center"
-  >
-    <div class="mb-4 flex gap-4">
-      <div
-        class="flex -rotate-3 items-center rounded-xl border-[0.5px] border-zinc-500 p-[2.5px] shadow-xl transition-transform duration-300 ease-out hover:scale-[1.03] hover:rotate-0 motion-reduce:transition-none motion-reduce:hover:transform-none"
-      >
-        <img
-          src="/photo.webp"
-          alt="Retrato de Jeral Pineda"
-          width="72"
-          height="72"
-          fetchpriority="high"
-          decoding="async"
-          class="size-18 rounded-xl"
-        />
-      </div>
-    </div>
-
+  <div class="max-w-xl">
     <h1
-      id="hero-title"
-      class="text-4xl leading-[1.12] font-medium tracking-tight text-balance text-white sm:text-5xl md:text-6xl"
+      class="text-4xl leading-[1.18] font-bold tracking-tight text-ink sm:text-5xl lg:text-[3.25rem]"
     >
-      Hola, soy Jeral Pineda Desarrollador {" "}
-      <span class="highlight text-accent relative inline-block">
-        Front-End
-        <svg
-          class="absolute -bottom-2 left-0 w-full"
-          viewBox="0 0 220 14"
-          fill="none"
-          aria-hidden="true"
-          preserveAspectRatio="none"
-        >
-          <path
-            d="M4 9C60 4 150 3.5 216 6"
-            stroke="currentColor"
-            stroke-width="3.5"
-            stroke-linecap="round"></path>
-          <path
-            d="M24 12.5C80 9.5 160 9 200 10.5"
-            stroke="currentColor"
-            stroke-width="2.5"
-            stroke-linecap="round"></path>
-        </svg>
-      </span>
-      {" "}con +3 años de experiencia.
+      Hola, soy Jeral Pineda Desarrollador<br class="hidden sm:inline" />
+      <HighlightMark>Front-End</HighlightMark> con +3 años de experiencia.
     </h1>
 
-    <p class="text-mist mt-7 max-w-xl text-sm leading-relaxed">
-      Con experiencia en diseño, desarrollo y mantenimiento de sistemas
-      internos, aplicaciones móviles y plataformas web. Responsable de proyectos
-      clave en BANHCAFE, optimizando rendimiento, seguridad y experiencia de
-      usuario.
+    <p class="mt-7 text-[15px] leading-relaxed text-ink-muted">
+      Especializado en React, React Native/Expo y Next.js. Experiencia desarrollando aplicaciones
+      web y móviles con enfoque en seguridad, rendimiento, experiencia de usuario e integración de
+      APIs.
     </p>
 
-    <div class="mt-9 flex flex-wrap items-center justify-center gap-3">
-      <a
-        href="/cv-jeral-pineda.pdf"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="bg-surface/80 border-line hover:border-accent/60 inline-flex min-h-11 items-center gap-2 rounded-full border px-6 py-3 text-sm font-medium text-zinc-200 backdrop-blur transition-colors hover:text-white"
-      >
-        Descargar CV
-        <svg
-          width="12"
-          height="12"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          aria-hidden="true"
-        >
-          <path d="M7 17 17 7"></path>
-          <path d="M8 7h9v9"></path>
-        </svg>
-      </a>
-      <a
-        href="mailto:jeralpineda.dev@gmail.com"
-        class="inline-flex min-h-11 items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-medium text-black transition-colors hover:bg-zinc-200"
-      >
-        Contacto
-      </a>
+    <div class="mt-9 flex flex-wrap items-center gap-3">
+      <ButtonLink href={site.cv} external hideExternalIcon>Descargar CV</ButtonLink>
+      <ButtonLink href={`mailto:${site.email}`} variant="outline">Contáctame</ButtonLink>
     </div>
   </div>
+
+  <div class="lg:pl-4">
+    <HeroCollage />
+  </div>
 </section>
-
-<style>
-  .glow-main {
-    position: absolute;
-    left: 50%;
-    top: -0%;
-    width: 1250px;
-    max-width: 160vw;
-    height: 720px;
-    transform: translate3d(-50%, 0, 0);
-    background: radial-gradient(
-      ellipse at center,
-      color-mix(in srgb, var(--color-glow) 52%, transparent) 0%,
-      color-mix(in srgb, var(--color-glow) 24%, transparent) 38%,
-      transparent 72%
-    );
-    filter: blur(40px);
-    backface-visibility: hidden;
-  }
-
-  .glow-secondary {
-    position: absolute;
-    left: 50%;
-    top: 62%;
-    width: 720px;
-    max-width: 120vw;
-    height: 340px;
-    transform: translate3d(-50%, 0, 0);
-    background: radial-gradient(
-      ellipse at center,
-      color-mix(in srgb, var(--color-glow) 18%, transparent) 0%,
-      color-mix(in srgb, var(--color-glow) 8%, transparent) 42%,
-      transparent 78%
-    );
-    filter: blur(52px);
-    backface-visibility: hidden;
-  }
-
-  .fade-bottom {
-    position: absolute;
-    inset-inline: 0;
-    bottom: 0;
-    height: 16rem;
-    background: linear-gradient(to bottom, transparent, var(--color-void));
-  }
-
-  .highlight svg {
-    height: 0.22em;
-    overflow: visible;
-  }
-</style>

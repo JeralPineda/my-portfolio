@@ -1,0 +1,57 @@
+---
+import StoreIcon from "@/components/StoreIcon.astro";
+
+interface Props {
+  href: string;
+  variant?: "solid" | "outline";
+  external?: boolean;
+  /** Suppress the ↗ glyph while keeping target/rel and the screen-reader hint. */
+  hideExternalIcon?: boolean;
+  store?: "apple" | "google";
+  class?: string;
+}
+
+const {
+  href,
+  variant = "solid",
+  external = false,
+  hideExternalIcon = false,
+  store,
+  class: className = "",
+} = Astro.props;
+
+const base =
+  "group inline-flex items-center gap-2 rounded-md px-4 py-2.5 text-sm font-medium transition-colors";
+const styles = {
+  solid: "bg-btn text-white hover:bg-btn-hover",
+  outline: "border border-btn-line bg-btn-face text-btn hover:bg-btn-face-hover",
+} as const;
+
+const showArrow = external && !hideExternalIcon && !store;
+---
+
+<a
+  href={href}
+  class={`${base} ${styles[variant]} ${className}`}
+  {...external ? { target: "_blank", rel: "noopener noreferrer" } : {}}
+>
+  {store && <StoreIcon store={store} class="size-[18px] shrink-0" />}
+  <slot />
+  {
+    showArrow && (
+      <svg
+        class="size-3.5 transition-transform group-hover:translate-x-px group-hover:-translate-y-px"
+        viewBox="0 0 14 14"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.6"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M4 10 10 4M10 4H5M10 4v5" />
+      </svg>
+    )
+  }
+  {external && <span class="sr-only">(abre en una pestaña nueva)</span>}
+</a>

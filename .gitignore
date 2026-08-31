@@ -13,20 +13,20 @@ yarn-error.log*
 pnpm-debug.log*
 
 
-# environment variables and local deployment state
+# environment variables
 .env
-.env.*
-!.env.example
-.vercel/
-
-# private keys and certificates
-*.key
-*.pem
-*.p12
-*.pfx
+.env.production
 
 # macOS-specific files
 .DS_Store
 
 # jetbrains setting folder
 .idea/
+
+# Unprocessed source material: screen recordings, screenshots, icons and the CV.
+# Nothing here is served — the web-ready copies live in src/assets/ and public/.
+# Regenerate the videos with the ffmpeg commands in README.md.
+resources/
+
+# Vercel
+.vercel

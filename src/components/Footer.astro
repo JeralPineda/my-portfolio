@@ -1,91 +1,95 @@
 ---
-import { socialLinks } from "@/data/socials";
+import Logo from "@/components/Logo.astro";
+import { site } from "@/data/site";
+import { projects } from "@/data/projects";
 
 const year = new Date().getFullYear();
+
+const contact = [
+  { label: "Email", href: `mailto:${site.email}`, external: false },
+  { label: "GitHub", href: site.github, external: true },
+  { label: "CV", href: site.cv, external: true },
+];
 ---
 
-<footer class="site-footer border-line relative overflow-hidden border-t">
-  <!-- Luz azul en el bottom, espejo del glow del hero -->
-  <div aria-hidden="true" class="absolute inset-0">
-    <div class="glow-footer"></div>
-  </div>
+<footer class="border-t border-line bg-canvas px-6 py-14 sm:px-10">
+  <div class="flex flex-col gap-12 lg:flex-row lg:justify-between lg:gap-8">
+    <div class="text-ink">
+      <Logo class="h-7 w-7" />
+    </div>
 
-  <div
-    class="text-mist relative mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-6 py-15 text-sm sm:flex-row md:px-12"
-  >
-    <span>© {year} - Jeral Pineda</span>
+    <div class="grid flex-1 grid-cols-2 gap-8 sm:grid-cols-3 lg:max-w-2xl">
+      <nav aria-labelledby="footer-projects">
+        <h2
+          id="footer-projects"
+          class="text-[11px] font-medium tracking-[0.18em] text-ink-subtle uppercase"
+        >
+          Proyectos
+        </h2>
+        <ul class="mt-4 space-y-2.5">
+          {
+            projects.map((project) => (
+              <li>
+                <a
+                  href={`#${project.slug}`}
+                  class="text-[13px] text-ink-muted underline-offset-4 transition-colors hover:text-ink hover:underline"
+                >
+                  {project.title}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
 
-    <nav aria-label="Enlaces sociales">
-      <ul class="flex items-center gap-2">
-        {
-          socialLinks.map((link) => (
-            <li>
-              <a
-                href={link.href}
-                target={link.external ? "_blank" : undefined}
-                rel={link.external ? "noopener noreferrer" : undefined}
-                aria-label={link.label}
-                title={link.label}
-                class="social-link border-line flex size-11 items-center justify-center rounded-full border text-zinc-400"
-              >
-                <span
-                  class="social-icon"
-                  aria-hidden="true"
-                  style={`--social-icon: url(/icons/social/${link.icon}.svg)`}
-                />
-              </a>
-            </li>
-          ))
-        }
-      </ul>
-    </nav>
+      <nav aria-labelledby="footer-contact">
+        <h2
+          id="footer-contact"
+          class="text-[11px] font-medium tracking-[0.18em] text-ink-subtle uppercase"
+        >
+          Contacto
+        </h2>
+        <ul class="mt-4 space-y-2.5">
+          {
+            contact.map((item) => (
+              <li>
+                <a
+                  href={item.href}
+                  class="group inline-flex items-center gap-1 text-[13px] text-ink-muted underline-offset-4 transition-colors hover:text-ink hover:underline"
+                  {...(item.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                >
+                  {item.label}
+                  {item.external && (
+                    <>
+                      <svg
+                        class="size-3 transition-transform group-hover:translate-x-px group-hover:-translate-y-px"
+                        viewBox="0 0 14 14"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.6"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <path d="M4 10 10 4M10 4H5M10 4v5" />
+                      </svg>
+                      <span class="sr-only">(abre en una pestaña nueva)</span>
+                    </>
+                  )}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <div class="col-span-2 sm:col-span-1">
+        <p class="text-[13px] text-ink-subtle">
+          © {year}
+          {site.shortName}.
+        </p>
+        <p class="mt-3 text-[13px] text-ink-subtle">Hecho con Astro y Tailwind CSS.</p>
+      </div>
+    </div>
   </div>
 </footer>
-
-<style>
-  .glow-footer {
-    position: absolute;
-    left: 50%;
-    bottom: -150px;
-    width: 620px;
-    max-width: 120vw;
-    height: 200px;
-    transform: translateX(-50%);
-    background: radial-gradient(
-      ellipse at center,
-      color-mix(in srgb, var(--color-glow) 35%, transparent),
-      transparent 70%
-    );
-    filter: blur(70px);
-  }
-
-  .social-link {
-    transition:
-      border-color 200ms ease,
-      color 200ms ease;
-  }
-
-  .social-link:hover {
-    border-color: color-mix(in srgb, var(--color-accent) 45%, transparent);
-    color: var(--color-accent);
-  }
-
-  .social-icon {
-    width: 17px;
-    height: 17px;
-    background-color: currentColor;
-    mask: var(--social-icon) center / contain no-repeat;
-  }
-
-  @media (max-width: 1199px) {
-    .site-footer {
-      border-color: transparent;
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .social-link {
-      transition: none;
-    }
-  }
-</style>

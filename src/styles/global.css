@@ -1,51 +1,94 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans:
-    var(--font-inter), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  /* Neutros — grises suaves de matiz frío, emparentados con el azul de
+     acento. Derivados de resources/posible paleta de colores.PNG, aclarados.
+     Definidos como variables para que un tema oscuro sea cuestión de
+     redefinirlos, no de reescribir componentes. */
+  --color-canvas: #f3f4f6;
+  --color-surface: #ffffff;
+  --color-line: #e6e9ee;
+  --color-line-strong: #d2d7de;
+  --color-ink: #33383f;
+  --color-ink-muted: #646c76;
+  --color-ink-subtle: #868d98;
+  --color-pill: #f2f4f7;
+  --color-panel: #eef0f4;
 
-  --color-void: #0a0a0a;
-  --color-surface: #141414;
-  /* --color-accent: #67e8f9; */
-  --color-accent: #38bdf8;
-  --color-glow: #1e6bff;
-  --color-mist: #a1a1aa;
-  --color-line: rgb(255 255 255 / 0.07);
-  --color-line-strong: rgb(255 255 255 / 0.16);
+  /* Azul de acento — el único color del sitio. Se usa solo en el
+     resaltador del hero, las estrellas del marquee y el punto activo de
+     los indicadores de imágenes. */
+  --color-accent: #287dd4;
+  --color-accent-soft: #51b7ff;
+
+  /* Los dos tonos del resaltador tras "Front-End" — dibujados translúcidos. */
+  --color-marker: #51b7ff; /* cuerpo del trazo */
+  --color-marker-deep: #287dd4; /* charco de tinta del borde inferior */
+
+  /* Banda tras el marquee de tecnologías. */
+  --color-band: #f0f2f5;
+  --color-band-ink: #565e69;
+  --color-band-accent: #287dd4; /* las estrellas */
+
+  /* Fijados a los valores previos a la paleta gris: los CTAs no se mueven
+     cuando los neutros cambian. #343434 es bg-ink/85 resuelto sobre blanco. */
+  --color-btn: #101010;
+  --color-btn-hover: #343434;
+  --color-btn-line: #dcdcdc;
+  --color-btn-face: #ffffff;
+  --color-btn-face-hover: #f4f4f5;
+
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-hand: "Caveat Variable", ui-rounded, cursive;
+
+  --shadow-card: 0 1px 2px rgb(51 56 63 / 0.04), 0 8px 24px rgb(51 56 63 / 0.05);
+  --shadow-lift: 0 2px 4px rgb(51 56 63 / 0.05), 0 18px 40px rgb(51 56 63 / 0.10);
 }
 
-html {
-  scroll-behavior: smooth;
-  background-color: var(--color-void);
+@layer base {
+  html {
+    scroll-padding-top: 2rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-font-smoothing: antialiased;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-ink);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
 }
 
-body {
-  background-color: var(--color-void);
-  color: #ffffff;
-  font-family: var(--font-sans);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@layer components {
+  /* The signature vertical hairlines that frame the content column. */
+  .frame {
+    width: 100%;
+    max-width: 1200px;
+    margin-inline: auto;
+    background-color: var(--color-surface);
+    border-inline: 1px solid var(--color-line);
+  }
 }
 
-:focus-visible {
-  outline: 2px solid var(--color-accent);
-  outline-offset: 3px;
-}
-
-.skip-link {
-  position: absolute;
-  left: 1rem;
-  top: -100%;
-  z-index: 100;
-  border-radius: 9999px;
-  background: var(--color-accent);
-  color: #000000;
-  padding: 0.5rem 1rem;
-  font-size: 0.875rem;
-  font-weight: 500;
-  transition: top 0.2s ease;
-}
-
-.skip-link:focus {
-  top: 1rem;
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

@@ -1,36 +1,44 @@
 ---
-import Layout from "@/layouts/Layout.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Header from "@/components/Header.astro";
 import Hero from "@/components/Hero.astro";
+import TechMarquee from "@/components/TechMarquee.astro";
+import GridDivider from "@/components/GridDivider.astro";
+import SectionLabel from "@/components/SectionLabel.astro";
+import ProjectCard from "@/components/ProjectCard.astro";
 import Experience from "@/components/Experience.astro";
-import Projects from "@/components/Projects.astro";
-import SectionHeader from "@/components/SectionHeader.astro";
-import SkillsCarousel from "@/components/SkillsCarousel.astro";
+import Footer from "@/components/Footer.astro";
+import { projects } from "@/data/projects";
 ---
 
-<Layout>
-  <Hero />
+<BaseLayout>
+  <div class="frame">
+    <Header />
 
-  <SectionHeader
-    id="habilidades"
-    title="Habilidades"
-    subtitle="Tecnologías y herramientas que uso a diario para diseñar, construir y optimizar productos digitales."
-  >
-    <SkillsCarousel />
-  </SectionHeader>
+    <main id="contenido">
+      <Hero />
+      <TechMarquee />
+      <GridDivider />
 
-  <SectionHeader
-    id="proyectos"
-    title="Proyectos"
-    subtitle="Una selección de proyectos clave en los que he trabajado: back office bancario, banca móvil y plataformas web."
-  >
-    <Projects />
-  </SectionHeader>
+      <section id="proyectos" class="scroll-mt-8">
+        <SectionLabel label="Proyectos" />
+        {projects.map((project, index) => <ProjectCard project={project} index={index} />)}
+      </section>
 
-  <SectionHeader
-    id="experiencia"
-    title="Experiencia"
-    subtitle="Mi trayectoria como desarrollador Front-End construyendo productos digitales en el sector bancario."
-  >
-    <Experience />
-  </SectionHeader>
-</Layout>
+      <SectionLabel label="Experiencia" />
+      <Experience />
+    </main>
+
+    <Footer />
+  </div>
+</BaseLayout>
+
+<script>
+  import { initImageDecks } from "@/scripts/image-deck";
+  import { initLazyVideos } from "@/scripts/lazy-video";
+  import { initHeroSlider } from "@/scripts/hero-slider";
+
+  initImageDecks();
+  initLazyVideos();
+  initHeroSlider();
+</script>

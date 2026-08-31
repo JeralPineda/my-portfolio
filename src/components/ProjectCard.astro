@@ -1,0 +1,92 @@
+---
+import type { Project } from "@/data/projects";
+import ButtonLink from "@/components/ButtonLink.astro";
+import TagPill from "@/components/TagPill.astro";
+import ImageDeck from "@/components/ImageDeck.astro";
+import PhoneFrame from "@/components/PhoneFrame.astro";
+
+interface Props {
+  project: Project;
+  index: number;
+}
+
+const { project, index } = Astro.props;
+// Alternate which side the media sits on, like the reference layout.
+const mediaFirst = index % 2 === 1;
+---
+
+<article id={project.slug} class="scroll-mt-24 border-b border-line px-6 py-14 sm:px-10 lg:py-20">
+  <div
+    class:list={[
+      "flex flex-col gap-8 lg:flex-row lg:items-center lg:gap-12",
+      mediaFirst && "lg:flex-row-reverse",
+    ]}
+  >
+    <div class="lg:w-[42%] lg:shrink-0">
+      <p class="text-[13px] text-ink-muted">{project.client}</p>
+
+      <h3
+        class="mt-2 text-2xl leading-[1.12] font-bold tracking-tight text-balance text-ink sm:text-[2rem]"
+      >
+        {project.title}
+      </h3>
+
+      <p class="mt-4 text-[15px] leading-relaxed text-ink-muted">{project.description}</p>
+
+      <ul class="mt-6 flex flex-wrap gap-2" aria-label="Tecnologías utilizadas">
+        {
+          project.tags.map((tag) => (
+            <li>
+              <TagPill label={tag} />
+            </li>
+          ))
+        }
+      </ul>
+
+      <div class="mt-7 flex flex-wrap items-center gap-3">
+        {
+          project.links.map((link) => (
+            <ButtonLink href={link.url} external store={link.store}>
+              {link.label}
+            </ButtonLink>
+          ))
+        }
+        {
+          project.internal && (
+            <span class="inline-flex items-center gap-2 rounded-md border border-btn-line bg-btn-face px-4 py-2.5 text-sm text-ink-muted">
+              <svg
+                class="size-3.5"
+                viewBox="0 0 14 14"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <rect x="2.5" y="6" width="9" height="6" rx="1.5" />
+                <path d="M4.75 6V4.25a2.25 2.25 0 0 1 4.5 0V6" />
+              </svg>
+              Proyecto interno
+            </span>
+          )
+        }
+      </div>
+    </div>
+
+    <div class="min-w-0 flex-1 overflow-hidden rounded-xl border border-line">
+      {
+        project.media.kind === "video" ? (
+          <PhoneFrame
+            src={project.media.src}
+            poster={project.media.src.replace(/\.mp4$/, "-poster.jpg")}
+            aspect={project.media.aspect}
+            alt={project.media.alt}
+          />
+        ) : (
+          <ImageDeck images={project.media.images} label={project.title} />
+        )
+      }
+    </div>
+  </div>
+</article>

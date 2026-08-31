@@ -1,0 +1,43 @@
+---
+interface Props {
+  src: string;
+  poster?: string;
+  aspect: string;
+  alt: string;
+}
+
+const { src, poster, aspect, alt } = Astro.props;
+---
+
+<div class="flex w-full items-center justify-center bg-panel px-6 py-10 sm:py-14">
+  <div
+    class="relative w-full max-w-[268px] rounded-[2.6rem] border-[10px] border-ink bg-ink shadow-lift"
+    style={`aspect-ratio: ${aspect};`}
+  >
+    <!-- Dynamic island -->
+    <div
+      class="absolute top-2 left-1/2 z-10 h-[18px] w-[86px] -translate-x-1/2 rounded-full bg-ink"
+      aria-hidden="true"
+    >
+    </div>
+
+    <video
+      class="h-full w-full rounded-[2rem] bg-black object-cover"
+      data-lazy-video
+      data-src={src}
+      poster={poster}
+      aria-label={alt}
+      muted
+      loop
+      playsinline
+      preload="none"
+      disablepictureinpicture></video>
+
+    <!-- Home indicator -->
+    <div
+      class="absolute bottom-2 left-1/2 z-10 h-[4px] w-[100px] -translate-x-1/2 rounded-full bg-white/60"
+      aria-hidden="true"
+    >
+    </div>
+  </div>
+</div>
