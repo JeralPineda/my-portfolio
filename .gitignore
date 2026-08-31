@@ -23,6 +23,10 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 
-# Source screen recordings (~100 MB). The web-ready H.264 versions live in
-# public/videos/ — regenerate them with the ffmpeg commands in README.md.
-resources/*.MP4
+# Unprocessed source material: screen recordings, screenshots, icons and the CV.
+# Nothing here is served — the web-ready copies live in src/assets/ and public/.
+# Regenerate the videos with the ffmpeg commands in README.md.
+resources/
+
+# Vercel
+.vercel
