@@ -1,8 +1,11 @@
 ---
 /**
- * Hand-drawn marker stroke behind a word. Both children are positioned and the
- * text comes second in DOM order, so it paints on top without a negative
- * z-index — which would otherwise drop the stroke behind the page background.
+ * Highlighter swipe behind a word. Both children are positioned and the text
+ * comes second in DOM order, so it paints on top without a negative z-index —
+ * which would otherwise drop the stroke behind the page background.
+ *
+ * The band starts around the middle of the cap height and overshoots the
+ * baseline, the way a real marker does when you swipe across a word.
  */
 interface Props {
   class?: string;
@@ -12,16 +15,22 @@ const { class: className = "" } = Astro.props;
 
 <span class={`relative inline-block ${className}`}>
   <svg
-    class="pointer-events-none absolute inset-x-[-0.16em] bottom-[0.1em] h-[0.78em] w-[calc(100%+0.32em)]"
+    class="pointer-events-none absolute inset-x-[-0.1em] bottom-[-0.12em] h-[0.72em] w-[calc(100%+0.2em)] mix-blend-multiply"
     viewBox="0 0 200 40"
     preserveAspectRatio="none"
     aria-hidden="true"
     focusable="false"
   >
+    <!-- Body of the stroke: near-rectangular, edges slightly off-parallel. -->
     <path
-      d="M3 21c0-8 5-12 15-13.5C56 3 143 3 184 7c9 1 13 6 12.5 13.5C196 28 191 33 181 34.5 142 39 55 39 16 34 7 33 3 28 3 21z"
+      d="M1.6 7.4C62 5.2 138 4.1 197.4 2.8L198.4 32.2C139 34.1 63 35.6 2.6 37.2Z"
       fill="var(--color-marker)"
-    ></path>
+      fill-opacity="0.55"></path>
+    <!-- Ink pooling along the bottom edge, where the felt tip drags. -->
+    <path
+      d="M2.2 27.6C62 26.2 138 25.1 198.1 23.8L198.4 32.2C139 34.1 63 35.6 2.6 37.2Z"
+      fill="var(--color-marker)"
+      fill-opacity="0.3"></path>
   </svg>
   <span class="relative"><slot /></span>
 </span>

@@ -5,15 +5,16 @@ import card2 from "../assets/hero/card-2.jpg";
 import card3 from "../assets/hero/card-3.jpg";
 
 /**
- * Rotated photo collage. Cards are laid out on a fixed-height stage on
- * desktop and collapse to a simple flex row on small screens so they can
- * never push the hero headline off the viewport.
+ * Rotated photo collage. Cards overlap on a fixed-height stage on desktop and
+ * become a one-photo-at-a-time slider on small screens, where an overlapping
+ * stack would only show slivers of the cards behind.
  */
 const cards = [
   {
     image: card1,
     alt: "Escritorio con código en pantalla",
     caption: "mi setup",
+    tilt: -4,
     stage: "top-0 left-2 w-[62%] rotate-[-6deg] z-20",
     captionPos: "-top-6 left-4",
   },
@@ -21,6 +22,7 @@ const cards = [
     image: card2,
     alt: "Calle colonial de una ciudad latinoamericana",
     caption: "fuera del código",
+    tilt: 3,
     stage: "top-[22%] right-0 w-[46%] rotate-[3deg] z-30",
     captionPos: "-bottom-7 right-3",
   },
@@ -28,30 +30,53 @@ const cards = [
     image: card3,
     alt: "Teléfono mostrando una aplicación en desarrollo",
     caption: "React Native",
+    tilt: -2,
     stage: "bottom-0 left-[14%] w-[54%] rotate-[-2deg] z-10",
     captionPos: "-bottom-7 left-6",
   },
 ];
 ---
 
-<!-- Mobile: a plain scrollable row. -->
-<div class="flex gap-4 overflow-x-auto pb-8 lg:hidden [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-  {
-    cards.map((card, i) => (
-      <figure class="relative shrink-0" style={`rotate: ${[-4, 3, -2][i]}deg;`}>
-        <Image
-          src={card.image}
-          alt={card.alt}
-          widths={[320, 480]}
-          sizes="200px"
-          class="h-40 w-[200px] rounded-xl border-4 border-white object-cover shadow-lift"
+<!-- Mobile: one photo per screen, snapped. -->
+<div class="lg:hidden" data-hero-slider>
+  <div
+    class="flex snap-x snap-mandatory overflow-x-auto overscroll-x-contain [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+    data-hero-track
+  >
+    {
+      cards.map((card) => (
+        <figure
+          class="flex w-full shrink-0 snap-center flex-col items-center px-6 py-4"
+          data-hero-slide
+        >
+          <Image
+            src={card.image}
+            alt={card.alt}
+            widths={[320, 480, 640]}
+            sizes="280px"
+            class="h-52 w-full max-w-[280px] rounded-xl border-4 border-white object-cover shadow-lift"
+            style={`rotate: ${card.tilt}deg;`}
+          />
+          <figcaption class="mt-5 font-hand text-xl text-ink-muted">{card.caption}</figcaption>
+        </figure>
+      ))
+    }
+  </div>
+
+  <div class="mt-3 flex justify-center gap-2" role="tablist" aria-label="Fotos del collage">
+    {
+      cards.map((card, i) => (
+        <button
+          type="button"
+          role="tab"
+          data-hero-dot
+          aria-selected={i === 0 ? "true" : "false"}
+          aria-label={`Ver foto: ${card.caption}`}
+          class="h-2 w-2 rounded-full bg-line-strong transition-all duration-300 aria-selected:w-5 aria-selected:bg-ink"
         />
-        <figcaption class="mt-2 text-center font-hand text-lg text-ink-muted">
-          {card.caption}
-        </figcaption>
-      </figure>
-    ))
-  }
+      ))
+    }
+  </div>
 </div>
 
 <!-- Desktop: overlapping rotated stack. -->

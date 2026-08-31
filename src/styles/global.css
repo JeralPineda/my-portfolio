@@ -12,7 +12,7 @@
   --color-ink-subtle: #a3a3a3;
   --color-pill: #f4f4f5;
   --color-panel: #f2f3f5;
-  --color-marker: #ffc6a8; /* highlighter behind the hero keyword */
+  --color-marker: #ff9761; /* highlighter behind the hero keyword — drawn translucent */
   --color-band: #faf7f2; /* warm strip behind the tech marquee */
   --color-band-ink: #4a4238;
   --color-band-accent: #c8763c;
