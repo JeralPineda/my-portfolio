@@ -1,0 +1,79 @@
+---
+import { Image } from "astro:assets";
+import card1 from "../assets/hero/card-1.jpg";
+import card2 from "../assets/hero/card-2.jpg";
+import card3 from "../assets/hero/card-3.jpg";
+
+/**
+ * Rotated photo collage. Cards are laid out on a fixed-height stage on
+ * desktop and collapse to a simple flex row on small screens so they can
+ * never push the hero headline off the viewport.
+ */
+const cards = [
+  {
+    image: card1,
+    alt: "Escritorio con código en pantalla",
+    caption: "mi setup",
+    stage: "top-0 left-2 w-[62%] rotate-[-6deg] z-20",
+    captionPos: "-top-6 left-4",
+  },
+  {
+    image: card2,
+    alt: "Calle colonial de una ciudad latinoamericana",
+    caption: "fuera del código",
+    stage: "top-[22%] right-0 w-[46%] rotate-[3deg] z-30",
+    captionPos: "-bottom-7 right-3",
+  },
+  {
+    image: card3,
+    alt: "Teléfono mostrando una aplicación en desarrollo",
+    caption: "React Native",
+    stage: "bottom-0 left-[14%] w-[54%] rotate-[-2deg] z-10",
+    captionPos: "-bottom-7 left-6",
+  },
+];
+---
+
+<!-- Mobile: a plain scrollable row. -->
+<div class="flex gap-4 overflow-x-auto pb-8 lg:hidden [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+  {
+    cards.map((card, i) => (
+      <figure class="relative shrink-0" style={`rotate: ${[-4, 3, -2][i]}deg;`}>
+        <Image
+          src={card.image}
+          alt={card.alt}
+          widths={[320, 480]}
+          sizes="200px"
+          class="h-40 w-[200px] rounded-xl border-4 border-white object-cover shadow-lift"
+        />
+        <figcaption class="mt-2 text-center font-hand text-lg text-ink-muted">
+          {card.caption}
+        </figcaption>
+      </figure>
+    ))
+  }
+</div>
+
+<!-- Desktop: overlapping rotated stack. -->
+<div class="relative hidden h-[380px] w-full lg:block xl:h-[420px]" aria-hidden="false">
+  {
+    cards.map((card) => (
+      <figure
+        class={`group absolute ${card.stage} transition-[transform,z-index] duration-300 ease-out hover:z-40 hover:rotate-0 hover:scale-[1.03]`}
+      >
+        <Image
+          src={card.image}
+          alt={card.alt}
+          widths={[400, 600, 800]}
+          sizes="(min-width: 1280px) 340px, 280px"
+          class="w-full rounded-xl border-[6px] border-white object-cover shadow-lift"
+        />
+        <figcaption
+          class={`absolute ${card.captionPos} whitespace-nowrap font-hand text-xl text-ink-muted transition-opacity group-hover:opacity-100`}
+        >
+          {card.caption}
+        </figcaption>
+      </figure>
+    ))
+  }
+</div>

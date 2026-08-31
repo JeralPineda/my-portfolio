@@ -1,0 +1,42 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
+import TechMarquee from "../components/TechMarquee.astro";
+import GridDivider from "../components/GridDivider.astro";
+import SectionLabel from "../components/SectionLabel.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import Experience from "../components/Experience.astro";
+import Footer from "../components/Footer.astro";
+import { projects } from "../data/projects";
+---
+
+<BaseLayout>
+  <div class="frame">
+    <Header />
+
+    <main id="contenido">
+      <Hero />
+      <TechMarquee />
+      <GridDivider />
+
+      <section id="proyectos" class="scroll-mt-8">
+        <SectionLabel label="Proyectos" />
+        {projects.map((project, index) => <ProjectCard project={project} index={index} />)}
+      </section>
+
+      <SectionLabel label="Experiencia" />
+      <Experience />
+    </main>
+
+    <Footer />
+  </div>
+</BaseLayout>
+
+<script>
+  import { initImageDecks } from "../scripts/image-deck";
+  import { initLazyVideos } from "../scripts/lazy-video";
+
+  initImageDecks();
+  initLazyVideos();
+</script>

@@ -1,0 +1,40 @@
+---
+import Logo from "./Logo.astro";
+import { nav, site } from "../data/site";
+---
+
+<header class="border-b border-line">
+  <div class="flex h-16 items-center justify-between px-6 sm:px-10">
+    <a href="#top" class="text-ink transition-opacity hover:opacity-70" aria-label="Inicio">
+      <Logo class="h-7 w-7" />
+    </a>
+
+    <nav aria-label="Navegación principal">
+      <ul class="flex items-center gap-6 text-[13px]">
+        {
+          nav.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                class="text-ink-muted underline-offset-4 transition-colors hover:text-ink hover:underline"
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+        <li>
+          <a
+            href={site.cv}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-ink-muted underline-offset-4 transition-colors hover:text-ink hover:underline"
+          >
+            CV
+            <span class="sr-only">(abre en una pestaña nueva)</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>

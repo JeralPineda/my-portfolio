@@ -1,0 +1,58 @@
+---
+import TagPill from "./TagPill.astro";
+import { positions, skillGroups } from "../data/experience";
+---
+
+<section id="experiencia" class="scroll-mt-8">
+  {
+    positions.map((position) => (
+      <div class="border-b border-line px-6 py-14 sm:px-10 lg:py-16">
+        <div class="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
+          <div>
+            <h3 class="text-xl font-bold tracking-tight text-ink">{position.company}</h3>
+            <p class="mt-1 text-[15px] text-ink-muted">{position.role}</p>
+          </div>
+          <div class="shrink-0 text-[13px] text-ink-subtle sm:text-right">
+            <p class="flex items-center gap-2 sm:justify-end">
+              {position.current && (
+                <span
+                  class="inline-block size-1.5 rounded-full bg-emerald-500"
+                  aria-hidden="true"
+                />
+              )}
+              {position.period}
+            </p>
+            <p class="mt-0.5">{position.location}</p>
+          </div>
+        </div>
+
+        <div class="mt-8 max-w-[68ch] space-y-4">
+          {position.summary.map((paragraph) => (
+            <p class="text-[15px] leading-relaxed text-ink-muted">{paragraph}</p>
+          ))}
+        </div>
+      </div>
+    ))
+  }
+
+  <div class="border-b border-line px-6 py-14 sm:px-10 lg:py-16">
+    <h3 class="text-[11px] font-medium tracking-[0.22em] text-ink-subtle uppercase">
+      Stack técnico
+    </h3>
+
+    <dl class="mt-8 space-y-6">
+      {
+        skillGroups.map((group) => (
+          <div class="flex flex-col gap-3 sm:flex-row sm:gap-8">
+            <dt class="shrink-0 pt-1 text-[13px] font-medium text-ink sm:w-28">{group.label}</dt>
+            <dd class="flex flex-wrap gap-2">
+              {group.items.map((item) => (
+                <TagPill label={item} />
+              ))}
+            </dd>
+          </div>
+        ))
+      }
+    </dl>
+  </div>
+</section>

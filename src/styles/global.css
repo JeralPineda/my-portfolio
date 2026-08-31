@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+@theme {
+  /* Palette — mirrors junhyungpark.com. Defined as variables so a dark
+     theme is a matter of redefining them, not rewriting components. */
+  --color-canvas: #fafafa;
+  --color-surface: #ffffff;
+  --color-line: #ececec;
+  --color-line-strong: #dcdcdc;
+  --color-ink: #101010;
+  --color-ink-muted: #737373;
+  --color-ink-subtle: #a3a3a3;
+  --color-pill: #f4f4f5;
+  --color-panel: #f2f3f5;
+  --color-marker: #ffc6a8; /* highlighter behind the hero keyword */
+  --color-band: #faf7f2; /* warm strip behind the tech marquee */
+  --color-band-ink: #4a4238;
+  --color-band-accent: #c8763c;
+
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-hand: "Caveat Variable", ui-rounded, cursive;
+
+  --shadow-card: 0 1px 2px rgb(16 16 16 / 0.04), 0 8px 24px rgb(16 16 16 / 0.06);
+  --shadow-lift: 0 2px 4px rgb(16 16 16 / 0.06), 0 18px 40px rgb(16 16 16 / 0.12);
+}
+
+@layer base {
+  html {
+    scroll-padding-top: 2rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-font-smoothing: antialiased;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-ink);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+}
+
+@layer components {
+  /* The signature vertical hairlines that frame the content column. */
+  .frame {
+    width: 100%;
+    max-width: 1200px;
+    margin-inline: auto;
+    background-color: var(--color-surface);
+    border-inline: 1px solid var(--color-line);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

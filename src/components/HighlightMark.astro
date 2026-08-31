@@ -1,0 +1,27 @@
+---
+/**
+ * Hand-drawn marker stroke behind a word. Both children are positioned and the
+ * text comes second in DOM order, so it paints on top without a negative
+ * z-index — which would otherwise drop the stroke behind the page background.
+ */
+interface Props {
+  class?: string;
+}
+const { class: className = "" } = Astro.props;
+---
+
+<span class={`relative inline-block ${className}`}>
+  <svg
+    class="pointer-events-none absolute inset-x-[-0.16em] bottom-[0.1em] h-[0.78em] w-[calc(100%+0.32em)]"
+    viewBox="0 0 200 40"
+    preserveAspectRatio="none"
+    aria-hidden="true"
+    focusable="false"
+  >
+    <path
+      d="M3 21c0-8 5-12 15-13.5C56 3 143 3 184 7c9 1 13 6 12.5 13.5C196 28 191 33 181 34.5 142 39 55 39 16 34 7 33 3 28 3 21z"
+      fill="var(--color-marker)"
+    ></path>
+  </svg>
+  <span class="relative"><slot /></span>
+</span>

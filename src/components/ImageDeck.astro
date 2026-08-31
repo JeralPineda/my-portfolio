@@ -1,0 +1,72 @@
+---
+import { Image } from "astro:assets";
+
+interface Props {
+  images: { src: ImageMetadata; alt: string }[];
+  label: string;
+}
+
+const { images, label } = Astro.props;
+const isDeck = images.length > 1;
+---
+
+<div class="flex w-full items-center justify-center bg-panel px-8 py-12 sm:px-12 sm:py-16">
+  {
+    isDeck ? (
+      <div
+        class="deck relative w-full max-w-[520px] touch-pan-y select-none"
+        data-image-deck
+        aria-roledescription="carrusel"
+        aria-label={`Capturas de ${label}`}
+      >
+        {/* The fan pushes cards up and to the right, so the stage is nudged the
+            opposite way to keep the stack optically centred in the panel. */}
+        <div
+          class="relative -translate-x-[22px] translate-y-[14px]"
+          style={`aspect-ratio: ${images[0]!.src.width} / ${images[0]!.src.height};`}
+        >
+          {images.map((image, index) => (
+            <figure
+              class="deck-card absolute inset-0 origin-bottom cursor-grab overflow-hidden rounded-lg border-[5px] border-white bg-white shadow-lift active:cursor-grabbing"
+              data-deck-card
+              data-index={index}
+            >
+              <Image
+                src={image.src}
+                alt={image.alt}
+                widths={[480, 760, 1120]}
+                sizes="(min-width: 1024px) 520px, 90vw"
+                loading="lazy"
+                draggable="false"
+                class="h-full w-full object-cover object-top"
+              />
+            </figure>
+          ))}
+        </div>
+
+        <div class="mt-9 flex items-center justify-center gap-2" role="tablist" aria-label={`Ir a captura de ${label}`}>
+          {images.map((image, index) => (
+            <button
+              type="button"
+              role="tab"
+              data-deck-dot
+              data-index={index}
+              aria-selected={index === 0 ? "true" : "false"}
+              aria-label={`Captura ${index + 1} de ${images.length}: ${image.alt}`}
+              class="h-1.5 rounded-full bg-line-strong transition-all duration-300 aria-selected:w-6 aria-selected:bg-ink w-1.5"
+            />
+          ))}
+        </div>
+      </div>
+    ) : (
+      <Image
+        src={images[0]!.src}
+        alt={images[0]!.alt}
+        widths={[480, 760, 1120]}
+        sizes="(min-width: 1024px) 560px, 90vw"
+        loading="lazy"
+        class="w-full max-w-[560px] rounded-lg border border-line bg-white object-cover shadow-card"
+      />
+    )
+  }
+</div>

@@ -1,0 +1,35 @@
+---
+import HeroCollage from "./HeroCollage.astro";
+import ButtonLink from "./ButtonLink.astro";
+import HighlightMark from "./HighlightMark.astro";
+import { site } from "../data/site";
+---
+
+<section
+  id="top"
+  class="grid items-center gap-10 border-b border-line px-6 py-16 sm:px-10 lg:min-h-[calc(100dvh-4rem)] lg:grid-cols-[1.05fr_1fr] lg:gap-14 lg:py-20"
+>
+  <div class="max-w-xl">
+    <h1
+      class="text-4xl leading-[1.18] font-bold tracking-tight text-ink sm:text-5xl lg:text-[3.25rem]"
+    >
+      Hola, soy Jeral Pineda Desarrollador<br class="hidden sm:inline" />
+      <HighlightMark>Front-End</HighlightMark> con +3 años de experiencia.
+    </h1>
+
+    <p class="mt-7 text-[15px] leading-relaxed text-ink-muted">
+      Construyo aplicaciones web y móviles para el sector bancario, donde un error cuesta caro:
+      banca en línea, apps de autenticación y back offices que usan a diario los equipos de
+      BANHCAFE. Trabajo con React, React Native y Next.js desde {site.location}.
+    </p>
+
+    <div class="mt-9 flex flex-wrap items-center gap-3">
+      <ButtonLink href={site.cv} external hideExternalIcon>Descargar CV</ButtonLink>
+      <ButtonLink href={`mailto:${site.email}`} variant="outline">Contáctame</ButtonLink>
+    </div>
+  </div>
+
+  <div class="lg:pl-4">
+    <HeroCollage />
+  </div>
+</section>
