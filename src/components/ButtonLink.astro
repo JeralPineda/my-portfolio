@@ -1,5 +1,5 @@
 ---
-import StoreIcon from "./StoreIcon.astro";
+import StoreIcon from "@/components/StoreIcon.astro";
 
 interface Props {
   href: string;
@@ -40,7 +40,7 @@ const showArrow = external && !hideExternalIcon && !store;
   {
     showArrow && (
       <svg
-        class="size-3.5 transition-transform group-hover:-translate-y-px group-hover:translate-x-px"
+        class="size-3.5 transition-transform group-hover:translate-x-px group-hover:-translate-y-px"
         viewBox="0 0 14 14"
         fill="none"
         stroke="currentColor"

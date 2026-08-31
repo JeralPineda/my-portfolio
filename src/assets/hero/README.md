@@ -3,11 +3,11 @@
 Tres tarjetas rotadas en el collage del hero. La posición, rotación y caption de
 cada una se definen en el array `cards` de `src/components/HeroCollage.astro`.
 
-| Archivo | Contenido | Dimensiones | Caption | Origen |
-|---|---|---|---|---|
-| `card-1.jpg` | Escritorio con código | 900 × 700 (horizontal) | "mi setup" | Unsplash — **placeholder** |
-| `card-2.jpg` | Playa | 700 × 900 (vertical) | "fuera del código" | Foto propia |
-| `card-3.jpg` | Desarrollo móvil | 900 × 700 (horizontal) | "React Native" | Unsplash — **placeholder** |
+| Archivo      | Contenido             | Dimensiones            | Caption            | Origen                     |
+| ------------ | --------------------- | ---------------------- | ------------------ | -------------------------- |
+| `card-1.jpg` | Escritorio con código | 900 × 700 (horizontal) | "mi setup"         | Unsplash — **placeholder** |
+| `card-2.jpg` | Playa                 | 700 × 900 (vertical)   | "fuera del código" | Foto propia                |
+| `card-3.jpg` | Desarrollo móvil      | 900 × 700 (horizontal) | "React Native"     | Unsplash — **placeholder** |
 
 ## Alternativa guardada
 

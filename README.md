@@ -12,13 +12,13 @@ Código y estructura de carpetas en inglés; el contenido visible en español.
 
 ## Comandos
 
-| Comando | Qué hace |
-|---|---|
-| `pnpm install` | Instala dependencias |
-| `pnpm dev` | Servidor de desarrollo en `localhost:4321` |
-| `pnpm build` | `astro check` + build de producción a `dist/` |
-| `pnpm preview` | Sirve el build de producción |
-| `pnpm check` | Solo diagnóstico de TypeScript/Astro |
+| Comando        | Qué hace                                      |
+| -------------- | --------------------------------------------- |
+| `pnpm install` | Instala dependencias                          |
+| `pnpm dev`     | Servidor de desarrollo en `localhost:4321`    |
+| `pnpm build`   | `astro check` + build de producción a `dist/` |
+| `pnpm preview` | Sirve el build de producción                  |
+| `pnpm check`   | Solo diagnóstico de TypeScript/Astro          |
 
 ## Estructura
 

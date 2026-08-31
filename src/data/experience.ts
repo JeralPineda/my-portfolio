@@ -32,15 +32,7 @@ export const positions: Position[] = [
 export const skillGroups: SkillGroup[] = [
   {
     label: "Core",
-    items: [
-      "React",
-      "React Native",
-      "Expo",
-      "Next.js",
-      "Astro",
-      "TypeScript",
-      "JavaScript",
-    ],
+    items: ["React", "React Native", "Expo", "Next.js", "Astro", "TypeScript", "JavaScript"],
   },
   {
     label: "Front-End",
@@ -63,26 +55,10 @@ export const skillGroups: SkillGroup[] = [
   },
   {
     label: "Back-End",
-    items: [
-      "Node.js",
-      "REST APIs",
-      "SQL",
-      "PostgreSQL",
-      "Drizzle",
-      "Supabase",
-      "Strapi",
-    ],
+    items: ["Node.js", "REST APIs", "SQL", "PostgreSQL", "Drizzle", "Supabase", "Strapi"],
   },
   {
     label: "Herramientas",
-    items: [
-      "Git",
-      "GitHub",
-      "Azure DevOps",
-      "Docker",
-      "TeamCity (CI/CD)",
-      "Figma",
-      "Slack",
-    ],
+    items: ["Git", "GitHub", "Azure DevOps", "Docker", "TeamCity (CI/CD)", "Figma", "Slack"],
   },
 ];

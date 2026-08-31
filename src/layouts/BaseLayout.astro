@@ -1,17 +1,14 @@
 ---
-import "../styles/fonts.css";
-import "../styles/global.css";
-import { site } from "../data/site";
+import "@/styles/fonts.css";
+import "@/styles/global.css";
+import { site } from "@/data/site";
 
 interface Props {
   title?: string;
   description?: string;
 }
 
-const {
-  title = `${site.shortName} — ${site.role}`,
-  description = site.description,
-} = Astro.props;
+const { title = `${site.shortName} — ${site.role}`, description = site.description } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site ?? site.url).href;
 const ogImage = new URL(site.ogImage, Astro.site ?? site.url).href;

@@ -1,8 +1,8 @@
 ---
 import { Image } from "astro:assets";
-import card1 from "../assets/hero/card-1.jpg";
-import card2 from "../assets/hero/card-2.jpg";
-import card3 from "../assets/hero/card-3.jpg";
+import card1 from "@/assets/hero/card-1.jpg";
+import card2 from "@/assets/hero/card-2.jpg";
+import card3 from "@/assets/hero/card-3.jpg";
 
 /**
  * Rotated photo collage. Cards overlap on a fixed-height stage on desktop and
@@ -40,7 +40,7 @@ const cards = [
 <!-- Mobile: one photo per screen, snapped. -->
 <div class="lg:hidden" data-hero-slider>
   <div
-    class="flex snap-x snap-mandatory overflow-x-auto overscroll-x-contain [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+    class="flex snap-x snap-mandatory [scrollbar-width:none] overflow-x-auto overscroll-x-contain [&::-webkit-scrollbar]:hidden"
     data-hero-track
   >
     {
@@ -84,7 +84,7 @@ const cards = [
   {
     cards.map((card) => (
       <figure
-        class={`group absolute ${card.stage} transition-[transform,z-index] duration-300 ease-out hover:z-40 hover:rotate-0 hover:scale-[1.03]`}
+        class={`group absolute ${card.stage} transition-[transform,z-index] duration-300 ease-out hover:z-40 hover:scale-[1.03] hover:rotate-0`}
       >
         <Image
           src={card.image}
@@ -94,7 +94,7 @@ const cards = [
           class="w-full rounded-xl border-[6px] border-white object-cover shadow-lift"
         />
         <figcaption
-          class={`absolute ${card.captionPos} whitespace-nowrap font-hand text-xl text-ink-muted transition-opacity group-hover:opacity-100`}
+          class={`absolute ${card.captionPos} font-hand text-xl whitespace-nowrap text-ink-muted transition-opacity group-hover:opacity-100`}
         >
           {card.caption}
         </figcaption>

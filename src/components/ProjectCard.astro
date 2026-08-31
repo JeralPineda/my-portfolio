@@ -1,9 +1,9 @@
 ---
-import type { Project } from "../data/projects";
-import ButtonLink from "./ButtonLink.astro";
-import TagPill from "./TagPill.astro";
-import ImageDeck from "./ImageDeck.astro";
-import PhoneFrame from "./PhoneFrame.astro";
+import type { Project } from "@/data/projects";
+import ButtonLink from "@/components/ButtonLink.astro";
+import TagPill from "@/components/TagPill.astro";
+import ImageDeck from "@/components/ImageDeck.astro";
+import PhoneFrame from "@/components/PhoneFrame.astro";
 
 interface Props {
   project: Project;
@@ -15,10 +15,7 @@ const { project, index } = Astro.props;
 const mediaFirst = index % 2 === 1;
 ---
 
-<article
-  id={project.slug}
-  class="scroll-mt-24 border-b border-line px-6 py-14 sm:px-10 lg:py-20"
->
+<article id={project.slug} class="scroll-mt-24 border-b border-line px-6 py-14 sm:px-10 lg:py-20">
   <div
     class:list={[
       "flex flex-col gap-8 lg:flex-row lg:items-center lg:gap-12",
@@ -37,7 +34,13 @@ const mediaFirst = index % 2 === 1;
       <p class="mt-4 text-[15px] leading-relaxed text-ink-muted">{project.description}</p>
 
       <ul class="mt-6 flex flex-wrap gap-2" aria-label="Tecnologías utilizadas">
-        {project.tags.map((tag) => <li><TagPill label={tag} /></li>)}
+        {
+          project.tags.map((tag) => (
+            <li>
+              <TagPill label={tag} />
+            </li>
+          ))
+        }
       </ul>
 
       <div class="mt-7 flex flex-wrap items-center gap-3">

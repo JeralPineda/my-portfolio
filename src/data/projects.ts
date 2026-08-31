@@ -1,13 +1,13 @@
-import aurora1 from "../assets/projects/aurora-1.png";
-import aurora2 from "../assets/projects/aurora-2.png";
-import aurora3 from "../assets/projects/aurora-3.png";
-import mia1 from "../assets/projects/mia-1.png";
-import mia2 from "../assets/projects/mia-2.png";
-import mia3 from "../assets/projects/mia-3.png";
-import site1 from "../assets/projects/banhcafe-site-1.png";
-import site2 from "../assets/projects/banhcafe-site-2.png";
-import site3 from "../assets/projects/banhcafe-site-3.png";
-import onlineWeb from "../assets/projects/banhcafe-online-web.png";
+import aurora1 from "@/assets/projects/aurora-1.png";
+import aurora2 from "@/assets/projects/aurora-2.png";
+import aurora3 from "@/assets/projects/aurora-3.png";
+import mia1 from "@/assets/projects/mia-1.png";
+import mia2 from "@/assets/projects/mia-2.png";
+import mia3 from "@/assets/projects/mia-3.png";
+import site1 from "@/assets/projects/banhcafe-site-1.png";
+import site2 from "@/assets/projects/banhcafe-site-2.png";
+import site3 from "@/assets/projects/banhcafe-site-3.png";
+import onlineWeb from "@/assets/projects/banhcafe-online-web.png";
 
 export interface ProjectLink {
   label: string;
@@ -80,13 +80,7 @@ export const projects: Project[] = [
     title: "BANHCAFE Online App",
     description:
       "Migré la app de Expo SDK 51 a SDK 54, integrando notificaciones push y gestión de dispositivos de confianza. Además consolidé el Token dentro de la app, eliminando la necesidad de una aplicación aparte para autenticarse.",
-    tags: [
-      "React Native",
-      "Expo",
-      "TypeScript",
-      "Push Notifications",
-      "Seguridad",
-    ],
+    tags: ["React Native", "Expo", "TypeScript", "Push Notifications", "Seguridad"],
     media: {
       kind: "video",
       src: "/videos/banhcafe-online.mp4",

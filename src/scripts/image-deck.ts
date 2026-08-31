@@ -148,7 +148,8 @@ class Deck {
       }deg) scale(0.95)`;
       card.style.opacity = "0";
       window.setTimeout(() => {
-        this.front = dx > 0 ? (this.front + 1) % this.total : (this.front - 1 + this.total) % this.total;
+        this.front =
+          dx > 0 ? (this.front + 1) % this.total : (this.front - 1 + this.total) % this.total;
         card.style.transition = "none";
         this.render(false);
         // Re-enable transitions on the next frame so later moves animate.
