@@ -1,7 +1,7 @@
 /**
- * Hero collage on small screens. The desktop version overlaps the cards on a
- * stage; that reads as clutter on a phone, so here each photo gets the full
- * width and the track snaps one slide at a time. Dots below double as the
+ * Hero collage below 700px. The wider version overlaps the cards on a stage;
+ * that reads as clutter on a phone, so here each photo gets the full width and
+ * the track snaps one slide at a time. Dots below double as the
  * keyboard-operable control, since swiping alone is not.
  */
 const AUTOPLAY_MS = 4200;
@@ -32,7 +32,7 @@ class HeroSlider {
     this.start();
   }
 
-  /** The track is `lg:hidden`, so on desktop it has no layout to scroll. */
+  /** The track is hidden from 700px up, so there it has no layout to scroll. */
   private get active(): boolean {
     return this.track.clientWidth > 0;
   }

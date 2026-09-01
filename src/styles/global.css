@@ -141,6 +141,16 @@
     border-inline: 1px solid var(--color-line);
   }
 
+  /* Por debajo de 1200px la columna es full-bleed: las hairlines quedarían
+     pegadas al borde de la pantalla y dejarían de leerse como marco. Se
+     conserva el ancho del borde y solo se apaga el color, así el contenido
+     no se desplaza al cruzar el umbral. */
+  @media (width <= 1200px) {
+    .frame {
+      border-inline-color: transparent;
+    }
+  }
+
   /* Selector de tema. La posición del chip y el icono activo se derivan de
      `data-theme` en <html>, que el script del <head> escribe antes de que el
      footer se parsee: el estado correcto se pinta en el primer frame, sin

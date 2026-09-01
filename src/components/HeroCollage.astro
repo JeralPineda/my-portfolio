@@ -5,9 +5,11 @@ import card2 from "@/assets/hero/card-2.jpg";
 import card3 from "@/assets/hero/card-3.jpg";
 
 /**
- * Rotated photo collage. Cards overlap on a fixed-height stage on desktop and
- * become a one-photo-at-a-time slider on small screens, where an overlapping
- * stack would only show slivers of the cards behind.
+ * Rotated photo collage. Cards overlap on a fixed-height stage from 700px up
+ * and become a one-photo-at-a-time slider below it, where an overlapping stack
+ * would only show slivers of the cards behind. The switch is its own 700px
+ * breakpoint, not `lg`: between 700px and `lg` the hero is already stacked, so
+ * the stage simply moves under the heading instead of turning into a slider.
  */
 const cards = [
   {
@@ -37,8 +39,8 @@ const cards = [
 ];
 ---
 
-<!-- Mobile: one photo per screen, snapped. -->
-<div class="lg:hidden" data-hero-slider>
+<!-- Under 700px: one photo per screen, snapped. -->
+<div class="min-[700px]:hidden" data-hero-slider>
   <div
     class="flex snap-x snap-mandatory [scrollbar-width:none] overflow-x-auto overscroll-x-contain [&::-webkit-scrollbar]:hidden"
     data-hero-track
@@ -87,8 +89,14 @@ const cards = [
   </div>
 </div>
 
-<!-- Desktop: overlapping rotated stack. -->
-<div class="relative hidden h-[380px] w-full lg:block xl:h-[420px]" aria-hidden="false">
+<!-- 700px and up: overlapping rotated stack. The cards are sized in
+  percentages of the stage, so below `lg` — where the stage spans the whole
+  column instead of half the grid — it is capped to the width it has on
+  desktop; otherwise the photos would grow past the fixed stage height. -->
+<div
+  class="relative mx-auto hidden h-[380px] w-full max-w-[500px] min-[700px]:block lg:max-w-none xl:h-[420px]"
+  aria-hidden="false"
+>
   {
     cards.map((card) => (
       <figure

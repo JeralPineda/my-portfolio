@@ -11,8 +11,7 @@ const { src, poster, aspect, alt } = Astro.props;
 
 <div class="flex w-full items-center justify-center bg-panel px-6 py-10 sm:py-14">
   <div
-    class="relative w-full max-w-[268px] rounded-[2.6rem] border-[10px] border-ink bg-ink shadow-lift"
-    style={`aspect-ratio: ${aspect};`}
+    class="relative w-full max-w-[268px] overflow-hidden rounded-[2.6rem] border-[10px] border-ink bg-ink shadow-lift"
   >
     <!-- Dynamic island -->
     <div
@@ -21,17 +20,27 @@ const { src, poster, aspect, alt } = Astro.props;
     >
     </div>
 
-    <video
-      class="h-full w-full rounded-[2rem] bg-black object-cover"
-      data-lazy-video
-      data-src={src}
-      data-poster={poster}
-      aria-label={alt}
-      muted
-      loop
-      playsinline
-      preload="none"
-      disablepictureinpicture></video>
+    <!-- La relación de aspecto vive aquí, en la pantalla, y no en el bisel: así
+      la caja de contenido coincide exacta con la grabación y `object-cover` no
+      recorta los lados. El `translateZ(0)` fuerza a Safari a recortar la capa
+      del video contra el radio; sin él las esquinas cuadradas pintan encima
+      del bisel en iOS. -->
+    <div
+      class="relative [transform:translateZ(0)] overflow-hidden rounded-[2rem]"
+      style={`aspect-ratio: ${aspect};`}
+    >
+      <video
+        class="absolute inset-0 h-full w-full bg-black object-cover"
+        data-lazy-video
+        data-src={src}
+        data-poster={poster}
+        aria-label={alt}
+        muted
+        loop
+        playsinline
+        preload="none"
+        disablepictureinpicture></video>
+    </div>
 
     <!-- Home indicator -->
     <div
