@@ -48,7 +48,6 @@ export const skillGroups: SkillGroup[] = [
       "Zustand",
       "Reanimated",
       "Skia",
-      "GSAP",
       "Astro",
       "Zod",
     ],
