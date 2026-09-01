@@ -55,7 +55,15 @@ export const projects: Project[] = [
     title: "AURORA",
     description:
       "Sistema web interno que centraliza la operación administrativa del banco: RRHH y nómina, contabilidad, créditos y cobranzas, banca, préstamos, cumplimiento, auditoría y seguridad, bajo un único panel privado con autenticación y control de permisos por pantalla. Lo estructuré como una app modular por dominio de negocio —cada uno con sus rutas, formularios, tablas y llamadas a API— para reemplazar procesos manuales y legacy con flujos digitales trazables.",
-    tags: ["React", "TypeScript", "Redux Toolkit", "RTK Query", "DevExtreme"],
+    tags: [
+      "React",
+      "JavaScript",
+      "Redux Toolkit",
+      "RTK Query",
+      "DevExtreme",
+      "React Hook Form",
+      "Yup",
+    ],
     media: {
       kind: "gallery",
       images: [
@@ -79,8 +87,16 @@ export const projects: Project[] = [
     name: "BANHCAFE Online",
     title: "BANHCAFE Online App",
     description:
-      "Migré la app de Expo SDK 51 a SDK 54, integrando notificaciones push y gestión de dispositivos de confianza. Además consolidé el Token dentro de la app, eliminando la necesidad de una aplicación aparte para autenticarse.",
-    tags: ["React Native", "Expo", "TypeScript", "Push Notifications", "Seguridad"],
+      "Aplicación móvil de banca en línea para BANHCAFE, disponible en iOS y Android, con funcionalidades típicas de banca digital: transferencias (locales, terceros, LBTR, SWIFT, Mastercard), pagos, gestión de tarjetas de crédito y cuentas bancarias, solicitudes/aprobaciones, notificaciones push y un widget nativo para iOS.",
+    tags: [
+      "React Native",
+      "Expo",
+      "TypeScript",
+      "Zustand",
+      "Tanstack Query",
+      "React Hook Form",
+      "Zod",
+    ],
     media: {
       kind: "video",
       src: "/videos/banhcafe-online.mp4",
@@ -107,7 +123,15 @@ export const projects: Project[] = [
     title: "MIA",
     description:
       "Plataforma empresarial que centraliza la administración de usuarios, políticas y permisos de Aurora y del resto de aplicaciones del banco, reduciendo el tiempo de gestión de accesos y mejorando la seguridad operativa. La construí con una arquitectura orientada a features, para que el sistema fuera escalable, mantenible y estable en producción.",
-    tags: ["Next.js", "TypeScript", "Tailwind CSS", "IAM", "Seguridad"],
+    tags: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Tanstack Query",
+      "React Hook Form",
+      "Zod",
+      "DevExtreme",
+    ],
     media: {
       kind: "gallery",
       images: [
@@ -128,8 +152,16 @@ export const projects: Project[] = [
     name: "BANHCAFE Token",
     title: "BANHCAFE Token App",
     description:
-      "Migré la Token App a Expo con la nueva arquitectura de React Native, añadiendo soporte multiusuario y optimizando los flujos de seguridad y autenticación, además del rendimiento y los tiempos de compilación.",
-    tags: ["React Native", "Expo", "New Architecture", "TypeScript", "OTP"],
+      "Aplicación móvil de autenticación (generador de tokens tipo OTP/2FA) para clientes empresariales de BANHCAFE. Permite a los usuarios gestionar múltiples cuentas/empresas, visualizar y copiar códigos de token con countdown circular, proteger el acceso mediante PIN, y cuenta con medidas de seguridad como detección de grabación/captura de pantalla y validación de OTP vía SMS/email con auto-paste.",
+    tags: [
+      "React Native",
+      "Expo",
+      "TypeScript",
+      "Zustand",
+      "Tanstack Query",
+      "React Hook Form",
+      "Zod",
+    ],
     media: {
       kind: "video",
       src: "/videos/banhcafe-token.mp4",
@@ -155,8 +187,16 @@ export const projects: Project[] = [
     name: "BANHCAFE Online Web",
     title: "BANHCAFE Online Web",
     description:
-      "Desarrollé y mantuve la banca en línea web, implementando nuevas funcionalidades y ampliando los servicios digitales disponibles para los clientes del banco.",
-    tags: ["React", "TypeScript", "REST APIs", "Banca en línea"],
+      "Plataforma de banca en línea (online banking) para BANHCAFE, un banco de Honduras. Permite a los usuarios gestionar cuentas, tarjetas de crédito/débito, préstamos, transferencias, pago de servicios y solicitudes bancarias desde una interfaz web SPA con autenticación, OTP y detección de fraude/VPN.",
+    tags: [
+      "React",
+      "JavaScript",
+      "Redux Toolkit",
+      "Styled Components",
+      "React Hook Form",
+      "Yup",
+      "Axios",
+    ],
     media: {
       kind: "gallery",
       images: [
@@ -171,11 +211,21 @@ export const projects: Project[] = [
   {
     slug: "banhcafe-site",
     client: "BANHCAFE",
-    name: "Sitio institucional",
-    title: "Sito Institucional",
+    name: "Sitio web institucional",
+    title: "Sitio Web Institucional",
     description:
-      "Lideré el mantenimiento y desarrollo del sitio institucional con Next.js y Strapi, optimizando el rendimiento, el SEO y la gestión de contenido para el equipo de mercadeo.",
-    tags: ["Next.js", "Strapi", "TypeScript", "SEO", "CMS"],
+      "Sitio web institucional y transaccional para un banco hondureño (BANHCAFE), construido como aplicación híbrida de contenido dinámico (CMS headless) y funcionalidades bancarias interactivas. Combina un catálogo de productos y servicios financieros gestionado por CMS con integraciones a APIs bancarias reales para operaciones como envío de dinero internacional, apertura de cuentas y pagos.",
+    tags: [
+      "Next.js",
+      "Strapi",
+      "TypeScript",
+      "Zustand",
+      "Tailwind CSS",
+      "Tanstack Query",
+      "React Hook Form",
+      "Zod",
+      "Docker",
+    ],
     media: {
       kind: "gallery",
       images: [
