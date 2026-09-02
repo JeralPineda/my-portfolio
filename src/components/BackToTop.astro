@@ -1,0 +1,34 @@
+---
+/**
+ * Volver arriba. Se apoya sobre la hairline que separa el stack técnico del
+ * footer, así que el contenedor padre necesita `relative`. La pastilla queda
+ * por encima de la línea, como una pestaña que asoma desde el footer.
+ *
+ * `#top` es el id de la sección del hero, el mismo destino al que apunta el
+ * logo del header: no hace falta JavaScript y el scroll suave ya lo pone
+ * `global.css`.
+ */
+---
+
+<a
+  href="#top"
+  class="group absolute top-0 left-1/2 flex -translate-x-1/2 -translate-y-full items-center gap-2.5 pb-px text-[13px] text-ink-muted transition-colors hover:text-ink"
+>
+  Regresar al inicio
+  <span
+    class="flex size-9 items-center justify-center rounded-t-lg bg-panel transition-colors"
+    aria-hidden="true"
+  >
+    <svg
+      class="size-4 transition-transform group-hover:-translate-y-0.5"
+      viewBox="0 0 16 16"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="1.6"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path d="M3.5 10 8 5.5l4.5 4.5"></path>
+    </svg>
+  </span>
+</a>
