@@ -1,5 +1,6 @@
 ---
 import Logo from "@/components/Logo.astro";
+import BackToTop from "@/components/BackToTop.astro";
 import ThemeSwitch from "@/components/ThemeSwitch.astro";
 import { site } from "@/data/site";
 import { projects } from "@/data/projects";
@@ -13,7 +14,9 @@ const contact = [
 ];
 ---
 
-<footer class="border-t border-line bg-canvas px-6 py-14 sm:px-10">
+<footer class="relative border-t border-line bg-canvas px-6 py-14 sm:px-10">
+  <BackToTop />
+
   <div class="flex flex-col gap-12 lg:flex-row lg:justify-between lg:gap-8">
     <div class="text-ink">
       <Logo class="h-7 w-7" />
