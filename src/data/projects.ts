@@ -54,7 +54,7 @@ export const projects: Project[] = [
     name: "Aurora",
     title: "AURORA",
     description:
-      "Sistema web interno que centraliza la operación administrativa del banco: RRHH y nómina, contabilidad, créditos y cobranzas, banca, préstamos, cumplimiento, auditoría y seguridad, bajo un único panel privado con autenticación y control de permisos por pantalla. Lo estructuré como una app modular por dominio de negocio —cada uno con sus rutas, formularios, tablas y llamadas a API— para reemplazar procesos manuales y legacy con flujos digitales trazables.",
+      "Sistema web interno que centraliza la operación administrativa del banco: RRHH y nómina, contabilidad, créditos y cobranzas, banca, préstamos, cumplimiento, auditoría y seguridad, bajo un único panel privado con autenticación y control de permisos por pantalla. Lo estructuré como una app modular por dominio de negocio cada uno con sus rutas, formularios, tablas y llamadas a API para reemplazar procesos manuales y legacy con flujos digitales trazables.",
     tags: [
       "React",
       "JavaScript",
