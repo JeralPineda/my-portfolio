@@ -134,6 +134,109 @@
 }
 
 @layer components {
+  /* Entrada del contenido que ya está en pantalla al cargar — el hero. No se
+     engancha al scroll porque no hay scroll todavía; el escalonado lo pone
+     cada elemento con `--enter-delay`, en el orden en que se lee. `both`
+     sostiene el estado inicial durante el retardo. */
+  @media (prefers-reduced-motion: no-preference) {
+    .enter-up {
+      animation: enter-up 520ms cubic-bezier(0.32, 0.72, 0, 1) var(--enter-delay, 0ms) both;
+    }
+  }
+
+  @keyframes enter-up {
+    from {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  /* Entrada del contenido que aparece al bajar. No va atada al scroll a
+     propósito: `animation-timeline: view()` rebobinaría el reveal al subir, y
+     una animación de entrada solo tiene sentido la primera vez — repetirla
+     hacia atrás hace sentir la página inestable. Así que la dispara
+     `reveal.ts` con un IntersectionObserver que marca `.is-revealed` una vez y
+     deja de observar el elemento.
+
+     El estado oculto cuelga de `.js`, la clase que el script inline del <head>
+     escribe antes del primer pintado: sin JavaScript no hay nada que quite la
+     marca, así que el contenido nace visible en vez de quedarse invisible
+     para siempre.
+
+     Todo lo que se revela lleva `.reveal` — que es lo que observa el script —
+     y las variantes solo cambian el punto de partida. */
+  @media (prefers-reduced-motion: no-preference) {
+    .js .reveal {
+      transition:
+        opacity var(--reveal-duration, 520ms) ease,
+        transform var(--reveal-duration, 520ms) cubic-bezier(0.32, 0.72, 0, 1);
+      transition-delay: var(--reveal-delay, 0ms);
+    }
+
+    /* Punto de partida por defecto: aparece subiendo. */
+    .js .reveal:not(.is-revealed) {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+
+    /* La media entra desde más lejos que su texto y desde el borde que ocupa
+       en la fila, con un pequeño retardo para que el texto abra la entrada. */
+    .js .reveal-media {
+      --reveal-delay: 90ms;
+    }
+
+    .js .reveal-media:not(.is-revealed) {
+      transform: translate(var(--reveal-x, 0px), 26px) scale(0.97);
+    }
+
+    /* El guion de las etiquetas de sección se dibuja creciendo desde el
+       centro, y sin desvanecerse: es un trazo que se traza, no un bloque que
+       llega. Un fade encima solo lo dejaría lavado a mitad de camino. */
+    .js .reveal-rule {
+      --reveal-duration: 420ms;
+    }
+
+    .js .reveal-rule:not(.is-revealed) {
+      opacity: 1;
+      transform: scaleX(0);
+    }
+  }
+
+  /* El parallax sí sigue atado al scroll, y debe seguirlo: no es una entrada,
+     es la posición del bloque en función de dónde estás. Congelarlo al llegar
+     al final lo dejaría descuadrado respecto a su columna de texto al volver a
+     subir. Anima la propiedad `translate`, no `transform`, para no pisar la
+     transición del reveal mientras los dos se solapan.
+
+     El `@supports` es la red de seguridad: donde no existe la timeline, la
+     regla se descarta entera y el bloque se queda quieto. Y la timeline va
+     DESPUÉS del atajo `animation`, que si no la reiniciaría a `auto`. */
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      .parallax-y {
+        animation: parallax-y linear both;
+        animation-timeline: view();
+        animation-range: cover 0% cover 100%;
+      }
+    }
+  }
+
+  /* El desplazamiento arranca en negativo y termina en positivo: el elemento se
+     va quedando atrás respecto al scroll, que es justo lo que se lee como
+     "más lento". */
+  @keyframes parallax-y {
+    from {
+      translate: 0 calc(var(--parallax-shift, 16px) * -1);
+    }
+    to {
+      translate: 0 var(--parallax-shift, 16px);
+    }
+  }
+
   /* The signature vertical hairlines that frame the content column. */
   .frame {
     width: 100%;
@@ -163,6 +266,25 @@
      encima (5.1:1 contra --color-ink). */
   .highlight-mark {
     mix-blend-mode: multiply;
+  }
+
+  /* El trazo se dibuja de izquierda a derecha al cargar, como si alguien
+     pasara el rotulador por encima del título. `both` mantiene el recorte
+     cerrado durante el retardo, que espera a que el titular termine de subir
+     (`.enter-up`) para que el subrayado sea el último gesto del hero. */
+  @media (prefers-reduced-motion: no-preference) {
+    .highlight-mark {
+      animation: highlight-swipe 520ms cubic-bezier(0.32, 0.72, 0, 1) 620ms both;
+    }
+  }
+
+  @keyframes highlight-swipe {
+    from {
+      clip-path: inset(0 100% 0 0);
+    }
+    to {
+      clip-path: inset(0);
+    }
   }
 
   .highlight-mark-body {

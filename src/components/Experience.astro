@@ -9,7 +9,9 @@ import { positions } from "@/data/experience";
       const expanded = index === 0;
 
       return (
-        <div class="border-b border-line">
+        // Las filas entran encadenadas, no a la vez: 60ms por posición basta
+        // para que se lean como una lista que se despliega.
+        <div class="reveal border-b border-line" style={`--reveal-delay: ${index * 60}ms`}>
           <h3>
             <button
               type="button"

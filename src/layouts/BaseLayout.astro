@@ -110,10 +110,16 @@ const breadcrumbSchema = {
       /* Resuelve el tema antes del primer pintado. Tiene que ser `is:inline`:
         los scripts empaquetados de Astro son `defer` y dejarían ver un
         destello del tema equivocado antes de aplicarse. El sitio nace en
-        claro; solo recibe el oscuro quien lo haya pedido expresamente. */
+        claro; solo recibe el oscuro quien lo haya pedido expresamente.
+
+        Aprovecha el mismo bloque para marcar que hay JavaScript, del que
+        cuelga el estado oculto de los reveals: sin esta clase el contenido
+        nace visible, que es lo que debe pasar si `reveal.ts` nunca corre. */
     }
     <script is:inline>
       (() => {
+        document.documentElement.classList.add("js");
+
         let pref = null;
         try {
           pref = localStorage.getItem("theme");

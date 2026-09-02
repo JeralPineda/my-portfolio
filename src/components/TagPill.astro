@@ -5,8 +5,11 @@ interface Props {
 const { label } = Astro.props;
 ---
 
+<!-- El hover solo oscurece borde y texto: la pastilla no es un enlace ni un
+  filtro, así que un desplazamiento o una sombra prometerían un clic que no
+  existe. -->
 <span
-  class="inline-flex items-center rounded-full border border-line bg-pill px-3.5 py-2 text-[13px] leading-none text-ink-muted"
+  class="inline-flex items-center rounded-full border border-line bg-pill px-3.5 py-2 text-[13px] leading-none text-ink-muted transition-colors duration-200 hover:border-line-strong hover:text-ink"
 >
   {label}
 </span>

@@ -22,7 +22,7 @@ const mediaFirst = index % 2 === 1;
       mediaFirst && "lg:flex-row-reverse",
     ]}
   >
-    <div class="lg:w-[42%] lg:shrink-0">
+    <div class="reveal lg:w-[42%] lg:shrink-0">
       <p class="text-[13px] text-ink-muted">{project.client}</p>
 
       <h3
@@ -74,7 +74,10 @@ const mediaFirst = index % 2 === 1;
       </div>
     </div>
 
-    <div class="min-w-0 flex-1 overflow-hidden rounded-xl border border-line">
+    <div
+      class="reveal reveal-media parallax-y min-w-0 flex-1 overflow-hidden rounded-xl border border-line"
+      style={`--reveal-x: ${mediaFirst ? "-14px" : "14px"}`}
+    >
       {
         project.media.kind === "video" ? (
           <PhoneFrame

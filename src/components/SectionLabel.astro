@@ -6,6 +6,11 @@ const { label } = Astro.props;
 ---
 
 <div class="flex flex-col items-center gap-2 border-b border-line px-6 py-20">
-  <span class="block h-0.5 w-6 bg-ink" aria-hidden="true"></span>
-  <h2 class="text-sm font-bold tracking-[0.18em] text-ink uppercase sm:text-[20px]">{label}</h2>
+  <span class="reveal reveal-rule block h-0.5 w-6 bg-ink" aria-hidden="true"></span>
+  <h2
+    class="reveal text-[16px] font-bold tracking-[0.18em] text-ink uppercase sm:text-[20px]"
+    style="--reveal-delay: 120ms"
+  >
+    {label}
+  </h2>
 </div>
