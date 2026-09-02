@@ -1,58 +1,112 @@
 ---
-import TagPill from "@/components/TagPill.astro";
-import { positions, skillGroups } from "@/data/experience";
+import { positions } from "@/data/experience";
 ---
 
-<section id="experiencia" class="scroll-mt-8">
+<section id="experiencia" class="scroll-mt-8" data-accordion>
   {
-    positions.map((position) => (
-      <div class="border-b border-line px-6 py-14 sm:px-10 lg:py-16">
-        <div class="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
-          <div>
-            <h3 class="text-xl font-bold tracking-tight text-ink">{position.company}</h3>
-            <p class="mt-1 text-[15px] text-ink-muted">{position.role}</p>
-          </div>
-          <div class="shrink-0 text-[13px] text-ink-subtle sm:text-right">
-            <p class="flex items-center gap-2 sm:justify-end">
-              {position.current && (
-                <span
-                  class="inline-block size-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400"
-                  aria-hidden="true"
-                />
-              )}
-              {position.period}
-            </p>
-            <p class="mt-0.5">{position.location}</p>
-          </div>
-        </div>
+    positions.map((position, index) => {
+      const panelId = `experiencia-panel-${index}`;
+      const expanded = index === 0;
 
-        <div class="mt-8 max-w-[68ch] space-y-4">
-          {position.summary.map((paragraph) => (
-            <p class="text-[15px] leading-relaxed text-ink-muted">{paragraph}</p>
-          ))}
+      return (
+        <div class="border-b border-line">
+          <h3>
+            <button
+              type="button"
+              class="group flex w-full cursor-pointer items-start gap-6 px-6 py-10 text-left sm:px-10"
+              aria-expanded={expanded ? "true" : "false"}
+              aria-controls={panelId}
+              data-accordion-trigger
+            >
+              <span class="flex flex-1 flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
+                <span class="block">
+                  <span class="block text-xl font-bold tracking-tight text-ink">
+                    {position.company}
+                  </span>
+                  <span class="mt-1 block text-[15px] text-ink-muted">{position.role}</span>
+                </span>
+                <span class="shrink-0 text-[13px] text-ink-subtle sm:text-right">
+                  <span class="flex items-center gap-2 sm:justify-end">
+                    {position.current && (
+                      <span
+                        class="inline-block size-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400"
+                        aria-hidden="true"
+                      />
+                    )}
+                    {position.period}
+                  </span>
+                  <span class="mt-0.5 block">{position.location}</span>
+                </span>
+              </span>
+
+              {/* Un solo "+" que gira 45° hasta leerse como "×" cuando se abre. */}
+              <span
+                class="accordion-icon relative mt-1 block size-4 shrink-0 text-ink-subtle group-hover:text-ink group-aria-expanded:rotate-45"
+                aria-hidden="true"
+              >
+                <span class="absolute top-1/2 left-0 h-px w-full -translate-y-1/2 bg-current" />
+                <span class="absolute top-0 left-1/2 h-full w-px -translate-x-1/2 bg-current" />
+              </span>
+            </button>
+          </h3>
+
+          <div id={panelId} class="accordion-panel" data-accordion-panel inert={!expanded}>
+            <div class="overflow-hidden">
+              <p class="max-w-[68ch] px-6 pb-12 text-[15px] leading-relaxed text-ink-muted sm:px-10">
+                {position.summary}
+              </p>
+            </div>
+          </div>
         </div>
-      </div>
-    ))
+      );
+    })
+  }
+</section>
+
+<style>
+  /* El alto se anima con `grid-template-rows` en vez de medirlo en JS: el
+     panel es una rejilla de una fila que pasa de 0fr a 1fr. */
+  .accordion-panel {
+    display: grid;
+    grid-template-rows: 0fr;
   }
 
-  <div class="border-b border-line px-6 py-14 sm:px-10 lg:py-16">
-    <h3 class="text-[11px] font-medium tracking-[0.22em] text-ink-subtle uppercase">
-      Stack técnico
-    </h3>
+  /* El disparador vive dentro del <h3>, así que el estado se lee con :has()
+     en la cabecera hermana del panel. */
+  h3:has([aria-expanded="true"]) + .accordion-panel {
+    grid-template-rows: 1fr;
+  }
 
-    <dl class="mt-8 space-y-6">
-      {
-        skillGroups.map((group) => (
-          <div class="flex flex-col gap-3 sm:flex-row sm:gap-8">
-            <dt class="shrink-0 pt-1 text-[13px] font-medium text-ink sm:w-28">{group.label}</dt>
-            <dd class="flex flex-wrap gap-2">
-              {group.items.map((item) => (
-                <TagPill label={item} />
-              ))}
-            </dd>
-          </div>
-        ))
-      }
-    </dl>
-  </div>
-</section>
+  .accordion-panel > * {
+    min-height: 0;
+  }
+
+  .accordion-panel > * > * {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+
+  h3:has([aria-expanded="true"]) + .accordion-panel > * > * {
+    opacity: 1;
+    transform: none;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .accordion-panel {
+      transition: grid-template-rows 320ms cubic-bezier(0.32, 0.72, 0, 1);
+    }
+
+    .accordion-panel > * > * {
+      transition:
+        opacity 220ms ease,
+        transform 320ms cubic-bezier(0.32, 0.72, 0, 1);
+    }
+
+    /* Tailwind v4 gira con la propiedad `rotate`, no con `transform`. */
+    .accordion-icon {
+      transition:
+        rotate 320ms cubic-bezier(0.32, 0.72, 0, 1),
+        color 220ms ease;
+    }
+  }
+</style>
