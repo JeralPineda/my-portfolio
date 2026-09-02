@@ -30,7 +30,6 @@ src/
   styles/          Tokens de diseño (@theme) y @font-face
   assets/          Imágenes procesadas por astro:assets
 public/            Archivos servidos tal cual (CV, videos, iconos)
-resources/         Material original sin procesar (no se sirve)
 ```
 
 ### Dónde editar qué
@@ -54,14 +53,15 @@ slot y los originales.
 
 ### Videos
 
-Los originales (`resources/*.MP4`) son grabaciones de pantalla en HEVC de ~100 MB
-en total y están en `.gitignore`. Las versiones que usa el sitio están en
-`public/videos/`, en H.264 400×866 sin audio (1.7 MB y 714 KB).
+Las versiones que usa el sitio están en `public/videos/`, en H.264 400×866 sin
+audio (1.7 MB y 714 KB). Las grabaciones originales en HEVC ya no están en el
+repo — para regenerar hay que volver a grabar la pantalla.
 
-Para regenerarlas hace falta `ffmpeg` (`brew install ffmpeg`):
+El comando, si hace falta rehacerlas desde una grabación nueva (`ffmpeg`,
+`brew install ffmpeg`):
 
 ```bash
-ffmpeg -y -i "resources/banhcafe online.MP4" \
+ffmpeg -y -i grabacion.MOV \
   -vf "scale=400:-2" \
   -c:v libx264 -crf 30 -preset slow -profile:v main -pix_fmt yuv420p \
   -an -movflags +faststart \

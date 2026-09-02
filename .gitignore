@@ -23,9 +23,9 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 
-# Unprocessed source material: screen recordings, screenshots, icons and the CV.
-# Nothing here is served — the web-ready copies live in src/assets/ and public/.
-# Regenerate the videos with the ffmpeg commands in README.md.
+# Scratch space for unprocessed source material — screen recordings, raw
+# screenshots. Nothing here is served; the web-ready copies live in src/assets/
+# and public/. Kept ignored so dropping originals in here never bloats the repo.
 resources/
 
 # Vercel

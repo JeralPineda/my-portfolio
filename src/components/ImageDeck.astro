@@ -27,7 +27,7 @@ const isDeck = images.length > 1;
         >
           {images.map((image, index) => (
             <figure
-              class="deck-card absolute inset-0 origin-bottom cursor-grab overflow-hidden rounded-lg border-[5px] border-frame bg-frame shadow-lift active:cursor-grabbing"
+              class="deck-card absolute inset-0 origin-bottom cursor-grab overflow-hidden rounded-lg shadow-lift active:cursor-grabbing"
               data-deck-card
               data-index={index}
             >
@@ -71,7 +71,7 @@ const isDeck = images.length > 1;
         widths={[480, 760, 1120]}
         sizes="(min-width: 1024px) 560px, 90vw"
         loading="lazy"
-        class="w-full max-w-[560px] rounded-lg border border-line bg-frame object-cover shadow-card"
+        class="w-full max-w-[560px] rounded-lg object-cover shadow-card"
       />
     )
   }

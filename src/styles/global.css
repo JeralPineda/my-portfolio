@@ -18,7 +18,7 @@
   --color-ink-subtle: #666e79; /* mínimo que cumple AA sobre canvas y banda */
   --color-pill: #f2f4f7;
   --color-panel: #eef0f4;
-  --color-frame: #ffffff; /* el marco de las fotos del collage y del deck */
+  --color-frame: #ffffff; /* el marco de las fotos del collage */
 
   /* Azul de acento — el único color del sitio. Se usa solo en el
      resaltador del hero, las estrellas del marquee y el punto activo de
@@ -74,8 +74,8 @@
   --color-ink-subtle: #949494;
   --color-pill: #1e1e1e;
   --color-panel: #202020;
-  /* El marco de las fotos sube muy por encima de `surface` y `panel`: con un
-     gris apenas más claro que el fondo las capturas se fundían con la página. */
+  /* El marco del collage sube muy por encima de `surface` y `panel`: con un
+     gris apenas más claro que el fondo las fotos se fundían con la página. */
   --color-frame: #4d4d4d;
 
   /* El azul original queda por debajo de AA sobre grafito: se aclara. */

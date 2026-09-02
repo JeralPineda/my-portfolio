@@ -26,16 +26,11 @@ optimizadas por ruta, así que reemplazar el archivo sin limpiar la caché sigue
 sirviendo la versión vieja. En el navegador hace falta además un hard reload
 (`cmd+shift+R`), porque la URL de `/_image` no cambia.
 
-## Originales sin recortar
+## Originales
 
-Todos en `resources/` (gitignored):
-
-| Tarjeta      | Original                           |
-| ------------ | ---------------------------------- |
-| `card-1.jpg` | `resources/hero-image1.JPG`        |
-| `card-2.jpg` | `resources/fuera del codigo 2.JPG` |
-| `card-2-alt` | `resources/fuera del codigo 1.JPG` |
-| `card-3.jpg` | `resources/react-native.JPG`       |
+Los `.JPG` sin recortar ya no están en el repo. Los archivos de esta carpeta son
+la única copia, así que un reencuadre distinto requiere la foto original desde
+donde se tomó.
 
 ## Al reemplazar cualquiera
 
