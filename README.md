@@ -48,8 +48,9 @@ Las capturas viven en `src/assets/projects/`. Astro genera WebP y los tamaños
 responsive en el build, así que se pueden reemplazar sin tocar código mientras
 se mantenga el nombre del archivo.
 
-Las fotos del hero en `src/assets/hero/` son **placeholders** — ver
-[`src/assets/hero/README.md`](src/assets/hero/README.md).
+Las fotos del hero viven en `src/assets/hero/` y son propias — ver
+[`src/assets/hero/README.md`](src/assets/hero/README.md) para el recorte de cada
+slot y los originales.
 
 ### Videos
 

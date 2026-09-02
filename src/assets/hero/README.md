@@ -3,11 +3,11 @@
 Tres tarjetas rotadas en el collage del hero. La posición, rotación y caption de
 cada una se definen en el array `cards` de `src/components/HeroCollage.astro`.
 
-| Archivo      | Contenido             | Dimensiones            | Caption            | Origen                     |
-| ------------ | --------------------- | ---------------------- | ------------------ | -------------------------- |
-| `card-1.jpg` | Escritorio con código | 900 × 700 (horizontal) | "mi setup"         | Unsplash — **placeholder** |
-| `card-2.jpg` | Playa                 | 700 × 900 (vertical)   | "fuera del código" | Foto propia                |
-| `card-3.jpg` | Desarrollo móvil      | 900 × 700 (horizontal) | "React Native"     | Unsplash — **placeholder** |
+| Archivo      | Contenido                  | Dimensiones            | Caption            | Origen      |
+| ------------ | -------------------------- | ---------------------- | ------------------ | ----------- |
+| `card-1.jpg` | Trabajando en la oficina   | 900 × 700 (horizontal) | "día a día"        | Foto propia |
+| `card-2.jpg` | Playa                      | 700 × 900 (vertical)   | "fuera del código" | Foto propia |
+| `card-3.jpg` | App React Native en device | 900 × 700 (horizontal) | "React Native"     | Foto propia |
 
 ## Alternativa guardada
 
@@ -26,20 +26,26 @@ optimizadas por ruta, así que reemplazar el archivo sin limpiar la caché sigue
 sirviendo la versión vieja. En el navegador hace falta además un hard reload
 (`cmd+shift+R`), porque la URL de `/_image` no cambia.
 
-Los originales sin recortar están en `resources/fuera del codigo 1.JPG` (Tikal) y
-`resources/fuera del codigo 2.JPG` (playa).
+## Originales sin recortar
+
+Todos en `resources/` (gitignored):
+
+| Tarjeta      | Original                           |
+| ------------ | ---------------------------------- |
+| `card-1.jpg` | `resources/hero-image1.JPG`        |
+| `card-2.jpg` | `resources/fuera del codigo 2.JPG` |
+| `card-2-alt` | `resources/fuera del codigo 1.JPG` |
+| `card-3.jpg` | `resources/react-native.JPG`       |
 
 ## Al reemplazar cualquiera
 
 - Respetá la orientación del slot (`card-2` es la vertical del centro).
 - Mismo nombre de archivo y extensión `.jpg`; Astro genera WebP y los tamaños
   responsive automáticamente.
-- Recorte al tamaño del slot:
+- Recorte al tamaño del slot (el crop de ffmpeg es centrado):
   ```bash
+  # vertical (card-2)
   ffmpeg -i entrada.JPG -vf "scale=700:900:force_original_aspect_ratio=increase,crop=700:900" -q:v 3 salida.jpg
+  # horizontal (card-1, card-3)
+  ffmpeg -i entrada.JPG -vf "scale=900:700:force_original_aspect_ratio=increase,crop=900:700" -q:v 3 salida.jpg
   ```
-
-## Pendiente
-
-`card-1.jpg` y `card-3.jpg` siguen siendo fotos de stock de Unsplash. Cuando
-tengas propias, reemplazalas y ajustá los captions si hace falta.
