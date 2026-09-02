@@ -76,12 +76,16 @@ ffmpeg -y -ss 1 -i public/videos/banhcafe-online.mp4 -frames:v 1 -q:v 4 \
 
 ## Notas de implementación
 
-- **Cero JavaScript de framework.** Las dos interacciones (baraja de capturas y
-  autoplay de videos) son TypeScript plano que Astro inlinea en el HTML.
+- **Cero JavaScript de framework.** Las interacciones (baraja de capturas,
+  slider del hero y autoplay de videos) son TypeScript plano que Astro inlinea
+  en el HTML.
 - **Los videos no se descargan hasta que el marco del teléfono entra en viewport**
   (`IntersectionObserver` en `src/scripts/lazy-video.ts`), y se pausan al salir.
-- **`prefers-reduced-motion`** desactiva la rotación automática de la baraja y el
-  autoplay; en ese caso el video muestra controles.
+- **La baraja de capturas no rota sola.** Solo avanza con el gesto de arrastre
+  o con un clic en los indicadores, así que no compite por la atención mientras
+  se lee la descripción del proyecto.
+- **`prefers-reduced-motion`** desactiva el autoplay del video; en ese caso el
+  video muestra controles.
 - **Solo tema claro.** Los colores son variables CSS en `@theme`, así que agregar
   modo oscuro es redefinirlas, no reescribir componentes.
 - **Fuentes**: solo se declaran los subsets latin y latin-ext

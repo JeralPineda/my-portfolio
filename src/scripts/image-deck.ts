@@ -1,10 +1,10 @@
 /**
- * Stacked screenshot deck: the front card can be flicked away with the mouse
- * or a finger, and the stack also advances on its own so the interaction is
- * discoverable without any hint UI. Dots below give a keyboard-accessible
- * equivalent, since a drag gesture alone is not operable without a pointer.
+ * Stacked screenshot deck. The stack only moves when the visitor asks it to:
+ * the front card can be flicked away with the mouse or a finger, and the dots
+ * below give the keyboard-accessible equivalent, since a drag gesture alone is
+ * not operable without a pointer. The dots are also the only visible hint that
+ * there is more than one screenshot, so they stay even when a pointer is used.
  */
-const AUTOPLAY_MS = 3800;
 const DRAG_THRESHOLD = 70;
 
 /** Depth 0 is the front card; each card behind is nudged back, down and rotated. */
@@ -20,25 +20,20 @@ class Deck {
   private readonly dots: HTMLButtonElement[];
   private readonly total: number;
   private front = 0;
-  private timer: number | undefined;
-  private paused = false;
   private dragging = false;
   private pointerId: number | null = null;
   private startX = 0;
   private startY = 0;
-  private readonly reduceMotion: boolean;
 
   constructor(private readonly root: HTMLElement) {
     this.cards = Array.from(root.querySelectorAll<HTMLElement>("[data-deck-card]"));
     this.dots = Array.from(root.querySelectorAll<HTMLButtonElement>("[data-deck-dot]"));
     this.total = this.cards.length;
-    this.reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     if (this.total < 2) return;
 
     this.render();
     this.bind();
-    this.start();
   }
 
   /** Position every card according to its distance from the front of the stack. */
@@ -58,35 +53,12 @@ class Deck {
     });
   }
 
-  private advance(): void {
-    this.front = (this.front + 1) % this.total;
-    this.render();
-  }
-
   private goTo(index: number): void {
     this.front = ((index % this.total) + this.total) % this.total;
     this.render();
   }
 
-  private start(): void {
-    if (this.reduceMotion) return;
-    this.stop();
-    this.timer = window.setInterval(() => {
-      if (!this.paused && !this.dragging && !document.hidden) this.advance();
-    }, AUTOPLAY_MS);
-  }
-
-  private stop(): void {
-    if (this.timer !== undefined) window.clearInterval(this.timer);
-    this.timer = undefined;
-  }
-
   private bind(): void {
-    this.root.addEventListener("pointerenter", () => (this.paused = true));
-    this.root.addEventListener("pointerleave", () => (this.paused = false));
-    this.root.addEventListener("focusin", () => (this.paused = true));
-    this.root.addEventListener("focusout", () => (this.paused = false));
-
     this.dots.forEach((dot, index) => {
       dot.addEventListener("click", () => this.goTo(index));
       dot.addEventListener("keydown", (event) => {
