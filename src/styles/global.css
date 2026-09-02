@@ -74,9 +74,11 @@
   --color-ink-subtle: #949494;
   --color-pill: #1e1e1e;
   --color-panel: #202020;
-  /* El marco del collage sube muy por encima de `surface` y `panel`: con un
-     gris apenas más claro que el fondo las fotos se fundían con la página. */
-  --color-frame: #4d4d4d;
+  /* El marco se mantiene claro en oscuro: es una foto impresa, y un gris medio
+     (#4d4d4d, el valor anterior) quedaba a mitad de camino entre el fondo y las
+     fotos, leyéndose como un halo sucio en vez de como un borde. Apenas por
+     debajo de `ink` para no competir con el texto. */
+  --color-frame: #e8e8e8;
 
   /* El azul original queda por debajo de AA sobre grafito: se aclara. */
   --color-accent: #4d9ae8;
