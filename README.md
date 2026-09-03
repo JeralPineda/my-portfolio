@@ -7,7 +7,7 @@ Código y estructura de carpetas en inglés; el contenido visible en español.
 
 ## Requisitos
 
-- Node.js >= 22.12
+- Node.js >= 24
 - pnpm
 
 ## Comandos
@@ -26,7 +26,8 @@ Código y estructura de carpetas en inglés; el contenido visible en español.
 src/
   data/            Contenido tipado (proyectos, experiencia, datos del sitio)
   components/      Componentes .astro
-  scripts/         TS del lado del cliente (deck de imágenes, lazy video)
+  scripts/         TS del lado del cliente (deck de imágenes, slider del hero,
+                   acordeón, reveals de entrada, lazy video, selector de tema)
   styles/          Tokens de diseño (@theme) y @font-face
   assets/          Imágenes procesadas por astro:assets
 public/            Archivos servidos tal cual (CV, videos, iconos)
@@ -36,6 +37,7 @@ public/            Archivos servidos tal cual (CV, videos, iconos)
 
 - **Proyectos** → `src/data/projects.ts`
 - **Experiencia, educación y stack** → `src/data/experience.ts`
+- **Skills** → `src/data/skills.ts`
 - **Nombre, email, links, CV** → `src/data/site.ts`
 - **Paleta y tipografías** → `src/styles/global.css` (bloque `@theme`)
 
@@ -54,7 +56,7 @@ slot y los originales.
 ### Videos
 
 Las versiones que usa el sitio están en `public/videos/`, en H.264 400×866 sin
-audio (1.7 MB y 714 KB). Las grabaciones originales en HEVC ya no están en el
+audio (1.7 MB y 732 KB). Las grabaciones originales en HEVC ya no están en el
 repo — para regenerar hay que volver a grabar la pantalla.
 
 El comando, si hace falta rehacerlas desde una grabación nueva (`ffmpeg`,
@@ -68,8 +70,8 @@ ffmpeg -y -i grabacion.MOV \
   public/videos/banhcafe-online.mp4
 
 # Poster (primer frame) que se muestra mientras el video carga
-ffmpeg -y -ss 1 -i public/videos/banhcafe-online.mp4 -frames:v 1 -q:v 4 \
-  public/videos/banhcafe-online-poster.jpg
+ffmpeg -y -ss 1 -i public/videos/banhcafe-online.mp4 -frames:v 1 \
+  public/videos/banhcafe-online-poster.webp
 ```
 
 `-an` quita el audio y `-crf 30` controla la calidad (más bajo = mejor y más pesado).
@@ -86,7 +88,12 @@ ffmpeg -y -ss 1 -i public/videos/banhcafe-online.mp4 -frames:v 1 -q:v 4 \
   se lee la descripción del proyecto.
 - **`prefers-reduced-motion`** desactiva el autoplay del video; en ese caso el
   video muestra controles.
-- **Solo tema claro.** Los colores son variables CSS en `@theme`, así que agregar
-  modo oscuro es redefinirlas, no reescribir componentes.
+- **Tema claro/oscuro.** El sitio es claro por defecto y no consulta
+  `prefers-color-scheme`; el oscuro es una elección explícita del visitante
+  (`ThemeSwitch.astro` + `src/scripts/theme.ts`), persistida en
+  `localStorage` y sincronizada entre pestañas. Un script inline en el
+  `<head>` resuelve y aplica el tema antes del primer pintado para evitar
+  parpadeos. Los colores de ambos temas son variables CSS bajo
+  `[data-theme="dark"]` en `src/styles/global.css`.
 - **Fuentes**: solo se declaran los subsets latin y latin-ext
   (`src/styles/fonts.css`), ya que el sitio está en español.
