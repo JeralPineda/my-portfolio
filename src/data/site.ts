@@ -6,7 +6,7 @@ export const site = {
   location: "Tegucigalpa, Honduras",
   email: "jeralpineda.dev@gmail.com",
   github: "https://github.com/JeralPineda",
-  url: "https://jeralpineda.dev",
+  url: "https://www.jeralpineda.dev",
   cv: "/cv-jeral-pineda.pdf",
   description:
     "Desarrollador Front-End con más de 3 años de experiencia liderando proyectos críticos en el sector bancario. Especializado en React, React Native/Expo y Next.js.",
