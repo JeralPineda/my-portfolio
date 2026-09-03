@@ -1,7 +1,6 @@
 # Portfolio — Jeral Pineda
 
 Portfolio personal construido con **Astro**, **Tailwind CSS 4** y **TypeScript**.
-El diseño está basado en [junhyungpark.com](https://junhyungpark.com/).
 
 Código y estructura de carpetas en inglés; el contenido visible en español.
 
