@@ -11,7 +11,7 @@
      redefinirlos, no de reescribir componentes. */
   --color-canvas: #f3f4f6;
   --color-surface: #ffffff;
-  --color-line: #e6e9ee;
+  --color-line: #e9ecf1;
   --color-line-strong: #d2d7de;
   --color-ink: #15181f; /* títulos y texto fuerte */
   --color-ink-muted: #5a626c; /* párrafos */
@@ -67,7 +67,7 @@
 
   --color-canvas: #0e0e0e;
   --color-surface: #161616;
-  --color-line: #272727;
+  --color-line: #242424;
   --color-line-strong: #3d3d3d;
   --color-ink: #ededed;
   --color-ink-muted: #a3a3a3;
@@ -119,7 +119,7 @@
   }
 
   body {
-    background-color: var(--color-canvas);
+    background-color: var(--color-surface);
     color: var(--color-ink);
     font-family: var(--font-sans);
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
@@ -237,7 +237,6 @@
     }
   }
 
-  /* The signature vertical hairlines that frame the content column. */
   .frame {
     width: 100%;
     max-width: 1200px;
@@ -247,9 +246,7 @@
   }
 
   /* Por debajo de 1200px la columna es full-bleed: las hairlines quedarían
-     pegadas al borde de la pantalla y dejarían de leerse como marco. Se
-     conserva el ancho del borde y solo se apaga el color, así el contenido
-     no se desplaza al cruzar el umbral. */
+     pegadas al borde de la pantalla y dejarían de leerse como marco. */
   @media (width <= 1200px) {
     .frame {
       border-inline-color: transparent;
