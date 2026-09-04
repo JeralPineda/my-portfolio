@@ -253,6 +253,19 @@
     }
   }
 
+  /* Igual que `.frame`, pero sin el fondo ni el ancho propios: la usan el
+     header y el footer, que ya traen su propio contenedor y solo necesitan
+     las hairlines laterales del marco. */
+  .frame-edge {
+    border-inline: 1px solid var(--color-line);
+  }
+
+  @media (width <= 1200px) {
+    .frame-edge {
+      border-inline-color: transparent;
+    }
+  }
+
   /* Selector de tema. La posición del chip y el icono activo se derivan de
      `data-theme` en <html>, que el script del <head> escribe antes de que el
      footer se parsee: el estado correcto se pinta en el primer frame, sin
